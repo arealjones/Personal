@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BagOfWords.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment6</a> &gt; <a href="index.source.html" class="el_package">problem2</a> &gt; <span class="el_source">BagOfWords.java</span></div><h1>BagOfWords.java</h1><pre class="source lang-java linenums">package problem2;
+
+import java.util.Objects;
+
+/**
+ * BagOfWords is an object that contains words. */
+public class BagOfWords implements IBagOfWords {
+  private String word;
+  private IBagOfWords rest;
+<span class="fc" id="L10">  private Integer size = 0;</span>
+<span class="fc" id="L11">  private int count = 0;</span>
+
+  /**
+   * Constructor that creates a new bag of words if there is only one word.
+   * @param word The first word in the bag of words. */
+<span class="fc" id="L16">  public BagOfWords(String word) {</span>
+<span class="fc" id="L17">    this.word = word;</span>
+<span class="fc" id="L18">    this.rest = new EmptyBagOfWords();</span>
+<span class="fc" id="L19">  }</span>
+  /**
+   * Constructor that creates a new bag of words.
+   * @param word The first word in the bag of words.
+   * @param rest The rest of the words. */
+<span class="fc" id="L24">  public BagOfWords(String word, IBagOfWords rest) {</span>
+<span class="fc" id="L25">    this.word = word;</span>
+<span class="fc" id="L26">    this.rest = rest;</span>
+<span class="fc" id="L27">  }</span>
+
+  /**
+   * Returns the first word within the bag of words.
+   * @return Returns the first word within the bag of words. */
+  public String getWord() {
+<span class="fc" id="L33">    return this.word;</span>
+  }
+
+  /**
+   * Returns the rest of the bag of words.
+   * @return Returns the rest of the bag of words. */
+  public IBagOfWords getRest() {
+<span class="fc" id="L40">    return this.rest;</span>
+  }
+
+  /**
+   * Returns an empty Bag of Words.
+   * @return Returns an empty Bag of Words. */
+  @Override
+  public IBagOfWords emptyBagOfWords() {
+<span class="fc" id="L48">    return new EmptyBagOfWords();</span>
+  }
+
+  /**
+   * Return true if the bag of words is empty, false otherwise.
+   * @return Return true if the bag of words is empty, false otherwise. */
+  @Override
+  public Boolean isEmpty() {
+<span class="fc" id="L56">    return false;</span>
+  }
+
+  /**
+   * Returns the size of the bag of words.
+   * @return Returns the size of the bag of words. */
+  @Override
+  public Integer size() {
+<span class="fc" id="L64">    return 1 + rest.size();</span>
+  }
+
+  /**
+   * Adds a new string to the bag of words regardless if it is a duplicate.
+   * @param s A new string.
+   * @return The bag of words with the additional string. */
+  @Override
+  public BagOfWords add(String s) {
+<span class="fc" id="L73">    return new BagOfWords(s, this);</span>
+  }
+
+  /**
+   * Returns true if the bag of words contains that specific string, false otherwise.
+   * @param s The string being searched for.
+   * @return Returns true if the bag of words contains that specific string, false otherwise. */
+  @Override
+  public Boolean contains(String s) {
+<span class="fc bfc" id="L82" title="All 2 branches covered.">    if (word == s) {</span>
+<span class="fc" id="L83">      return true;</span>
+    } else {
+<span class="fc" id="L85">      return rest.contains(s);</span>
+    }
+  }
+
+  /**
+   * Checks to make sure the current object contains all of the same words as the other bag.
+   * @param bagToCompare The object being compared.
+   * @return True or false. */
+  public Boolean containsAll(IBagOfWords bagToCompare) {
+<span class="fc" id="L94">    int sizeThis = this.size();</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">    if (sizeThis == count) {</span>
+<span class="fc" id="L96">      return true;</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">    } else if (bagToCompare.getWord() == null) {</span>
+<span class="fc" id="L98">      return false;</span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">    } else if (this.contains(bagToCompare.getWord())) {</span>
+<span class="fc" id="L100">      count += 1;</span>
+<span class="fc" id="L101">      return containsAll(bagToCompare.getRest());</span>
+    } else {
+<span class="fc" id="L103">      return containsAll(bagToCompare.getRest());</span>
+    }
+  }
+
+  /**
+   * Returns true if the current object is equal to the one being compared.
+   * @param o The object being compared.
+   * @return True or false. */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L113" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L114">      return true;</span>
+    }
+<span class="pc bpc" id="L116" title="1 of 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L117">      return false;</span>
+    }
+<span class="fc" id="L119">    BagOfWords that = (BagOfWords) o;</span>
+//    if (that.size() != ((BagOfWords) o).size()) {
+//      return false;
+//    }
+<span class="fc bfc" id="L123" title="All 2 branches covered.">    return (Objects.equals(word, that.word) &amp;&amp;</span>
+<span class="pc bpc" id="L124" title="2 of 4 branches missed.">        Objects.equals(rest, that.rest) || (that.containsAll(((BagOfWords) o))));</span>
+  }
+
+  /**
+   * Returns true or false based on if the location of the object are the same.
+   * @return Returns true or false. */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L132">    return Objects.hash(word, rest, size);</span>
+  }
+
+  /**
+   * Returns a string explaining the words that are in the bag of words.
+   * @return Returns a string explaining the words that are in the bag of words. */
+  @Override
+  public String toString() {
+<span class="fc" id="L140">    return &quot;Bag of Words: Word is &quot; + word + &quot;, and Rest is: &quot; + rest + '.';</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

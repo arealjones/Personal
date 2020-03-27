@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Specialist.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment3</a> &gt; <a href="index.source.html" class="el_package">problem1.Specialty</a> &gt; <span class="el_source">Specialist.java</span></div><h1>Specialist.java</h1><pre class="source lang-java linenums">package problem1.Specialty;
+
+import java.util.Objects;
+import problem1.PropertySize;
+import problem1.Interfaces.Rate;
+import problem1.AbstractServices;
+/**
+ * Specialist is an object that contains the complexity, hours, rates, and minimum employees needed
+ * for the electrical and plumbing services. */
+public class Specialist extends AbstractServices implements Rate {
+  private boolean complex;
+  private int employees;
+  /**
+   * Constructor that creates a new specialist service with the information about the property,
+   * rates, complexity, and number of employees for the electrical and plumbing services.
+   * @param monthly If the service happens monthly.
+   * @param address The address of the property.
+   * @param previousServices How many times has the property been serviced before.
+   * @param size The size of the property.
+   * @param complex If the service is complex. */
+  public Specialist(boolean monthly, String address, int previousServices, PropertySize size,
+      boolean complex, int employees) {
+<span class="fc" id="L23">    super(monthly, address, previousServices);</span>
+<span class="fc" id="L24">    this.complex = complex;</span>
+<span class="fc" id="L25">    this.employees = setMinimumEmployees(size, employees);</span>
+<span class="fc" id="L26">  }</span>
+  /**
+   * Returns the rate of the service per employee.
+   * @return Returns the rate of the service per employee. */
+  @Override
+  public int rate() {
+<span class="fc" id="L32">    int ratePerEmployee = 200;</span>
+<span class="fc" id="L33">    return ratePerEmployee;</span>
+  }
+  /**
+   * Returns true or false for if the service is complex.
+   * @return Returns true or false. */
+  public boolean isComplex() {
+<span class="fc" id="L39">    return this.complex;</span>
+  }
+  /**
+   * Sets the complexity of the service.
+   * @param complex The complexity of the service. */
+  public void setComplex(boolean complex) {
+<span class="fc" id="L45">    this.complex = complex;</span>
+<span class="fc" id="L46">  }</span>
+  /**
+   * A helper function to set the minimum number of employees if the work is complex.
+   * @param size The size of the property.
+   * @param employees The number of employees. */
+  private void setComplexMinimum(PropertySize size, int employees) {
+<span class="fc" id="L52">    int smallAndMedium = 2;</span>
+<span class="fc" id="L53">    int large = 3;</span>
+<span class="pc bpc" id="L54" title="1 of 3 branches missed.">    switch (size) {</span>
+      case SMALL:
+      case MEDIUM:
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        if (employees &lt; smallAndMedium) {</span>
+<span class="fc" id="L58">          this.employees = smallAndMedium;</span>
+        }
+        else {
+<span class="fc" id="L61">          this.employees = employees;</span>
+        }
+<span class="fc" id="L63">        break;</span>
+      case LARGE:
+<span class="fc bfc" id="L65" title="All 2 branches covered.">        if (employees &lt; large) {</span>
+<span class="fc" id="L66">          this.employees = large;</span>
+        }
+        else {
+<span class="fc" id="L69">          this.employees = employees;</span>
+        }
+        break;
+    }
+<span class="fc" id="L73">  }</span>
+  /**
+   * Sets the minimum amount of required employees based on the property size.
+   * @param size The size of the property.
+   * @return Returns the minimum amount of required employees. */
+  public int setMinimumEmployees(PropertySize size, int employees) {
+<span class="fc" id="L79">    int minimum = 1;</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">    if (complex) {</span>
+<span class="fc" id="L81">        setComplexMinimum(size, employees);</span>
+      }
+    else {
+<span class="fc bfc" id="L84" title="All 2 branches covered.">      if (employees &lt; 1) {</span>
+<span class="fc" id="L85">        return this.employees = minimum;</span>
+      }
+      else {
+<span class="fc" id="L88">        return this.employees = employees;</span>
+      }
+    }
+<span class="fc" id="L91">    return this.employees;</span>
+  }
+  /**
+   * Returns the amount of required employees.
+   * @return Returns the amount of required employees. */
+  public int getEmployees() {
+<span class="fc" id="L97">    return this.employees;</span>
+  }
+  /**
+   * Returns true or false based on if the current object is the same as the one being compared.
+   * @param o The object being compared.
+   * @return Returns true or false. */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L105" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L106">      return true;</span>
+    }
+<span class="pc bpc" id="L108" title="1 of 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L109">      return false;</span>
+    }
+<span class="fc bfc" id="L111" title="All 2 branches covered.">    if (!super.equals(o)) {</span>
+<span class="fc" id="L112">      return false;</span>
+    }
+<span class="fc" id="L114">    Specialist that = (Specialist) o;</span>
+<span class="pc bpc" id="L115" title="2 of 4 branches missed.">    return complex == that.complex &amp;&amp;</span>
+        employees == that.employees;
+  }
+  /**
+   * Returns true or false based on if the location of the object are the same.
+   * @return Returns true or false. */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L123">    return Objects.hash(super.hashCode(), complex, employees);</span>
+  }
+  /**
+   * Returns a string of the exterior service including how many hours it will take to complete.
+   * @return Returns a string of the exterior service. */
+  @Override
+  public String toString() {
+<span class="fc" id="L130">    return super.toString() + &quot;. Complex Project: &quot; + complex +</span>
+        &quot;. Number of employees required: &quot; + employees + &quot;.&quot;;
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

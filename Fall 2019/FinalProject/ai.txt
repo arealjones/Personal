@@ -1,0 +1,42 @@
+1. Did you attempt to make your computer player very smart -- i.e., do something more clever than just pick a random legal move? 
+Yes, I'm just as shocked as you are... 
+2. If so, were you able to accomplish this? Is your computer player as smart as you would like? 
+I was able to make it choose a more clever move than just picking a random legal move. It is not as smart as I would have liked it to be.  
+3. How did you determine which piece to play next? Tell us about your “pick next move” algorithm. 
+def ai_turn(self, white, black):
+        max_flips = [0, 0, 0, 0, 0, 0, 0, 0]
+        white_spots = []
+        empty_spots = []
+        best_spot = [0, 0]
+        for row in self.tiles_on_board:
+            for i, col in enumerate(row):
+                if col == white:
+                    white_spots.append([self.tiles_on_board.index(row), i])
+        for i in white_spots:
+            empty_spots += (self.check_ai_directions(i[1], i[0], white, black))
+        for empty in empty_spots:
+            location = self.check_directions(empty[1], empty[0], white, black)
+            if sum(location) >= sum(max_flips):
+                max_flips = location
+                best_spot = [empty[0], empty[1]]
+        return best_spot
+
+This is the method that I used to make my ai smarter.
+	-max_flips is a list of eight zeros because I will be checking the eight different directions that the computer can go in and will keep replacing it.
+	-white_spots just contains all of the white tiles on the board at the start of each turn. It will continuously change.
+	-empty_spots contains all of the valid moves that the computer can choose from. It's any empty tile on the board that is a valid move for the computer.
+	-best_spot is a list of the column and row for the best move that the computer can take. It is continuously updated if a better move is found.
+
+	I know I have a lot of for loops which Im sorry for.. Abi, I know you are probably laughing at this right now. Lol
+	The first for loop iterates through my nested list of the board to find each of the computers tiles and adds it to the white_spots list.
+	The second for loop iterates through the white_spots list to check all directions for empty tiles that the computer can choose from and adds it to empty_spots.
+	The third loop iterates through each empty tile in empty_spots to check how many tiles of the user it can flip in all directions. If the sum of the first tile is greater than max_flips, max_flips will change to it. So the loop will go through all empty tiles until the tile that will flip the most tiles of the other player is found. It will then update best_spot to the column and row that will give it more points. 
+4. How often did your computer program beat you, or your friends, or whoever tested it out for you?
+Over the amount of time that I tested my game and kept track of how many wins each of us got, these are the results:
+Computer: 24 wins
+User: 11 Wins
+Ties: 2 
+5. How would you improve it in the future?
+I would like to improve it by having the computer choose a tile closer to the edge of the board because as I play it more and more, I realize that that is the best way to flip over more tiles. It leads to more wins in the end.
+
+My thought process to do this is by using something similar to above and choosing the best spot that has a 0 or 7 in the col/row spot. I could have it switch best spot if the col or row is higher than what is listed.å 

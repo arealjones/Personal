@@ -1,0 +1,8 @@
+# ignore the following stuff.
+**/.gradle
+**/.idea
+**/build
+**/gradle
+**/gradlew
+**/gradlew.bat
+**/settings.gradle

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem2.RecordingArtistTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-02-10T19:05:20" hostname="Areals-MacBook-Pro.local" time="0.002">
+  <properties/>
+  <testcase name="testToString" classname="problem2.RecordingArtistTest" time="0.001"/>
+  <testcase name="getFirstName" classname="problem2.RecordingArtistTest" time="0.0"/>
+  <testcase name="getLastName" classname="problem2.RecordingArtistTest" time="0.0"/>
+  <testcase name="testHashCode" classname="problem2.RecordingArtistTest" time="0.0"/>
+  <testcase name="testEquals" classname="problem2.RecordingArtistTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

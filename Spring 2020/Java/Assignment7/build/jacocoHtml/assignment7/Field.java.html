@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Field.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment7</a> &gt; <a href="index.source.html" class="el_package">assignment7</a> &gt; <span class="el_source">Field.java</span></div><h1>Field.java</h1><pre class="source lang-java linenums">package assignment7;
+
+import java.util.Objects;
+
+/**
+ * Mutable class representing a field on a form.
+ * @param &lt;T&gt; A generic input utilized for the input values of clients.
+ */
+public class Field&lt;T&gt; implements IField&lt;T&gt; {
+    private String label;
+    private T value;
+    private boolean required;
+    private IValidator validator;
+
+    /**
+     * Constructor for the Field class. Note that value is set to null upon field creation.
+     * @param label The label of a created field.
+     * @param required Whether the field is required or not.
+     * @param validator The validator type to be implemented for this field.
+     */
+<span class="nc" id="L21">    public Field(String label, boolean required, IValidator validator) {</span>
+<span class="nc" id="L22">        this.label = label;</span>
+<span class="nc" id="L23">        this.value = null;</span>
+<span class="nc" id="L24">        this.required = required;</span>
+<span class="nc" id="L25">        this.validator = validator;</span>
+<span class="nc" id="L26">    }</span>
+
+    /**
+     * Getter method for the label of a field.
+     * @return The label of the field, a String object.
+     */
+    public String getLabel() {
+<span class="nc" id="L33">        return this.label;</span>
+    }
+
+    /**
+     * Allows a label for a field to be changed.
+     * @param label The label assigned to the field, a String object.
+     */
+    public void setLabel(String label) {
+<span class="nc" id="L41">        this.label = label;</span>
+<span class="nc" id="L42">    }</span>
+
+    /**
+     * Allows one to see the value that is currently assigned to the field. By default it is null.
+     * @return The value that is captured in the input of the field.
+     */
+    public T getValue() {
+<span class="nc" id="L49">        return this.value;</span>
+    }
+
+    /**
+     * Updates a field's value if an input is deemed to be valid according to the given validators.
+     *
+     * @param input What a user is trying to enter, either a String or a Boolean.
+     * @throws InvalidEntryException If the user's entry is deemed invalid by the validator.
+     */
+    @Override
+    public void updateValue(T input) throws InvalidEntryException {
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        if (this.validator.isValid(input)) {</span>
+<span class="nc" id="L61">            this.value = input;</span>
+        }
+        else {
+<span class="nc" id="L64">            throw new InvalidEntryException();</span>
+        }
+<span class="nc" id="L66">    }</span>
+
+    /**
+     * Allows a user to see if the field is required or not.
+     * @return True if the field is deemed to be a required field, false otherwise.
+     */
+    public boolean isRequired() {
+<span class="nc" id="L73">        return this.required;</span>
+    }
+
+    /**
+     * Allows a user to update the requirement mandate for a field.
+     * @param required A boolean representing whether the field is deemed mandatory or not.
+     */
+    public void setRequired(boolean required) {
+<span class="nc" id="L81">        this.required = required;</span>
+<span class="nc" id="L82">    }</span>
+
+    /**
+     * Allows a user to see which validator is assigned to the current field.
+     * @return The Validator object assigned to the current field object.
+     */
+    public IValidator getValidator() {
+<span class="nc" id="L89">        return this.validator;</span>
+    }
+
+    /**
+     * Allows a user to assign a different Validator object to a field.
+     * @param validator The Validator object to use for the current field.
+     */
+    public void setValidator(IValidator validator) {
+<span class="nc" id="L97">        this.validator = validator;</span>
+<span class="nc" id="L98">    }</span>
+
+    /**
+     * Determines if the field in question is empty or not. Used to determine if the field is ready
+     * for submission. A field is considered filled if under two conditions: first, if the field is
+     * required and the input text is deemed valid by the validator; or if the field is not a
+     * required field (input does not matter in this case).
+     *
+     * @return True if the field is filled, false otherwise.
+     */
+    @Override
+    public boolean isFilled() {
+<span class="nc bnc" id="L110" title="All 2 branches missed.">        if (this.value == null) {</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">            if (this.required) {</span>
+<span class="nc" id="L112">                return false;</span>
+            }
+        }
+<span class="nc" id="L115">        return true;</span>
+    }
+
+    /**
+     * Determines if two field object are equal.
+     * @param o The object being compared to the field in question.
+     * @return True if the objects are equal, false otherwise.
+     */
+    @Override
+    public boolean equals(Object o) {
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        if (this == o) return true;</span>
+<span class="nc bnc" id="L126" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+
+<span class="nc" id="L128">        Field&lt;?&gt; field = (Field&lt;?&gt;) o;</span>
+
+<span class="nc bnc" id="L130" title="All 2 branches missed.">        if (required != field.required) return false;</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">        if (!Objects.equals(label, field.label)) return false;</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">        if (!Objects.equals(value, field.value)) return false;</span>
+<span class="nc" id="L133">        return Objects.equals(validator, field.validator);</span>
+    }
+
+    /**
+     * Generates a hash code for an object to assist with collision interference.
+     * @return A hash value.
+     */
+    @Override
+    public int hashCode() {
+<span class="nc bnc" id="L142" title="All 2 branches missed.">        int result = label != null ? label.hashCode() : 0;</span>
+<span class="nc bnc" id="L143" title="All 2 branches missed.">        result = 31 * result + (value != null ? value.hashCode() : 0);</span>
+<span class="nc bnc" id="L144" title="All 2 branches missed.">        result = 31 * result + (required ? 1 : 0);</span>
+<span class="nc bnc" id="L145" title="All 2 branches missed.">        result = 31 * result + (validator != null ? validator.hashCode() : 0);</span>
+<span class="nc" id="L146">        return result;</span>
+    }
+
+    /**
+     * Generates a string representation of a Field object.
+     * @return A String representation of a Field object.
+     */
+    @Override
+    public String toString() {
+<span class="nc" id="L155">        return &quot;This field is called &quot; + this.label + &quot;. It has a current value of &quot; + this.value +</span>
+                &quot;. Is it required: &quot; + this.required + &quot;. &quot; + validator;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

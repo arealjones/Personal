@@ -1,0 +1,11 @@
+-classpath '/Users/arealjones/Desktop/cs5004/Student_repo_Areal_Jones/Assignments/Assignment6/build/classes/java/main:/Users/arealjones/Desktop/cs5004/Student_repo_Areal_Jones/Assignments/Assignment6/build/resources/main'
+-d '/Users/arealjones/Desktop/cs5004/Student_repo_Areal_Jones/Assignments/Assignment6/build/docs/javadoc'
+-doctitle 'Assignment6 1.0-SNAPSHOT API'
+-quiet 
+-windowtitle 'Assignment6 1.0-SNAPSHOT API'
+'/Users/arealjones/Desktop/cs5004/Student_repo_Areal_Jones/Assignments/Assignment6/src/main/java/problem1/EmptyQueue.java'
+'/Users/arealjones/Desktop/cs5004/Student_repo_Areal_Jones/Assignments/Assignment6/src/main/java/problem1/PriorityQueue.java'
+'/Users/arealjones/Desktop/cs5004/Student_repo_Areal_Jones/Assignments/Assignment6/src/main/java/problem1/IPriorityQueue.java'
+'/Users/arealjones/Desktop/cs5004/Student_repo_Areal_Jones/Assignments/Assignment6/src/main/java/problem2/EmptyBagOfWords.java'
+'/Users/arealjones/Desktop/cs5004/Student_repo_Areal_Jones/Assignments/Assignment6/src/main/java/problem2/BagOfWords.java'
+'/Users/arealjones/Desktop/cs5004/Student_repo_Areal_Jones/Assignments/Assignment6/src/main/java/problem2/IBagOfWords.java'

@@ -1,0 +1,20 @@
+Question 1:
+	a. 1, 2, 3
+	b. 1, 2, 4, 5
+	c. 1, 2, 4, 6
+
+Question 2:
+	juice_name = first_fruit[0:num_letters] + "-" + second_fruit
+
+Question 3:
+	a. World
+	b. 
+	Hello
+	World
+	c. x =5
+
+Question 4:
+	a. eeee
+	b. Cheer!
+	c. Cheer Bear
+	d. CHEER BEAR

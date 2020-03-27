@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem1.Exterior.ExteriorTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2020-01-28T22:07:17" hostname="Areals-MacBook-Pro.local" time="0.003">
+  <properties/>
+  <testcase name="getPreviousServices" classname="problem1.Exterior.ExteriorTest" time="0.0"/>
+  <testcase name="testToString" classname="problem1.Exterior.ExteriorTest" time="0.0"/>
+  <testcase name="setIncorrectPreviousServices" classname="problem1.Exterior.ExteriorTest" time="0.0"/>
+  <testcase name="getAddress" classname="problem1.Exterior.ExteriorTest" time="0.001"/>
+  <testcase name="setMonthly" classname="problem1.Exterior.ExteriorTest" time="0.0"/>
+  <testcase name="rate" classname="problem1.Exterior.ExteriorTest" time="0.0"/>
+  <testcase name="discount" classname="problem1.Exterior.ExteriorTest" time="0.001"/>
+  <testcase name="testHashCode" classname="problem1.Exterior.ExteriorTest" time="0.0"/>
+  <testcase name="testEquals" classname="problem1.Exterior.ExteriorTest" time="0.0"/>
+  <testcase name="setHours" classname="problem1.Exterior.ExteriorTest" time="0.0"/>
+  <testcase name="setAddress" classname="problem1.Exterior.ExteriorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

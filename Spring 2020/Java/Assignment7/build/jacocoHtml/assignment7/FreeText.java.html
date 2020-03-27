@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FreeText.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment7</a> &gt; <a href="index.source.html" class="el_package">assignment7</a> &gt; <span class="el_source">FreeText.java</span></div><h1>FreeText.java</h1><pre class="source lang-java linenums">package assignment7;
+
+import java.util.Objects;
+
+/**
+ * Immutable class representing a FreeText Validator object.
+ * @param &lt;T&gt; The String object that will be validated with this validator.
+ */
+public class FreeText&lt;T extends String&gt; extends AbstractValidator&lt;T&gt; {
+    private Integer numCharactersPerLine;
+    private Integer numLinesAllowed;
+
+    /**
+     * Constructor for a FreeText validator.
+     *
+     * @param numCharactersPerLine The number of characters per line allowed in the free text field.
+     * @param numLinesAllowed      The number of lines permitted in the free text field.
+     * @throws InvalidParameterException User inputs a character/line parameter that is less than 1
+     */
+    public FreeText(Integer numCharactersPerLine, Integer numLinesAllowed) throws
+<span class="nc" id="L21">            InvalidParameterException {</span>
+<span class="nc bnc" id="L22" title="All 4 branches missed.">        if (!(isValidParameter(numCharactersPerLine) &amp;&amp; isValidParameter(numLinesAllowed))) {</span>
+<span class="nc" id="L23">            throw new InvalidParameterException();</span>
+        }
+<span class="nc" id="L25">        this.numCharactersPerLine = numCharactersPerLine;</span>
+<span class="nc" id="L26">        this.numLinesAllowed = numLinesAllowed;</span>
+<span class="nc" id="L27">    }</span>
+
+    /**
+     * Helper function that makes sure a size requirement is not negative or zero.
+     * @param parameter The characters per line or the number of lines allowed.
+     * @return True if the parameter is valid - otherwise, will return false.
+     */
+    private boolean isValidParameter(Integer parameter)  {
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        return parameter &gt; 0;</span>
+    }
+
+    /**
+     * Allows a user to see the number of characters permitted per line.
+     *
+     * @return The number of characters permitted per line of free text.
+     */
+    public Integer getNumCharactersPerLine() {
+<span class="nc" id="L44">        return numCharactersPerLine;</span>
+    }
+
+    /**
+     * Allows a user to see the number of lines permitted in a field of free text.
+     *
+     * @return The number of lines permitted in a field of free text.
+     */
+    public Integer getNumLinesAllowed() {
+<span class="nc" id="L53">        return numLinesAllowed;</span>
+    }
+
+    /**
+     * Checks if the user input is valid for a the field.
+     * @param input the user input
+     * @return True if the input is valid for the field, false otherwise.
+     */
+    @Override
+    public boolean isValid(T input) {
+<span class="nc bnc" id="L63" title="All 2 branches missed.">        return input.length() &lt;= (this.numCharactersPerLine * this.numLinesAllowed);</span>
+    }
+
+    /**
+     * Determines if two objects are equal.
+     * @param o The object being compared to the FreeText object.
+     * @return True if the objects are equal, false otherwise.
+     */
+    @Override
+    public boolean equals(Object o) {
+<span class="nc bnc" id="L73" title="All 2 branches missed.">        if (this == o) return true;</span>
+<span class="nc bnc" id="L74" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+
+<span class="nc" id="L76">        FreeText&lt;?&gt; freeText = (FreeText&lt;?&gt;) o;</span>
+
+<span class="nc bnc" id="L78" title="All 2 branches missed.">        if (!Objects.equals(numCharactersPerLine, freeText.numCharactersPerLine))</span>
+<span class="nc" id="L79">            return false;</span>
+<span class="nc" id="L80">        return Objects.equals(numLinesAllowed, freeText.numLinesAllowed);</span>
+    }
+
+    /**
+     * Generates a hash code for a FreeText object to assist with collision interference.
+     * @return A hash code number, an integer.
+     */
+    @Override
+    public int hashCode() {
+<span class="nc" id="L89">        int result = super.hashCode();</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">        result = 31 * result + (numCharactersPerLine != null ? numCharactersPerLine.hashCode() : 0);</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        result = 31 * result + (numLinesAllowed != null ? numLinesAllowed.hashCode() : 0);</span>
+<span class="nc" id="L92">        return result;</span>
+    }
+
+    /**
+     * Generates a String message for a FreeText object.
+     * @return A string representation of a FreeText object.
+     */
+    @Override
+    public String toString() {
+<span class="nc" id="L101">        return super.toString() + &quot; FreeText. This field allows for &quot; + this.numLinesAllowed +</span>
+                &quot; lines with &quot; + this.numCharactersPerLine + &quot; characters allowed per line.&quot;;
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

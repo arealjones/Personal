@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Painting.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment3</a> &gt; <a href="index.source.html" class="el_package">problem1.Interior</a> &gt; <span class="el_source">Painting.java</span></div><h1>Painting.java</h1><pre class="source lang-java linenums">package problem1.Interior;
+
+import problem1.PropertySize;
+/**
+ * Painting is an object of an interior service. It contains the hours needed to finish the
+ * project. */
+public class Painting extends Interior {
+  /**
+   * Constructor that creates a new painting service with information about the property.
+   * @param monthly If the service happens monthly.
+   * @param address The address of the property.
+   * @param previousServices How many times has the property been serviced before.
+   * @param pets The amount of pets on the property.
+   * @param size The size of the property.
+   * @throws IllegalArgumentException Catches if someone tries to enter a negative number for
+   * pets. */
+  public Painting(boolean monthly, String address, int previousServices, int pets,
+      PropertySize size) throws IllegalArgumentException {
+<span class="fc" id="L19">    super(monthly, address, previousServices, pets, size);</span>
+<span class="fc" id="L20">  }</span>
+  /**
+   * Sets the number of hours needed to finish the project.
+   * @param size The size of the property.
+   * @return The parameter with the correct amount of hours needed. */
+  @Override
+  public int setHours(PropertySize size) {
+<span class="fc" id="L27">    int smallAndMedium = 16;</span>
+<span class="fc" id="L28">    int large = 24;</span>
+<span class="pc bpc" id="L29" title="1 of 3 branches missed.">    switch (size) {</span>
+      case SMALL:
+      case MEDIUM:
+<span class="fc" id="L32">        return this.hours = smallAndMedium;</span>
+      case LARGE:
+<span class="fc" id="L34">        return this.hours = large;</span>
+      default:
+<span class="nc" id="L36">        return this.hours = 0;</span>
+    }
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

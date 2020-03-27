@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractServices.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment3</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">AbstractServices.java</span></div><h1>AbstractServices.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.util.Objects;
+/**
+ * AbstractServices is an object that contains the property information and if it is monthly
+ * for the services. */
+public abstract class AbstractServices {
+  private boolean monthly;
+  private String address;
+  private int previousServices;
+  /**
+   * Constructor that creates a new service with the information about the property
+   * and if it is monthly for the services.
+   * @param monthly If the service happens monthly.
+   * @param address The address of the property.
+   * @param previousServices How many times has the property been serviced before. */
+  public AbstractServices(boolean monthly, String address, int previousServices)
+<span class="fc" id="L18">      throws IllegalArgumentException {</span>
+<span class="fc" id="L19">    setPreviousServices(previousServices);</span>
+<span class="fc" id="L20">    this.monthly = monthly;</span>
+<span class="fc" id="L21">    this.address = address;</span>
+<span class="fc" id="L22">    this.previousServices = previousServices;</span>
+<span class="fc" id="L23">  }</span>
+  /**
+   * Returns true of false based on if the service is monthly.
+   * @return Returns true or false. */
+  public boolean isMonthly() {
+<span class="fc" id="L28">    return this.monthly;</span>
+  }
+  /**
+   * Sets true of false based on if the service is monthly.
+   * @param monthly Sets true or false based on if the service is monthly. */
+  public void setMonthly(boolean monthly) {
+<span class="fc" id="L34">    this.monthly = monthly;</span>
+<span class="fc" id="L35">  }</span>
+  /**
+   * Returns the address of the property.
+   * @return Returns the address of the property. */
+  public String getAddress()  {
+<span class="fc" id="L40">    return this.address;</span>
+  }
+  /**
+   * Sets the address of the property.
+   * @param address Sets the address of the property. */
+  public void setAddress(String address) {
+<span class="fc" id="L46">    this.address = address;</span>
+<span class="fc" id="L47">  }</span>
+  /**
+   * Sets the number of previous services. Throws an illegal argument exception if it is a negative
+   * number.
+   * @param previousServices The number of previous services.
+   * @throws IllegalArgumentException If it is a negative number. */
+  public void setPreviousServices(int previousServices) throws IllegalArgumentException {
+<span class="fc bfc" id="L54" title="All 2 branches covered.">    if (previousServices &gt;= 0) {</span>
+<span class="fc" id="L55">      this.previousServices = previousServices;</span>
+    }
+    else {
+<span class="fc" id="L58">      throw new IllegalArgumentException();</span>
+    }
+<span class="fc" id="L60">  }</span>
+  /**
+   * Returns the amount of previous services the property has had.
+   * @return Returns the amount of previous services the property has had. */
+  public int getPreviousServices() {
+<span class="fc" id="L65">    return this.previousServices;</span>
+  }
+  /**
+   * Returns true or false based on if the current object is the same as the one being compared.
+   * @param o The object being compared.
+   * @return Returns true or false. */
+  @Override
+  public boolean equals(Object o) {
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">    if (this == o) {</span>
+<span class="nc" id="L74">      return true;</span>
+    }
+<span class="pc bpc" id="L76" title="2 of 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="nc" id="L77">      return false;</span>
+    }
+<span class="fc" id="L79">    AbstractServices services = (AbstractServices) o;</span>
+<span class="pc bpc" id="L80" title="1 of 4 branches missed.">    return monthly == services.monthly &amp;&amp;</span>
+        previousServices == services.previousServices &amp;&amp;
+<span class="pc bpc" id="L82" title="1 of 2 branches missed.">        address.equals(services.address);</span>
+  }
+  /**
+   * Returns true or false based on if the location of the object are the same.
+   * @return Returns true or false. */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L89">    return Objects.hash(monthly, address, previousServices);</span>
+  }
+  /**
+   * Returns a string of the service including information about the property.
+   * @return Returns a string of the service. */
+  @Override
+  public String toString() {
+<span class="fc" id="L96">    return &quot;The property at &quot; + address +</span>
+        &quot; has had &quot; + previousServices + &quot; services in the past. &quot; +
+        &quot;Monthly Maintenance: &quot; + monthly;
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

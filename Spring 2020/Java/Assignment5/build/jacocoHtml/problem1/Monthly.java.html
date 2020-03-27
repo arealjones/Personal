@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Monthly.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment5</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">Monthly.java</span></div><h1>Monthly.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.time.LocalDate;
+
+/**
+ * Monthly is an object that contains the amount of the donation and the donation date for each
+ * month. */
+public class Monthly extends AbstractDonations {
+
+  /**
+   * Constructor that creates a donation with the amount and a donation date.
+   * @param amount The amount to be donated.
+   * @param donationDate The provided donation date. */
+  public Monthly(double amount, LocalDate donationDate) {
+<span class="fc" id="L15">    super(amount, donationDate);</span>
+<span class="fc" id="L16">    this.donationDate = setDonationDate(donationDate);</span>
+<span class="fc" id="L17">  }</span>
+
+  /**
+   * Constructor that creates a donation with the amount, creation date, and donation date.
+   * @param amount The amount to be donated.
+   * @param creationDate The provided creation date.
+   * @param donationDate The provided donation date. */
+  public Monthly(double amount, LocalDate creationDate, LocalDate donationDate) {
+<span class="fc" id="L25">    super(amount, creationDate, donationDate);</span>
+<span class="fc" id="L26">    this.donationDate = setDonationDate(donationDate);</span>
+<span class="fc" id="L27">  }</span>
+
+
+  /**
+   * Overridden set donation date to check if the donation is psat the creation date or todays
+   * date.
+   * @param donationDate The donation date.
+   * @return The field with the updated donation date.
+   * @throws IllegalArgumentException Throws if the date is in the past. */
+  private LocalDate setDonationDate(LocalDate donationDate) throws IllegalArgumentException {
+<span class="fc bfc" id="L37" title="All 2 branches covered.">    if (!checkInPast(donationDate)) {</span>
+<span class="fc" id="L38">      return this.donationDate = donationDate;</span>
+    } else {
+<span class="fc" id="L40">      throw new IllegalArgumentException();</span>
+    }
+  }
+
+  @Override
+  public String toString() {
+<span class="fc bfc" id="L46" title="All 2 branches covered.">    if (getCancellationDate() == null) {</span>
+<span class="fc" id="L47">      return super.toString() + &quot; Creation Date: &quot; + getCreationDate() +</span>
+<span class="fc" id="L48">          &quot;, Donation Date: &quot; + getDonationDate() +</span>
+          &quot;, and Cancellation Date: NA&quot; + &quot;.&quot;;
+    }
+<span class="fc" id="L51">    return super.toString() + &quot; Creation Date: &quot; + getCreationDate() +</span>
+<span class="fc" id="L52">        &quot;, Donation Date: &quot; + getDonationDate() +</span>
+<span class="fc" id="L53">        &quot;, and Cancellation Date: &quot; + getCancellationDate() + &quot;.&quot;;</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

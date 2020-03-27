@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TripReport.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab4</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">TripReport.java</span></div><h1>TripReport.java</h1><pre class="source lang-java linenums">package problem1;
+
+public class TripReport {
+  private AbstractVehicle vehicle;
+  private float speed;
+  private float distance;
+  private int tripDuration;
+
+<span class="fc" id="L9">  public TripReport(AbstractVehicle vehicle, float speed, float distance, int tripDuration) {</span>
+<span class="fc" id="L10">    this.vehicle = vehicle;</span>
+<span class="fc" id="L11">    this.speed = speed;</span>
+<span class="fc" id="L12">    this.distance = distance;</span>
+<span class="fc" id="L13">    this.tripDuration = tripDuration;</span>
+<span class="fc" id="L14">  }</span>
+
+  @Override
+  public String toString() {
+<span class="fc" id="L18">    return &quot;TripReport for: &quot; + vehicle.getiD() + &quot;.&quot; +</span>
+        &quot; Speed: &quot; + speed + &quot;, Distance: &quot; + distance +
+        &quot;, Trip Duration: &quot; + tripDuration +
+        '.';
+  }
+
+  public void setTripDuration(int distance, int speed) {
+<span class="nc" id="L25">    this.tripDuration = (distance/speed);</span>
+<span class="nc" id="L26">  }</span>
+
+  public int getTripDuration(int distance, int speed) {
+<span class="fc" id="L29">    return (distance/speed);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

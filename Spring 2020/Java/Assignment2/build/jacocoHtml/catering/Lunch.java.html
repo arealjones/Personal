@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Lunch.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment2</a> &gt; <a href="index.source.html" class="el_package">catering</a> &gt; <span class="el_source">Lunch.java</span></div><h1>Lunch.java</h1><pre class="source lang-java linenums">package catering;
+/**
+ * Lunch is an object that contains the name of the event, number of people attending, and
+ * number of sandwiches needed.
+ */
+public class Lunch extends Events {
+  private int numberOfSandwiches;
+  /**
+   * Constructor that creates a new lunch object with the event name, number of people, and number
+   * of sandwiches needed.
+   * @param name The name of the event.
+   * @param numberOfPeople The number of people attending.
+   * @param numberOfSandwiches The number of sandwiches needed. */
+  public Lunch(String name, int numberOfPeople, int numberOfSandwiches) {
+<span class="fc" id="L15">    super(name, numberOfPeople);</span>
+<span class="fc" id="L16">    this.numberOfSandwiches = numberOfSandwiches;</span>
+<span class="fc" id="L17">  }</span>
+  /**
+   * Returns true if the amount of people attending is within the constraints of this type of
+   * event and false otherwise.
+   * @return Returns true if between 15 and 90 people. */
+  private boolean correctAmountOfPeople() {
+<span class="fc" id="L23">    int minAmount = 15;</span>
+<span class="fc" id="L24">    int maxAmount = 90;</span>
+<span class="fc bfc" id="L25" title="All 4 branches covered.">    if ((super.getNumberOfPeople() &gt;= minAmount) &amp;&amp; (super.getNumberOfPeople() &lt;= maxAmount)) {</span>
+<span class="fc" id="L26">      return true;</span>
+    }
+    else {
+<span class="fc" id="L29">      return false;</span>
+    }
+  }
+  /**
+   * Assigns the number of sanwiches required if there is the correct amount of people attending.
+   * It will throw an exception otherwise.
+   * @throws InvalidAmountOfPeopleException Will throw a string stating that there is not enough
+   * or too many people attending for this event. */
+  public void setNumberOfSandwiches() throws InvalidAmountOfPeopleException {
+<span class="fc" id="L38">    double percentSandwiches = .05;</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">    if (correctAmountOfPeople()) {</span>
+<span class="fc" id="L40">      int sandwiches = (int) Math.round((super.getNumberOfPeople() * (percentSandwiches)) +</span>
+<span class="fc" id="L41">          super.getNumberOfPeople());</span>
+<span class="fc" id="L42">      this.numberOfSandwiches = sandwiches;</span>
+<span class="fc" id="L43">    }</span>
+    else {
+<span class="fc" id="L45">      throw new InvalidAmountOfPeopleException();</span>
+    }
+<span class="fc" id="L47">  }</span>
+  /**
+   * Returns the number of sandwiches required for the event.
+   * @return Returns the number of sandwiches required for the event. */
+  public int getNumberOfSandwiches() {
+<span class="fc" id="L52">      return numberOfSandwiches;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

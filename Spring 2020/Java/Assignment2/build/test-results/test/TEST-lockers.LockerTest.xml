@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="lockers.LockerTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2020-01-21T19:26:00" hostname="Areals-MacBook-Pro.local" time="0.009">
+  <properties/>
+  <testcase name="correctDepth" classname="lockers.LockerTest" time="0.001"/>
+  <testcase name="correctWidth" classname="lockers.LockerTest" time="0.0"/>
+  <testcase name="incorrectDepth" classname="lockers.LockerTest" time="0.0"/>
+  <testcase name="incorrectEmail" classname="lockers.LockerTest" time="0.001"/>
+  <testcase name="incorrectWidth" classname="lockers.LockerTest" time="0.0"/>
+  <testcase name="incorrectHeight" classname="lockers.LockerTest" time="0.0"/>
+  <testcase name="incorrectPerson" classname="lockers.LockerTest" time="0.002"/>
+  <testcase name="invalidSize" classname="lockers.LockerTest" time="0.0"/>
+  <testcase name="correctHeight" classname="lockers.LockerTest" time="0.0"/>
+  <testcase name="correctPickup" classname="lockers.LockerTest" time="0.001"/>
+  <testcase name="heightBiggerThanLocker" classname="lockers.LockerTest" time="0.0"/>
+  <testcase name="getMail" classname="lockers.LockerTest" time="0.0"/>
+  <testcase name="getHeight" classname="lockers.LockerTest" time="0.0"/>
+  <testcase name="correctAddingMail" classname="lockers.LockerTest" time="0.0"/>
+  <testcase name="invalidInput" classname="lockers.LockerTest" time="0.0"/>
+  <testcase name="emptyLocker" classname="lockers.LockerTest" time="0.0"/>
+  <testcase name="widthBiggerThanLocker" classname="lockers.LockerTest" time="0.0"/>
+  <testcase name="lockerFull" classname="lockers.LockerTest" time="0.0"/>
+  <testcase name="depthBiggerThanLocker" classname="lockers.LockerTest" time="0.0"/>
+  <testcase name="incorrectLastName" classname="lockers.LockerTest" time="0.0"/>
+  <testcase name="getDepth" classname="lockers.LockerTest" time="0.0"/>
+  <testcase name="getWidth" classname="lockers.LockerTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

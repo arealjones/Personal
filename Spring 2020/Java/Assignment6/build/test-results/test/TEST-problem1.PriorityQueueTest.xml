@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem1.PriorityQueueTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-02-17T22:24:41" hostname="Areals-MacBook-Pro.local" time="0.005">
+  <properties/>
+  <testcase name="emptyPeek" classname="problem1.PriorityQueueTest" time="0.002"/>
+  <testcase name="testToString" classname="problem1.PriorityQueueTest" time="0.001"/>
+  <testcase name="createEmpty" classname="problem1.PriorityQueueTest" time="0.0"/>
+  <testcase name="getRest" classname="problem1.PriorityQueueTest" time="0.0"/>
+  <testcase name="add" classname="problem1.PriorityQueueTest" time="0.001"/>
+  <testcase name="pop" classname="problem1.PriorityQueueTest" time="0.0"/>
+  <testcase name="peek" classname="problem1.PriorityQueueTest" time="0.0"/>
+  <testcase name="testHashCode" classname="problem1.PriorityQueueTest" time="0.0"/>
+  <testcase name="getPriority" classname="problem1.PriorityQueueTest" time="0.001"/>
+  <testcase name="emptyPop" classname="problem1.PriorityQueueTest" time="0.0"/>
+  <testcase name="testEquals" classname="problem1.PriorityQueueTest" time="0.0"/>
+  <testcase name="getValue" classname="problem1.PriorityQueueTest" time="0.0"/>
+  <testcase name="isEmpty" classname="problem1.PriorityQueueTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

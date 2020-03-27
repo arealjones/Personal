@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="catering.ScheduleTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-01-21T19:26:00" hostname="Areals-MacBook-Pro.local" time="0.002">
+  <properties/>
+  <testcase name="canAddLunch" classname="catering.ScheduleTest" time="0.001"/>
+  <testcase name="canAddDinner" classname="catering.ScheduleTest" time="0.0"/>
+  <testcase name="cannotAddDinner" classname="catering.ScheduleTest" time="0.0"/>
+  <testcase name="cannotAddLunch" classname="catering.ScheduleTest" time="0.0"/>
+  <testcase name="getDate" classname="catering.ScheduleTest" time="0.0"/>
+  <testcase name="getDinner" classname="catering.ScheduleTest" time="0.0"/>
+  <testcase name="getLunch" classname="catering.ScheduleTest" time="0.0"/>
+  <testcase name="setDate" classname="catering.ScheduleTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

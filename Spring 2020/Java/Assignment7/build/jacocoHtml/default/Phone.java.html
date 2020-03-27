@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Phone.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment7</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Phone.java</span></div><h1>Phone.java</h1><pre class="source lang-java linenums">import java.util.Objects;
+
+/**2
+ * Mutable class representing a Phone Number Validator object.
+ */
+public class Phone&lt;T extends String&gt; extends AbstractValidator&lt;T&gt; {
+
+  private Integer length;
+
+  /**
+   * Creates a Phone Number Validator with a phone number length requirement.
+   * @param length the phone number length.
+   */
+<span class="fc" id="L14">  public Phone(Integer length) {</span>
+<span class="fc" id="L15">    this.length = length;</span>
+<span class="fc" id="L16">  }</span>
+
+  /**
+   * Checks if the input is all digits
+   * @param input the user input
+   * @return True if the input is all digits, false otherwise.
+   */
+  private boolean checkIsDigit(T input) {
+<span class="fc bfc" id="L24" title="All 2 branches covered.">    for (int i = 0; i&lt;input.length(); i++) {</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">      if (!Character.isDigit(input.charAt(i))){</span>
+<span class="fc" id="L26">        return false;</span>
+      }
+    }
+<span class="fc" id="L29">    return true;</span>
+  }
+
+  /**
+   * Checks if the user input is valid for a the field.
+   * @param input the user input
+   * @return True if the input is valid for the field, false otherwise.
+   */
+  @Override
+  public boolean isValid(T input) {
+<span class="fc bfc" id="L39" title="All 4 branches covered.">    return input.length() == this.length &amp;&amp; this.checkIsDigit(input);</span>
+  }
+
+  /**
+   * Determines if two Phone object are equal.
+   * @param o The object being compared to the Phone object in question.
+   * @return True if the objects are equal, false otherwise.
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L49" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L50">      return true;</span>
+    }
+<span class="pc bpc" id="L52" title="1 of 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L53">      return false;</span>
+    }
+<span class="fc" id="L55">    Phone&lt;?&gt; phone = (Phone&lt;?&gt;) o;</span>
+<span class="fc" id="L56">    return Objects.equals(this.length, phone.length);</span>
+  }
+
+  /**
+   * Generates a hash code for an object to assist with collision interference.
+   * @return A hash value.
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L65">    return Objects.hash(super.hashCode(), this.length);</span>
+  }
+
+  /**
+   * Generates a string representation of a Phone object.
+   * @return A String representation of a Phone object.
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L74">    return super.toString() + &quot;Phone.\nPhone number required length is: &quot; + this.length;</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

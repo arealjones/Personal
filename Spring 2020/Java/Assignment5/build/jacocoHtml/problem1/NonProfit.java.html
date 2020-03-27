@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NonProfit.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment5</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">NonProfit.java</span></div><h1>NonProfit.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * NonProfit is an object that contains the organization and a list of the donations made
+ * to them in a given year. */
+public class NonProfit {
+  private String orgName;
+  private List&lt;AbstractDonations&gt; donations;
+
+  /**
+   * Constructor that creates a nonprofit org with an empty list if they do not have any
+   * donations yet.
+   * @param orgName The organizations name. */
+<span class="fc" id="L18">  public NonProfit(String orgName) {</span>
+<span class="fc" id="L19">    this.orgName = orgName;</span>
+<span class="fc" id="L20">    this.donations = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L21">  }</span>
+
+  /**
+   * Constructor that creates a nonprofit org with a filled list of donations already made.
+   * @param orgName The organizations name.
+   * @param donations The list of donations already made to them. */
+<span class="fc" id="L27">  public NonProfit(String orgName, List&lt;AbstractDonations&gt; donations) {</span>
+<span class="fc" id="L28">    this.orgName = orgName;</span>
+<span class="fc" id="L29">    this.donations = donations;</span>
+<span class="fc" id="L30">  }</span>
+
+  /**
+   * Returns the list of donations made.
+   * @return Returns the list of donations made. */
+  public List&lt;AbstractDonations&gt; getDonations() {
+<span class="fc" id="L36">    return this.donations;</span>
+  }
+
+  /**
+   * Returns the organizations name.
+   * @return Returns the organizations name. */
+  public String getOrgName() {
+<span class="fc" id="L43">    return this.orgName;</span>
+  }
+
+  /**
+   * Adds a donation to the list of donations.
+   * @param donation Adds a donation to the list of donations. */
+  public void addDonation(AbstractDonations donation) {
+<span class="fc" id="L50">    donations.add(donation);</span>
+<span class="fc" id="L51">  }</span>
+
+  /**
+   * Goes through the list and calculates the total of one time payments made to the org in a
+   * specific year.
+   * @param year The year in question.
+   * @return A sum of the one time payments made. */
+  private int calculateOneTime(int year) {
+<span class="fc" id="L59">    int sum = 0;</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">    for (int i=0; i&lt;donations.size(); i++) {</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">      if (donations.get(i) instanceof OneTime &amp;&amp;</span>
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">          donations.get(i).getCreationDate().getYear() == year) {</span>
+<span class="fc" id="L63">          sum += donations.get(i).getAmount();</span>
+      }
+    }
+<span class="fc" id="L66">    return sum;</span>
+  }
+
+  /**
+   * Goes through the list and calculates the total of monthly payments made to the org in a
+   * specific year.
+   * @param year The year in question.
+   * @return A sum of the one time payments made. */
+  private int calculateMonthly(int year) {
+<span class="fc" id="L75">    int sum = 0;</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">    for (int i=0; i&lt;donations.size(); i++) {</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">      if (donations.get(i) instanceof Monthly &amp;&amp;</span>
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">          donations.get(i).getDonationDate().getYear() == year) {</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">        if ((donations.get(i).getCancellationDate() == null) ||</span>
+<span class="pc bpc" id="L80" title="1 of 2 branches missed.">            (donations.get(i).getCancellationDate().getYear() &gt; year)) {</span>
+<span class="fc" id="L81">          int months = 12 - (donations.get(i).getDonationDate().getMonth().getValue() - 1);</span>
+<span class="fc" id="L82">          sum += months * donations.get(i).getAmount();</span>
+<span class="fc" id="L83">        } else {</span>
+<span class="fc" id="L84">          int months = donations.get(i).getCancellationDate().getMonth().getValue() -</span>
+<span class="fc" id="L85">              donations.get(i).getDonationDate().getMonth().getValue();</span>
+<span class="fc" id="L86">          sum += months * donations.get(i).getAmount();</span>
+        }
+      }
+    }
+<span class="fc" id="L90">    return sum;</span>
+  }
+
+  /**
+   * Goes through the list and calculates the total of pledge payments made to the org in a
+   * specific year.
+   * @param year The year in question.
+   * @return A sum of the one time payments made. */
+  private int calculatePledges(int year) {
+<span class="fc" id="L99">    int sum = 0;</span>
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">    for (int i=0; i&lt;donations.size(); i++) {</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">      if (donations.get(i) instanceof Pledges) {</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">        if (donations.get(i).getDonationDate() == null) {</span>
+<span class="fc" id="L103">          return sum;</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">        } else if (donations.get(i).getDonationDate().getYear() == year) {</span>
+<span class="fc" id="L105">          sum += donations.get(i).getAmount();</span>
+        }
+      }
+    }
+<span class="nc" id="L109">    return sum;</span>
+  }
+
+  /**
+   * Returns the total amount of donations made to the org in a specific year.
+   * @param year The year in question.
+   * @return A sum of the one time payments made. */
+  public int getTotalDonationsForYear(int year) {
+<span class="fc" id="L117">    int sum = 0;</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">    if (!donations.isEmpty()) {</span>
+<span class="fc" id="L119">      sum += calculateOneTime(year);</span>
+<span class="fc" id="L120">      sum += calculateMonthly(year);</span>
+<span class="fc" id="L121">      sum += calculatePledges(year);</span>
+    }
+<span class="fc" id="L123">    return sum;</span>
+  }
+
+  /**
+   * Returns true or false based on if the current object is the same as the one being compared.
+   * @param o The object being compared.
+   * @return Returns true or false. */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L132" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L133">      return true;</span>
+    }
+<span class="pc bpc" id="L135" title="1 of 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L136">      return false;</span>
+    }
+<span class="fc" id="L138">    NonProfit nonProfit = (NonProfit) o;</span>
+<span class="fc bfc" id="L139" title="All 2 branches covered.">    return Objects.equals(orgName, nonProfit.orgName) &amp;&amp;</span>
+<span class="pc bpc" id="L140" title="1 of 2 branches missed.">        Objects.equals(donations, nonProfit.donations);</span>
+  }
+
+  /**
+   * Returns true or false based on if the location of the object are the same.
+   * @return Returns true or false. */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L148">    return Objects.hash(orgName, donations);</span>
+  }
+
+  /**
+   * Returns a string of the organization and the total amount of donations made in a year.
+   * @param year The year in question.
+   * @return Returns a string of the organization and the total amount of
+   * donations made in a year. */
+  public String toString(int year) {
+<span class="fc" id="L157">    return &quot;NonProfit Organization: &quot; + orgName +</span>
+<span class="fc" id="L158">        &quot;. Total donations made in a given year: $&quot; + getTotalDonationsForYear(year) + '.';</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

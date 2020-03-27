@@ -1,0 +1,49 @@
+Question 1: (8 > (len(user)) or (len(user)) > 12)
+
+Question 2:
+	a. 1, 2, 3, 5, 2, 3, 5, 2, 6.
+	b. “i is 4”
+	c. Four times.
+	d. “i is 8”
+
+Question 3: sum = 3
+
+Question 4: 
+	a. [“British Columbia”, “Washington”, “Oregon”, “Northern California”]
+	b. 
+		British Columbia
+		Washington
+		Oregon
+		Northern California
+	c.
+		0 British Columbia
+		1 Washington
+		2 Oregon
+
+Question 5:
+	a.
+		0
+		1
+		2
+		3
+		4
+	b.
+		2
+		3
+		4
+	c.
+		60
+		50
+		40
+		30
+		20
+
+
+
+
+
+
+
+
+
+

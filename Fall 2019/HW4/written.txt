@@ -1,0 +1,15 @@
+Question 1:
+	a. Pass
+	b. Fail 
+	c. Fail
+
+Question 2:
+	assert(compute_median( [4, 2, 1, 3] ) == 2.5)
+	assert(compute_median( [4, 3, 3, 8, 9] ) == 2)
+
+Question 3:
+	a. The error is that you cannot add an integer with a string with the addition symbol. If you want to print a message that shows 1 + 2 = 3, you can do so by putting all within quotations.
+	b. The error is that the colon is missing after the parentheses at the top of the function. Once that is fixed, another error will pop up unless parameters are also entered within the parentheses. 
+	c. The error is that there is nothing in the list with an index of 3. The index only goes up to 2.
+
+

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractCreator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment5</a> &gt; <a href="index.source.html" class="el_package">problem2</a> &gt; <span class="el_source">AbstractCreator.java</span></div><h1>AbstractCreator.java</h1><pre class="source lang-java linenums">package problem2;
+
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * AbstractCreator is an object that contains the information about the creator of the item. */
+public abstract class AbstractCreator {
+  private String firstName;
+  private String lastName;
+  private String bandName;
+  private List&lt;AbstractCreator&gt; artists;
+
+  /**
+   * Constructor that creates a creator with the information about the author of a book or a
+   * recording artist.
+   * @param firstName The first name of the author.
+   * @param lastName The last name of the author. */
+<span class="fc" id="L19">  public AbstractCreator(String firstName, String lastName) {</span>
+<span class="fc" id="L20">    this.firstName = firstName;</span>
+<span class="fc" id="L21">    this.lastName = lastName;</span>
+<span class="fc" id="L22">  }</span>
+
+  /**
+   * Constructor that creates a creator with the information about the band.
+   * @param bandName The band name.
+   * @param artists The artists within the band. */
+<span class="fc" id="L28">  public AbstractCreator(String bandName, List&lt;AbstractCreator&gt; artists) {</span>
+<span class="fc" id="L29">    this.bandName = bandName;</span>
+<span class="fc" id="L30">    this.artists = artists;</span>
+<span class="fc" id="L31">  }</span>
+
+  /**
+   * Returns the first name of the creator.
+   * @return Returns the first name of the creator. */
+  public String getFirstName() {
+<span class="fc" id="L37">    return this.firstName;</span>
+  }
+
+  /**
+   * Returns the last name of the creator.
+   * @return Returns the last name of the creator. */
+  public String getLastName() {
+<span class="fc" id="L44">    return this.lastName;</span>
+  }
+
+  /**
+   * Returns the name of the band.
+   * @return Returns the name of the band. */
+  public String getBandName() {
+<span class="fc" id="L51">    return this.bandName;</span>
+  }
+
+  /**
+   * Checks if the recording artist is in the band.
+   * @param recordingArtist An artist.
+   * @return True if the artist is in the band, false otherwise. */
+  public boolean bandContainsArtist(AbstractCreator recordingArtist) {
+<span class="fc bfc" id="L59" title="All 2 branches covered.">    for (int i=0; i&lt;artists.size(); i++) {</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">      if (artists.get(i).equals(recordingArtist)) {</span>
+<span class="fc" id="L61">        return true;</span>
+      }
+    }
+<span class="fc" id="L64">    return false;</span>
+  }
+
+  /**
+   * Returns true or false based on if the current object is the same as the one being compared.
+   * @param o The object being compared.
+   * @return Returns true or false. */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L73" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L74">      return true;</span>
+    }
+<span class="pc bpc" id="L76" title="1 of 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L77">      return false;</span>
+    }
+<span class="fc" id="L79">    AbstractCreator that = (AbstractCreator) o;</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">    return Objects.equals(firstName, that.firstName) &amp;&amp;</span>
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">        Objects.equals(lastName, that.lastName) &amp;&amp;</span>
+<span class="pc bpc" id="L82" title="1 of 2 branches missed.">        Objects.equals(bandName, that.bandName) &amp;&amp;</span>
+<span class="pc bpc" id="L83" title="1 of 2 branches missed.">        Objects.equals(artists, that.artists);</span>
+  }
+
+  /**
+   * Returns true or false based on if the location of the object are the same.
+   * @return Returns true or false. */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L91">    return Objects.hash(firstName, lastName, bandName, artists);</span>
+  }
+
+  /**
+   * Returns a string of the creators name.
+   * @return Returns a string of the creators name. */
+  @Override
+  public String toString() {
+<span class="fc" id="L99">    return &quot;Creator: &quot; + firstName + ' ' + lastName + '.';</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

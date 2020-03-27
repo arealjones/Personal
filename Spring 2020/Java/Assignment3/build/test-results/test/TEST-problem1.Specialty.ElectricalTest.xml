@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem1.Specialty.ElectricalTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-01-28T22:07:17" hostname="Areals-MacBook-Pro.local" time="0.022">
+  <properties/>
+  <testcase name="setCorrectEmployees" classname="problem1.Specialty.ElectricalTest" time="0.001"/>
+  <testcase name="calculatePrice" classname="problem1.Specialty.ElectricalTest" time="0.0"/>
+  <testcase name="fee" classname="problem1.Specialty.ElectricalTest" time="0.0"/>
+  <testcase name="setIncorrectEmployees" classname="problem1.Specialty.ElectricalTest" time="0.021"/>
+  <system-out><![CDATA[Got here, why isn't it working?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

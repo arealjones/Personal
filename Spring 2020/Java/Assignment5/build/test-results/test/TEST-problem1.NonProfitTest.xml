@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem1.NonProfitTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2020-02-10T19:05:20" hostname="Areals-MacBook-Pro.local" time="0.004">
+  <properties/>
+  <testcase name="testToString" classname="problem1.NonProfitTest" time="0.001"/>
+  <testcase name="getOrgName" classname="problem1.NonProfitTest" time="0.001"/>
+  <testcase name="addDonation" classname="problem1.NonProfitTest" time="0.0"/>
+  <testcase name="testHashCode" classname="problem1.NonProfitTest" time="0.001"/>
+  <testcase name="getTotalDonationsForYear" classname="problem1.NonProfitTest" time="0.0"/>
+  <testcase name="testEquals" classname="problem1.NonProfitTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

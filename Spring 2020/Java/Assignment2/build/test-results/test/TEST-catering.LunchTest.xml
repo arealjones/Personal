@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="catering.LunchTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-01-21T19:26:00" hostname="Areals-MacBook-Pro.local" time="0.003">
+  <properties/>
+  <testcase name="tooMany" classname="catering.LunchTest" time="0.001"/>
+  <testcase name="notEnough" classname="catering.LunchTest" time="0.0"/>
+  <testcase name="negative" classname="catering.LunchTest" time="0.0"/>
+  <testcase name="correct" classname="catering.LunchTest" time="0.0"/>
+  <testcase name="getNumberOfSandwiches" classname="catering.LunchTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Athlete.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab 2</a> &gt; <a href="index.source.html" class="el_package">LabQuestion1</a> &gt; <span class="el_source">Athlete.java</span></div><h1>Athlete.java</h1><pre class="source lang-java linenums">package LabQuestion1;
+
+import java.util.Objects;
+
+/*
+ * Class LabQuestion1.Athlete contains information about an athlete, including athlete's name, their height, weight and league.
+ */
+public class Athlete {
+
+  private Name athletesName;
+  private Double height;
+  private Double weight;
+  private String league;
+
+  /*
+  * Constructs a new athlete, based upon all of the provided input parameters.
+  * @param athletesName - object LabQuestion1.Name, containing athlete's first, middle and last name
+  * @param height - athlete's height, expressed as a Double in cm (e.g., 6'2'' is recorded as 187.96cm)
+  * @param weight - athlete's weigh, expressed as a Double in pounds (e.g. 125, 155, 200 pounds)
+  * @param league - athelete's league, expressed as String
+  * @return - object LabQuestion1.Athlete
+   */
+<span class="nc" id="L23">  public Athlete(Name athletesName, Double height, Double weight, String league) {</span>
+<span class="nc" id="L24">    this.athletesName = athletesName;</span>
+<span class="nc" id="L25">    this.height = height;</span>
+<span class="nc" id="L26">    this.weight = weight;</span>
+<span class="nc" id="L27">    this.league = league;</span>
+<span class="nc" id="L28">  }</span>
+
+
+  /*
+   * Constructs a new athlete, based upon all of the provided input parameters.
+   * @param athletesName - object LabQuestion1.Name, containing athlete's first, middle and last name
+   * @param height - athlete's height, expressed as a Double in cm (e.g., 6'2'' is recorded as 187.96cm)
+   * @param weight - athlete's weigh, expressed as a Double in pounds (e.g. 125, 155, 200 pounds)
+   * @return - object LabQuestion1.Athlete, with league field set to null
+   */
+
+<span class="nc" id="L39">  public Athlete(Name athletesName, Double height, Double weight) {</span>
+<span class="nc" id="L40">    this.athletesName = athletesName;</span>
+<span class="nc" id="L41">    this.height = height;</span>
+<span class="nc" id="L42">    this.weight = weight;</span>
+<span class="nc" id="L43">    this.league = null;</span>
+<span class="nc" id="L44">  }</span>
+
+  /*
+   * Returns athlete's name as an object LabQuestion1.Name
+   */
+  public Name getAthletesName() {
+<span class="nc" id="L50">    return athletesName;</span>
+  }
+
+  /*
+   * Returns athlete's height as a Double
+   */
+  public Double getHeight() {
+<span class="nc" id="L57">    return height;</span>
+  }
+
+  /*
+   * Returns athlete's weight as a Double
+   */
+  public Double getWeight() {
+<span class="nc" id="L64">    return weight;</span>
+  }
+
+  /*
+   * Returns athlete's league as a String
+   */
+  public String getLeague() {
+<span class="nc" id="L71">    return league;</span>
+  }
+
+  @Override
+  public boolean equals(Object o) {
+<span class="nc bnc" id="L76" title="All 2 branches missed.">    if (this == o) {</span>
+<span class="nc" id="L77">      return true;</span>
+    }
+<span class="nc bnc" id="L79" title="All 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="nc" id="L80">      return false;</span>
+    }
+<span class="nc" id="L82">    Athlete athlete = (Athlete) o;</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">    return Objects.equals(athletesName, athlete.athletesName) &amp;&amp;</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        Objects.equals(height, athlete.height) &amp;&amp;</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">        Objects.equals(weight, athlete.weight) &amp;&amp;</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">        Objects.equals(league, athlete.league);</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="nc" id="L91">    return Objects.hash(athletesName, height, weight, league);</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="nc" id="L96">    return &quot;LabQuestion1.Athlete{&quot; +</span>
+        &quot;athletesName=&quot; + athletesName +
+        &quot;, height=&quot; + height +
+        &quot;, weight=&quot; + weight +
+        &quot;, league='&quot; + league + '\'' +
+        '}';
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Set.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment4</a> &gt; <a href="index.source.html" class="el_package">problem2</a> &gt; <span class="el_source">Set.java</span></div><h1>Set.java</h1><pre class="source lang-java linenums">package problem2;
+
+import java.util.Objects;
+/**
+ * A Set will allow you to create an empty set, check if it is empty, add, remove, as well as check
+ * the size and if it contains anything. */
+public class Set implements ISet {
+  private Integer[] elements;
+  private int size;
+  /**
+   * A constructor to build an empty set of integers. */
+<span class="fc" id="L12">  public Set() {</span>
+<span class="fc" id="L13">    this.elements = null;</span>
+<span class="fc" id="L14">    this.size = 0;</span>
+<span class="fc" id="L15">  }</span>
+  /**
+   * A constructor to build a set with known elements and a size.
+   * @param elements The elements to be added to the set.
+   * @param size The size of the set. */
+<span class="fc" id="L20">  public Set(Integer[] elements, int size) {</span>
+<span class="fc" id="L21">    this.elements = elements;</span>
+<span class="fc" id="L22">    this.size = size;</span>
+<span class="fc" id="L23">  }</span>
+  /**
+   * Creates and returns an empty Set.
+   * @return An empty Set. */
+  @Override
+  public Set emptySet() {
+<span class="fc" id="L29">    return new Set();</span>
+  }
+  /**
+   * Checks if the Set is empty.
+   * @return True if the Set contains no items, false otherwise. */
+  @Override
+  public boolean isEmpty() {
+<span class="fc bfc" id="L36" title="All 2 branches covered.">    if (elements == null) {</span>
+<span class="fc" id="L37">      return true;</span>
+    }
+<span class="fc" id="L39">    return false;</span>
+  }
+  /**
+   * Adds the given Integer to the Set if and only if that Integer is not already in the Set.
+   * @param n A new integer that isn't currently in the set.
+   * @return A new set with the new integer. */
+  @Override
+  public Set add(Integer n) {
+<span class="fc bfc" id="L47" title="All 2 branches covered.">    if (!isEmpty()) {</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">      if (!contains(n)) {</span>
+<span class="fc" id="L49">        Integer[] temp = this.elements;</span>
+<span class="fc" id="L50">        this.elements = new Integer[this.size + 1];</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        for (int i=0; i&lt;this.elements.length; i++) {</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">          if ((this.elements.length - 1) == i) {</span>
+<span class="fc" id="L53">            elements[i] = n;</span>
+          } else {
+<span class="fc" id="L55">            elements[i] = temp[i];</span>
+          }
+        }
+<span class="fc" id="L58">        this.size += 1;</span>
+<span class="fc" id="L59">        return new Set(this.elements, this.size);</span>
+      }
+<span class="fc" id="L61">      return new Set(this.elements, this.size);</span>
+    } else {
+<span class="fc" id="L63">      this.elements = new Integer[this.size + 1];</span>
+<span class="fc" id="L64">      this.size += 1;</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">      for (int i=0; i&lt;this.elements.length; i++) {</span>
+<span class="fc" id="L66">        elements[i] = n;</span>
+      }
+<span class="fc" id="L68">      return new Set(this.elements, this.size);</span>
+    }
+  }
+  /**
+   * Checks in the set contains a specific integer.
+   * @return True if the given Integer is in the Set, false otherwise. */
+  @Override
+  public boolean contains(Integer n) {
+<span class="fc bfc" id="L76" title="All 2 branches covered.">    if (!isEmpty()) {</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">      for (int i=0; i&lt;elements.length; i++) {</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        if ((elements[i].compareTo(n)) == 0) {</span>
+<span class="fc" id="L79">          return true;</span>
+        }
+      }
+    }
+<span class="fc" id="L83">    return false;</span>
+  }
+  /**
+   * Returns a copy of the Set with the given Integer removed. If the given Integer is not in the
+   * Set, returns the Set as is.
+   * @param n An integer to be removed from the set.
+   * @return A copy of the Set without the given Integer. */
+  @Override
+  public Set remove(Integer n) {
+<span class="fc bfc" id="L92" title="All 2 branches covered.">    if (!isEmpty()) {</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">      if (contains(n)) {</span>
+<span class="fc" id="L94">        Integer[] removeTemp = this.elements;</span>
+<span class="fc" id="L95">        this.elements = new Integer[this.size - 1];</span>
+<span class="fc" id="L96">        int elementIndex = 0;</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">        for (int i=0; i&lt;removeTemp.length; i++) {</span>
+<span class="fc bfc" id="L98" title="All 4 branches covered.">          if ((removeTemp[i].compareTo(n) == -1) || (removeTemp[i].compareTo(n) == 1)) {</span>
+<span class="fc" id="L99">            elements[elementIndex] = removeTemp[i];</span>
+<span class="fc" id="L100">            elementIndex += 1;</span>
+          }
+        }
+<span class="fc" id="L103">        this.size -= 1;</span>
+<span class="fc" id="L104">        return new Set(this.elements, this.size);</span>
+      } else {
+<span class="fc" id="L106">        return this;</span>
+      }
+    } else {
+<span class="fc" id="L109">      return new Set();</span>
+    }
+  }
+  /**
+   * Gets the number of items in the Set.
+   * @return The size of the Set. */
+  @Override
+  public Integer size() {
+<span class="fc" id="L117">    Integer count = 0;</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">    if (elements != null) {</span>
+<span class="fc bfc" id="L119" title="All 2 branches covered.">      for (int i=0; i&lt;elements.length; i++) {</span>
+<span class="pc bpc" id="L120" title="1 of 4 branches missed.">        if ((elements[i] &gt;= 0) || (elements[i] &lt; 0)) {</span>
+<span class="fc" id="L121">          count += 1;</span>
+        } else {
+          continue;
+        }
+      }
+    }
+<span class="fc" id="L127">    this.size = count;</span>
+<span class="fc" id="L128">    return count;</span>
+  }
+  /**
+   * Returns true or false based on if the current set is the same size and has the same elements
+   * as the one being compared.
+   * @param o The set being compared.
+   * @return Returns true or false. */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc" id="L137">    Set oSet = (Set) o;</span>
+<span class="fc" id="L138">    int count = 0;</span>
+<span class="fc bfc" id="L139" title="All 4 branches covered.">    if (this.isEmpty() &amp;&amp; oSet.isEmpty()) {</span>
+<span class="fc" id="L140">      return true;</span>
+    } else {
+<span class="fc bfc" id="L142" title="All 2 branches covered.">      if (this.size() == oSet.size()) {</span>
+<span class="fc bfc" id="L143" title="All 2 branches covered.">        for (Integer element : this.elements) {</span>
+<span class="fc bfc" id="L144" title="All 2 branches covered.">          if (oSet.contains(element)) {</span>
+<span class="fc" id="L145">            count += 1;</span>
+          }
+        }
+      } else {
+<span class="fc" id="L149">        return false;</span>
+      }
+    }
+<span class="pc bpc" id="L152" title="1 of 2 branches missed.">    return count == this.size();</span>
+  }
+  /**
+   * Returns true or false based on if the location of the object are the same.
+   * @return Returns true or false. */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L159">    int primeNum = 31;</span>
+<span class="fc" id="L160">    int result = Objects.hash(size);</span>
+<span class="fc bfc" id="L161" title="All 2 branches covered.">    if (isEmpty()) {</span>
+<span class="fc" id="L162">      return result;</span>
+    } else {
+<span class="fc" id="L164">    result = primeNum * result + elements.hashCode();</span>
+<span class="fc" id="L165">    return result;</span>
+    }
+  }
+  /**
+   * Returns the elements of a set as a string. This is a helper method for the toString method.
+   * @return A string of the elements. */
+  private String convertSetToString() {
+<span class="fc" id="L172">    String string = &quot;&quot;;</span>
+<span class="fc bfc" id="L173" title="All 2 branches covered.">    if (isEmpty()) {</span>
+<span class="fc" id="L174">      return &quot;None&quot;;</span>
+    } else {
+<span class="fc bfc" id="L176" title="All 2 branches covered.">      for (int i=0; i&lt;elements.length; i++) {</span>
+<span class="fc" id="L177">        string += elements[i].toString();</span>
+<span class="fc" id="L178">        string += &quot; &quot;;</span>
+      }
+<span class="fc" id="L180">      return string;</span>
+    }
+  }
+  /**
+   * Returns a string of the size and elements that are in a set.
+   * @return A string of the set. */
+  @Override
+  public String toString() {
+<span class="fc" id="L188">    return &quot;The set is &quot; + size() + &quot; elements long and has the following elements in it: (&quot; +</span>
+<span class="fc" id="L189">        convertSetToString() + &quot;).&quot;;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

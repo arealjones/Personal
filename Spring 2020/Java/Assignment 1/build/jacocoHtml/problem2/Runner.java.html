@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Runner.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment1</a> &gt; <a href="index.source.html" class="el_package">problem2</a> &gt; <span class="el_source">Runner.java</span></div><h1>Runner.java</h1><pre class="source lang-java linenums">package problem2;
+/**
+ * Runner is an object that includes the individuals name, team, start time, and end time. */
+public class Runner {
+    private String name;
+    private String team;
+    private Time startTime;
+    private Time endTime;
+    /**
+     * Constructor that creates a new runner object with their name, team, start time, and end time.
+     * @param name The runners name.
+     * @param team The team that the runner is on.
+     * @param startTime The start time of the runner.
+     * @param endTime The end time of the runner. */
+<span class="fc" id="L15">    public Runner(String name, String team, Time startTime, Time endTime) {</span>
+<span class="fc" id="L16">        this.name = name;</span>
+<span class="fc" id="L17">        this.team = team;</span>
+<span class="fc" id="L18">        this.startTime = startTime;</span>
+<span class="fc" id="L19">        this.endTime = endTime;</span>
+<span class="fc" id="L20">    }</span>
+    /**
+     * Sets the name of the runner.
+     * @param name Sets the name of the runner. */
+    public void setName(String name) {
+<span class="fc" id="L25">        this.name = name;</span>
+<span class="fc" id="L26">    }</span>
+    /**
+     * Sets the team for the runner.
+     * @param team Sets the team for the runner. */
+    public void setTeam(String team) {
+<span class="fc" id="L31">        this.team = team;</span>
+<span class="fc" id="L32">    }</span>
+    /**
+     * Returns the name of the runner.
+     * @return the name of the runner. */
+    public String getName() {
+<span class="fc" id="L37">        return name;</span>
+    }
+    /**
+     * Returns the team of the runner.
+     * @return Returns the team of the runner. */
+    public String getTeam() {
+<span class="fc" id="L43">        return team;</span>
+    }
+    /**
+     * Returns the start time of the runner.
+     * @return Returns the start time of the runner. */
+    public String getStartTime() {
+<span class="fc" id="L49">        return startTime.getFullTime();</span>
+    }
+    /**
+     * Returns the end time of the runner.
+     * @return Returns the end time of the runner. */
+    public String getEndTime() {
+<span class="fc" id="L55">        return endTime.getFullTime();</span>
+    }
+    /**
+     * Returns the duration of the runners run.
+     * @return Returns the duration of the runners run. */
+    public Time getDuration() {
+<span class="fc" id="L61">        int secondsInHour = 3600;</span>
+<span class="fc" id="L62">        int newHour = (endTime.getFullSeconds() - startTime.getFullSeconds()) / secondsInHour;</span>
+<span class="fc" id="L63">        int newMinutes = (((endTime.getFullSeconds() - startTime.getFullSeconds()) % secondsInHour) / 60);</span>
+<span class="fc" id="L64">        int remainingSeconds = (((endTime.getFullSeconds() - startTime.getFullSeconds()) % secondsInHour) % 60);</span>
+<span class="fc" id="L65">        return new Time(newHour, newMinutes, remainingSeconds);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

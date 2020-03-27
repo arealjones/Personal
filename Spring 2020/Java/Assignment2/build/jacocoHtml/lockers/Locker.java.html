@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Locker.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment2</a> &gt; <a href="index.source.html" class="el_package">lockers</a> &gt; <span class="el_source">Locker.java</span></div><h1>Locker.java</h1><pre class="source lang-java linenums">package lockers;
+/**
+ * Locker is an object that contains the dimensions of what it can fit and any mail that may be in
+ * it. */
+public class Locker {
+  private int width;
+  private int height;
+  private int depth;
+  private Mail mail;
+  /**
+   * Constructor that creates a new locker with specific dimensions and a place for mail to go.
+   * @param width The width of the locker.
+   * @param height The height of the locker.
+   * @param depth The depth of the locker.
+   * @param mail Space for the mail to go.
+   * @throws InvalidSizeException A string stating the size is invalid. */
+<span class="fc" id="L17">  public Locker(int width, int height, int depth, Mail mail) throws InvalidSizeException {</span>
+<span class="fc" id="L18">    invalidSize(width);</span>
+<span class="fc" id="L19">    invalidSize(height);</span>
+<span class="fc" id="L20">    invalidSize(depth);</span>
+<span class="fc" id="L21">    this.width = width;</span>
+<span class="fc" id="L22">    this.height = height;</span>
+<span class="fc" id="L23">    this.depth = depth;</span>
+<span class="fc" id="L24">    this.mail = mail;</span>
+<span class="fc" id="L25">  }</span>
+  /**
+   * Checks the size of any side of the piece of mail.
+   * @param size Is the width, height, or depth that will be inputted.
+   * @return True if it is greater than or equal to one, false otherwise. */
+  private boolean checkSize(int size) {
+<span class="fc" id="L31">    int minSize = 1;</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">    return minSize &lt;= size;</span>
+  }
+  /**
+   * Checks the size and if it is an invalid number, it will throw an exception.
+   * @param size Is the width, height, or depth that will be inputted.
+   * @throws InvalidSizeException A string stating the size is invalid. */
+  public void invalidSize(int size) throws InvalidSizeException {
+<span class="fc bfc" id="L39" title="All 2 branches covered.">    if (!checkSize(size)) {</span>
+<span class="fc" id="L40">      throw new InvalidSizeException();</span>
+    }
+<span class="fc" id="L42">  }</span>
+  /**
+   * Sets the width of the locker if it is valid. Throws an exception otherwise.
+   * @param width The width of the locker.
+   * @throws InvalidSizeException A string stating the size is invalid. */
+  public void setWidth(int width) throws InvalidSizeException {
+<span class="fc bfc" id="L48" title="All 2 branches covered.">    if (checkSize(width)) {</span>
+<span class="fc" id="L49">      this.width = width;</span>
+    }
+    else {
+<span class="fc" id="L52">      throw new InvalidSizeException();</span>
+    }
+<span class="fc" id="L54">  }</span>
+  /**
+   * Returns the width of the locker.
+   * @return Returns the width of the locker. */
+  public int getWidth() {
+<span class="fc" id="L59">    return width;</span>
+  }
+  /**
+   * Sets the height of the locker if it is valid. Throws an exception otherwise.
+   * @param height The height of the locker.
+   * @throws InvalidSizeException A string stating the size is invalid. */
+  public void setHeight(int height) throws InvalidSizeException {
+<span class="fc bfc" id="L66" title="All 2 branches covered.">    if (checkSize(height)) {</span>
+<span class="fc" id="L67">      this.height = height;</span>
+    }
+    else {
+<span class="fc" id="L70">      throw new InvalidSizeException();</span>
+    }
+<span class="fc" id="L72">  }</span>
+  /**
+   * Returns the height of the locker.
+   * @return Returns the height of the locker. */
+  public int getHeight() {
+<span class="fc" id="L77">    return height;</span>
+  }
+  /**
+   * Sets the depth of the locker if it is valid. Throws an exception otherwise.
+   * @param depth The depth of the locker.
+   * @throws InvalidSizeException A string stating the size is invalid. */
+  public void setDepth(int depth) throws InvalidSizeException {
+<span class="fc bfc" id="L84" title="All 2 branches covered.">    if (checkSize(depth)) {</span>
+<span class="fc" id="L85">      this.depth = depth;</span>
+    }
+    else {
+<span class="fc" id="L88">      throw new InvalidSizeException();</span>
+    }
+<span class="fc" id="L90">  }</span>
+  /**
+   * Returns the depth of the locker.
+   * @return Returns the depth of the locker. */
+  public int getDepth() {
+<span class="fc" id="L95">    return depth;</span>
+  }
+  /**
+   * Checks to make sure the mail will fit before it is added to the locker.
+   * @param mail A mail object that will possibly go into the locker.
+   * @return True if it will fit, false otherwise. */
+  private boolean mailFits(Mail mail) {
+<span class="fc bfc" id="L102" title="All 2 branches covered.">    return (mail.getWidth() &lt;= width &amp;&amp;</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">        mail.getHeight() &lt;= height &amp;&amp;</span>
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">        mail.getDepth() &lt;= depth);</span>
+  }
+  /**
+   * Returns the piece of mail if there is any in the locker.
+   * @return A mail object. */
+  public Mail getMail() {
+<span class="fc" id="L110">    return mail;</span>
+  }
+  /**
+   * Checks to see if the locker is empty before any mail is added.
+   * @return True if it is empty, false otherwise. */
+  private boolean lockerEmpty() {
+<span class="fc bfc" id="L116" title="All 2 branches covered.">    return this.mail == null;</span>
+  }
+  /**
+   * Adds mail to a locker if it is empty and if the mail will fit. Throws an exception otherwise.
+   * @param newMail A mail object that we are trying to put in the locker.
+   * @throws LockerException A string stating the locker is full or the mail will not fit. */
+  public void addMail(Mail newMail) throws LockerException {
+<span class="fc bfc" id="L123" title="All 2 branches covered.">    if (lockerEmpty() &amp;&amp;</span>
+<span class="fc bfc" id="L124" title="All 2 branches covered.">        mailFits(newMail)) {</span>
+<span class="fc" id="L125">      this.mail = newMail;</span>
+    }
+    else {
+<span class="fc" id="L128">      throw new LockerException();</span>
+    }
+<span class="fc" id="L130">  }</span>
+  /**
+   * Checks to see if the mail in the locker matches the recipient trying to take it out.
+   * @param person A recipient object who is trying to take the mail out of the locker.
+   * @return True if the person matches the mail in the locker. False otherwise. */
+  private boolean mailMatchesPerson(Recipient person) {
+<span class="fc bfc" id="L136" title="All 2 branches covered.">    return (this.mail.getFirstName() == person.getFirstName() &amp;&amp;</span>
+<span class="fc bfc" id="L137" title="All 2 branches covered.">        this.mail.getLastName() == person.getLastName() &amp;&amp;</span>
+<span class="fc bfc" id="L138" title="All 2 branches covered.">        this.mail.getEmail() == person.getEmail());</span>
+  }
+  /**
+   * Returns the mail for the recipient if their information matches what is on the mail and if
+   * the locker actually contains something.
+   * @param person A recipient object who is trying to take the mail out of the locker.
+   * @return Returns the mail if it belongs to the recipient.
+   * @throws IncorrectRecipientException A string stating the person trying to take the mail out is
+   * incorrect. */
+  public Mail pickupMail(Recipient person) throws IncorrectRecipientException {
+<span class="fc bfc" id="L148" title="All 2 branches covered.">    if (!lockerEmpty() &amp;&amp;</span>
+<span class="fc bfc" id="L149" title="All 2 branches covered.">        mailMatchesPerson(person)) {</span>
+<span class="fc" id="L150">      Mail tempMail = mail;</span>
+<span class="fc" id="L151">      this.mail = null;</span>
+<span class="fc" id="L152">      return tempMail;</span>
+    }
+    else {
+<span class="fc" id="L155">      throw new IncorrectRecipientException();</span>
+    }
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CommandLineParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment8</a> &gt; <a href="index.source.html" class="el_package">assignment8</a> &gt; <span class="el_source">CommandLineParser.java</span></div><h1>CommandLineParser.java</h1><pre class="source lang-java linenums">package assignment8;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * Parses and validates the command line arguments passed in from Main
+ */
+public class CommandLineParser {
+
+<span class="fc" id="L12">  private static final String[] REQUIRED_ARGS = {&quot;--output-dir&quot;, &quot;--csv-file&quot;};</span>
+<span class="fc" id="L13">  private static final String[] EMAIL_ARGS = {&quot;--email&quot;, &quot;--email-template&quot;};</span>
+<span class="fc" id="L14">  private static final String[] LETTER_ARGS = {&quot;--letter&quot;, &quot;--letter-template&quot;};</span>
+  private static final String REGEX_TEMPLATE = &quot;[\\w\\d-_]+\\.txt&quot;;
+  private static final String REGEX_INPUT = &quot;[\\w\\d-_]+\\.csv&quot;;
+  private static final String REGEX_OUTPUT = &quot;[\\w\\d-_/\\\\]+[/\\\\]&quot;;
+  private String outputLoc;
+  private String inputFile;
+  private String emailTemplate;
+  private String letterTemplate;
+
+
+  /**
+   * Constructor for the CommandLineParser class
+   * @param args The command line arguments provided by the user.
+   * @throws InvalidArgumentException If the arguments are invalid.
+   */
+<span class="fc" id="L29">  public CommandLineParser(String[] args) throws InvalidArgumentException {</span>
+<span class="fc" id="L30">    List&lt;String&gt; argsList = convertToArrayList(args);</span>
+<span class="fc" id="L31">    validateArgs(argsList);</span>
+<span class="fc" id="L32">    this.outputLoc = pullOutputLoc(argsList);</span>
+<span class="fc" id="L33">    this.inputFile = pullInputFile (argsList);</span>
+<span class="fc" id="L34">    this.emailTemplate = pullEmailTemplate (argsList);</span>
+<span class="fc" id="L35">    this.letterTemplate = pullLetterTemplate(argsList);</span>
+<span class="fc" id="L36">  }</span>
+
+  /**
+   * Gets the output file location (file path)
+   * @return the output file location (file path) as String
+   */
+  public String getOutputFileLocation() {
+<span class="fc" id="L43">    return this.outputLoc;</span>
+  }
+
+  /**
+   * Gets the input file location (file path)
+   * @return the output file location (file path) as String
+   */
+  public String getInputFile() {
+<span class="fc" id="L51">    return this.inputFile;</span>
+  }
+
+  /**
+   * Gets the email template location (file path)
+   * @return the email template location (file path) as String
+   */
+  public String getEmailTemplateLocation() {
+<span class="fc" id="L59">    return this.emailTemplate;</span>
+  }
+
+  /**
+   * Gets the letter template location (file path)
+   * @return the letter template location (file path) as String
+   */
+  public String getLetterTemplateLocation() {
+<span class="fc" id="L67">    return this.letterTemplate;</span>
+  }
+
+  /**
+   * Converts String[] to a ArrayList&lt;String&gt;
+   * @param args string[]
+   * @return List&lt;String&gt;
+   */
+  private static List&lt;String&gt; convertToArrayList(String[] args) {
+<span class="fc" id="L76">    return Arrays.asList(args);</span>
+  }
+
+  /**
+   * Validates the list of arguments
+   * @param args List&lt;String&gt; of arguments
+   * @return true if the arguments are valid, false otherwise.
+   * @throws InvalidArgumentException If the arguments are invalid.
+   */
+  private static boolean validateArgs(List&lt;String&gt; args) throws InvalidArgumentException {
+<span class="fc" id="L86">    containsRequiredArgs(args);</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">    if (args.contains(EMAIL_ARGS[0])) {</span>
+<span class="fc" id="L88">      validateEmailArgs(args);</span>
+    }
+<span class="fc bfc" id="L90" title="All 2 branches covered.">    if (args.contains(LETTER_ARGS[0])) {</span>
+<span class="fc" id="L91">      validateLetterArgs(args);</span>
+    }
+<span class="fc" id="L93">    validateOutputDir(args);</span>
+<span class="fc" id="L94">    validateInputFile(args);</span>
+<span class="fc" id="L95">    return true;</span>
+  }
+
+  /**
+   * Checks the input List&lt;String&gt; contains the minimum of the required arguments.
+   * @param args List&lt;String&gt; of arguments
+   * @throws InvalidArgumentException If the arguments are invalid.
+   */
+  private static void containsRequiredArgs(List&lt;String&gt; args) throws InvalidArgumentException {
+<span class="fc bfc" id="L104" title="All 2 branches covered.">    if (!args.contains(REQUIRED_ARGS[0]))</span>
+<span class="fc" id="L105">      throw new InvalidArgumentException(String.format(&quot;Input must include the %s argument.&quot;,</span>
+          REQUIRED_ARGS[0]));
+<span class="fc bfc" id="L107" title="All 2 branches covered.">    if (!args.contains(REQUIRED_ARGS[1]))</span>
+<span class="fc" id="L108">      throw new InvalidArgumentException(String.format(&quot;Input must include the %s argument.&quot;,</span>
+          REQUIRED_ARGS[1]));
+<span class="fc bfc" id="L110" title="All 4 branches covered.">    if(! (args.contains(EMAIL_ARGS[0]) || args.contains(LETTER_ARGS[0])))</span>
+<span class="fc" id="L111">      throw new InvalidArgumentException(String.format(&quot;Input must include %s or %s arguments.&quot;,</span>
+          EMAIL_ARGS[0], LETTER_ARGS[0]));
+<span class="fc" id="L113">  }</span>
+
+  /**
+   * Validates that the email arguments --email is directly followed  by the --email-template
+   * &lt;path/to/file&gt; argument
+   * @param args List&lt;String&gt; of arguments
+   * @throws InvalidArgumentException If the arguments are invalid.
+   */
+  private static void validateEmailArgs(List&lt;String&gt; args) throws InvalidArgumentException {
+<span class="fc" id="L122">    int index = args.indexOf(EMAIL_ARGS[0]);</span>
+<span class="pc bpc" id="L123" title="2 of 4 branches missed.">    if ((index + 1) &gt;= args.size() || (!args.get(index + 1).equals(EMAIL_ARGS[1])) ||</span>
+<span class="pc bpc" id="L124" title="1 of 4 branches missed.">        (index + 2) &gt;= args.size() || (!args.get(index + 2).matches(REGEX_TEMPLATE)))</span>
+<span class="fc" id="L125">      throw new InvalidArgumentException(&quot;--email must be directly followed by --email-template &quot;</span>
+          + &quot;&lt;path/to/file&gt;.txt&quot;);
+<span class="fc" id="L127">  }</span>
+
+  /**
+   * Validates that the letter arguments --letter is directly followed  by the --letter-template
+   * &lt;path/to/file&gt; argument
+   * @param args List&lt;String&gt; of arguments
+   * @throws InvalidArgumentException If the arguments are invalid.
+   */
+  private static void validateLetterArgs(List&lt;String&gt; args) throws InvalidArgumentException {
+<span class="fc" id="L136">    int index = args.indexOf(LETTER_ARGS[0]);</span>
+<span class="pc bpc" id="L137" title="1 of 4 branches missed.">    if ((index + 1) &gt;= args.size() || (!args.get(index + 1).equals(LETTER_ARGS[1])) ||</span>
+<span class="pc bpc" id="L138" title="2 of 4 branches missed.">        (index + 2) &gt;= args.size() || (!args.get(index + 2).matches(REGEX_TEMPLATE)))</span>
+<span class="fc" id="L139">      throw new InvalidArgumentException(&quot;--letter must be directly followed by --letter-template &quot;</span>
+          + &quot;&lt;path/to/file&gt;.txt&quot;);
+<span class="fc" id="L141">  }</span>
+
+  /**
+   * Validates that the --output-dir &lt;path/to/folder&gt; argument is properly formatted
+   * @param args List&lt;String&gt; of arguments
+   * @throws InvalidArgumentException If the arguments are invalid.
+   */
+  private static void validateOutputDir(List&lt;String&gt; args) throws InvalidArgumentException {
+<span class="fc" id="L149">    int index = args.indexOf(REQUIRED_ARGS[0]);</span>
+<span class="pc bpc" id="L150" title="1 of 4 branches missed.">    if ((index + 1) &gt;= args.size() || (!args.get(index + 1).matches(REGEX_OUTPUT)))</span>
+<span class="fc" id="L151">      throw new InvalidArgumentException(&quot;--output-dir must be directly followed by&quot;</span>
+          + &quot;&lt;path/to/folder/&gt;&quot;);
+<span class="fc" id="L153">  }</span>
+
+  /**
+   * Validates that the --csv-file &lt;path/to/file&gt; argument is properly formatted
+   * @param args List&lt;String&gt; of arguments
+   * @throws InvalidArgumentException If the arguments are invalid.
+   */
+  private static void validateInputFile(List&lt;String&gt; args) throws InvalidArgumentException {
+<span class="fc" id="L161">    int index = args.indexOf(REQUIRED_ARGS[1]);</span>
+<span class="pc bpc" id="L162" title="1 of 4 branches missed.">    if ((index + 1) &gt;= args.size() || (!args.get(index + 1).matches(REGEX_INPUT)))</span>
+<span class="fc" id="L163">      throw new InvalidArgumentException(&quot;--csv-file must be directly followed by&quot;</span>
+          + &quot;&lt;path/to/file&gt;.csv&quot;);
+<span class="fc" id="L165">  }</span>
+
+  /**
+   * Returns the output location (file path) string from the list of args
+   * @param args List&lt;String&gt; of arguments
+   * @return output location (file path) string
+   */
+  private String pullOutputLoc(List&lt;String&gt; args) {
+<span class="fc" id="L173">    return args.get(args.indexOf(REQUIRED_ARGS[0]) + 1);</span>
+  }
+
+  /**
+   * Returns the input file (file path) string from the list of args
+   * @param args List&lt;String&gt; of arguments
+   * @return input file (file path) string
+   */
+  private String pullInputFile(List&lt;String&gt; args) {
+<span class="fc" id="L182">    return args.get(args.indexOf(REQUIRED_ARGS[1]) + 1);</span>
+  }
+
+  /**
+   * Returns the email template (file path) string from the list of args
+   * @param args List&lt;String&gt; of arguments
+   * @return email template (file path) string if the arg exists, null otherwise
+   */
+  private String pullEmailTemplate(List&lt;String&gt; args) {
+<span class="fc" id="L191">    int index = args.indexOf(EMAIL_ARGS[1]);</span>
+<span class="fc bfc" id="L192" title="All 2 branches covered.">    if (index &gt;= 0) {</span>
+<span class="fc" id="L193">      return args.get(index + 1);</span>
+    }
+<span class="fc" id="L195">    return null;</span>
+  }
+
+  /**
+   * Returns the letter template (file path) string from the list of args
+   * @param args List&lt;String&gt; of arguments
+   * @return letter template (file path) string if the arg exists, null otherwise
+   */
+  private String pullLetterTemplate(List&lt;String&gt; args) {
+<span class="fc" id="L204">    int index = args.indexOf(LETTER_ARGS[1]);</span>
+<span class="fc bfc" id="L205" title="All 2 branches covered.">    if (index &gt;= 0) {</span>
+<span class="fc" id="L206">      return args.get(index + 1);</span>
+    }
+<span class="fc" id="L208">    return null;</span>
+  }
+
+  /**
+   * Checks if the current CommandLineParser object and the one being compared are the same.
+   * @param o The object being compared.
+   * @return true if the objects are the same, false otherwise.
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L218" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L219">      return true;</span>
+    }
+<span class="pc bpc" id="L221" title="1 of 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L222">      return false;</span>
+    }
+<span class="fc" id="L224">    CommandLineParser that = (CommandLineParser) o;</span>
+<span class="pc bpc" id="L225" title="1 of 2 branches missed.">    return Objects.equals(outputLoc, that.outputLoc) &amp;&amp;</span>
+<span class="pc bpc" id="L226" title="1 of 2 branches missed.">        Objects.equals(inputFile, that.inputFile) &amp;&amp;</span>
+<span class="fc bfc" id="L227" title="All 2 branches covered.">        Objects.equals(emailTemplate, that.emailTemplate) &amp;&amp;</span>
+<span class="pc bpc" id="L228" title="1 of 2 branches missed.">        Objects.equals(letterTemplate, that.letterTemplate);</span>
+  }
+
+  /**
+   * Generates a hashcode for the CommandLineParser object.
+   * @return the hashcode of the CommandLineParser object.
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L237">    int result = Objects.hashCode(outputLoc);</span>
+<span class="fc" id="L238">    result = 17 * result + Objects.hashCode(inputFile);</span>
+<span class="fc" id="L239">    result = 17 * result + Objects.hashCode(emailTemplate) + Objects.hashCode(letterTemplate);</span>
+<span class="fc" id="L240">    return result;</span>
+  }
+
+  /**
+   * Generates a string describing the CommandLineParser object.
+   * @return a string describing the CommandLineParser object.
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L249">    return &quot;CommandLineParser:&quot; +</span>
+        &quot;\noutputLoc = &quot; + this.outputLoc +
+        &quot;\ninputFile = &quot; + this.inputFile +
+        &quot;\nemailTemplate = &quot; + this.emailTemplate +
+        &quot;\nletterTemplate = &quot; + this.letterTemplate;
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

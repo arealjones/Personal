@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem2.TimeTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-01-14T19:17:51" hostname="Areals-MacBook-Pro.local" time="0.003">
+  <properties/>
+  <testcase name="getSeconds" classname="problem2.TimeTest" time="0.001"/>
+  <testcase name="getFullTime" classname="problem2.TimeTest" time="0.0"/>
+  <testcase name="setMinutes" classname="problem2.TimeTest" time="0.0"/>
+  <testcase name="getHour" classname="problem2.TimeTest" time="0.0"/>
+  <testcase name="getFullSeconds" classname="problem2.TimeTest" time="0.0"/>
+  <testcase name="setSeconds" classname="problem2.TimeTest" time="0.0"/>
+  <testcase name="setHour" classname="problem2.TimeTest" time="0.0"/>
+  <testcase name="getMinutes" classname="problem2.TimeTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

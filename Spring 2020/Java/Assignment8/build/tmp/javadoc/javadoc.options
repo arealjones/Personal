@@ -1,0 +1,10 @@
+-classpath '/Users/arealjones/Desktop/Team_repo_Areal_Jones_Megan_Skrobacz_Ivy_Gooch/assignment8/build/classes/java/main:/Users/arealjones/Desktop/Team_repo_Areal_Jones_Megan_Skrobacz_Ivy_Gooch/assignment8/build/resources/main'
+-d '/Users/arealjones/Desktop/Team_repo_Areal_Jones_Megan_Skrobacz_Ivy_Gooch/assignment8/build/docs/javadoc'
+-doctitle 'assignment8 1.0-SNAPSHOT API'
+-quiet 
+-windowtitle 'assignment8 1.0-SNAPSHOT API'
+'/Users/arealjones/Desktop/Team_repo_Areal_Jones_Megan_Skrobacz_Ivy_Gooch/assignment8/src/main/java/assignment8/InvalidArgumentException.java'
+'/Users/arealjones/Desktop/Team_repo_Areal_Jones_Megan_Skrobacz_Ivy_Gooch/assignment8/src/main/java/assignment8/TemplateProcessor.java'
+'/Users/arealjones/Desktop/Team_repo_Areal_Jones_Megan_Skrobacz_Ivy_Gooch/assignment8/src/main/java/assignment8/Main.java'
+'/Users/arealjones/Desktop/Team_repo_Areal_Jones_Megan_Skrobacz_Ivy_Gooch/assignment8/src/main/java/assignment8/CommandLineParser.java'
+'/Users/arealjones/Desktop/Team_repo_Areal_Jones_Megan_Skrobacz_Ivy_Gooch/assignment8/src/main/java/assignment8/CSV.java'

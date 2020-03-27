@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="lockers.MailTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-01-21T19:26:00" hostname="Areals-MacBook-Pro.local" time="0.002">
+  <properties/>
+  <testcase name="correctDepth" classname="lockers.MailTest" time="0.0"/>
+  <testcase name="correctWidth" classname="lockers.MailTest" time="0.0"/>
+  <testcase name="incorrectDepth" classname="lockers.MailTest" time="0.0"/>
+  <testcase name="incorrectWidth" classname="lockers.MailTest" time="0.0"/>
+  <testcase name="incorrectHeight" classname="lockers.MailTest" time="0.001"/>
+  <testcase name="correctHeight" classname="lockers.MailTest" time="0.0"/>
+  <testcase name="getHeight" classname="lockers.MailTest" time="0.0"/>
+  <testcase name="invalidInput" classname="lockers.MailTest" time="0.0"/>
+  <testcase name="getDepth" classname="lockers.MailTest" time="0.001"/>
+  <testcase name="getWidth" classname="lockers.MailTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

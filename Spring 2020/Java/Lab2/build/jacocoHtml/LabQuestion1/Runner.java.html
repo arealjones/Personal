@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Runner.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab 2</a> &gt; <a href="index.source.html" class="el_package">LabQuestion1</a> &gt; <span class="el_source">Runner.java</span></div><h1>Runner.java</h1><pre class="source lang-java linenums">package LabQuestion1;
+
+import java.util.Objects;
+
+/**
+ * LabQuestion1.Runner is an object that is apart of the LabQuestion1.Athlete.
+ */
+public class Runner extends Athlete {
+  private Double best5K;
+  private Double bestHalf;
+  private String favoriteEvent;
+
+  /**
+   * Constructor that creates the runner object.
+   * @param athletesName Is the name of the runner.
+   * @param height Is the height of the runner.
+   * @param weight Is the weight of the runner.
+   * @param league Is the league that the runner is on.
+   * @param best5K Is the time of the runners best5K.
+   * @param bestHalf Is the time of the runners best half marathon.
+   * @param favoriteEvent Is the runners favorite event.
+   */
+  public Runner(Name athletesName, Double height, Double weight, String league, Double best5K,
+      Double bestHalf, String favoriteEvent) {
+<span class="nc" id="L25">    super(athletesName, height, weight, league);</span>
+<span class="nc" id="L26">    this.best5K = best5K;</span>
+<span class="nc" id="L27">    this.bestHalf = bestHalf;</span>
+<span class="nc" id="L28">    this.favoriteEvent = favoriteEvent;</span>
+<span class="nc" id="L29">  }</span>
+  /**
+   * Returns the best 5K time of the runner.
+   * @return Returns the best 5K time of the runner.
+   */
+  public Double getBest5K() {
+<span class="nc" id="L35">    return best5K;</span>
+  }
+  /**
+   * Return the best half marathon for the runner.
+   * @return Return the best half marathon for the runner.
+   */
+  public Double getBestHalf() {
+<span class="nc" id="L42">    return bestHalf;</span>
+  }
+  /**
+   * Returns the runners favorite event.
+   * @return Returns the runners favorite event.
+   */
+  public String getFavoriteEvent() {
+<span class="nc" id="L49">    return favoriteEvent;</span>
+  }
+
+  @Override
+  public boolean equals(Object o) {
+<span class="nc bnc" id="L54" title="All 2 branches missed.">    if (this == o) {</span>
+<span class="nc" id="L55">      return true;</span>
+    }
+<span class="nc bnc" id="L57" title="All 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="nc" id="L58">      return false;</span>
+    }
+<span class="nc bnc" id="L60" title="All 2 branches missed.">    if (!super.equals(o)) {</span>
+<span class="nc" id="L61">      return false;</span>
+    }
+<span class="nc" id="L63">    Runner runner = (Runner) o;</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">    return Objects.equals(best5K, runner.best5K) &amp;&amp;</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        Objects.equals(bestHalf, runner.bestHalf) &amp;&amp;</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        Objects.equals(favoriteEvent, runner.favoriteEvent);</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="nc" id="L71">    return Objects.hash(super.hashCode(), best5K, bestHalf, favoriteEvent);</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="nc" id="L76">    return &quot;LabQuestion1.Runner{&quot; +</span>
+        &quot;best5K=&quot; + best5K +
+        &quot;, bestHalf=&quot; + bestHalf +
+        &quot;, favoriteEvent='&quot; + favoriteEvent + '\'' +
+        '}';
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,11 @@
+1.
+	a. x <= 1
+	b. x > 1
+	c.  120
+
+2. There isn’t a base case to end the function. It will endlessly loop through since the return is calling the function again and again.
+
+3.
+	a. The function will need two input parameters. One is a list of integers and the other is the integer that is being searched for.
+	b. The base case would be if the integer is not in the list. False should be returned.
+	c. The recursive case would be the else to the base case. The formula would be the truth statement of two expressions with an OR operator separating them. The first expression would be the truth value if the integer being searched for is equal to the first integer in the list. The second expression would be calling the function again with the parameters of the list starting at the second number and the integer being searched for. This will continuously call the function again until all integers in the list have been reviewed. There only has to be one true response for the entire function to return true because of the OR operator.

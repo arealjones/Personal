@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Interior.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment3</a> &gt; <a href="index.source.html" class="el_package">problem1.Interior</a> &gt; <span class="el_source">Interior.java</span></div><h1>Interior.java</h1><pre class="source lang-java linenums">package problem1.Interior;
+
+import java.util.Objects;
+import problem1.Interfaces.Discounts;
+import problem1.Interfaces.Fees;
+import problem1.Interfaces.Rate;
+import problem1.AbstractServices;
+import problem1.PropertySize;
+/**
+ * Interior is an object that contains the number of pets, hours, rates, and discounts that cover
+ * both cleaning and painting services. */
+public class Interior extends AbstractServices implements Rate, Fees, Discounts {
+  private int pets;
+  protected int hours;
+  /**
+   * Constructor that creates a new interior service with the information about the property,
+   *    * hours, rates, discounts, and number of pets for the cleaning and painting services.
+   * @param monthly If the service happens monthly.
+   * @param address The address of the property.
+   * @param previousServices How many times has the property been serviced before.
+   * @param pets The number of pets in the property.
+   * @param size The size of the property.
+   * @throws IllegalArgumentException Catches if someone tries to enter a negative number for
+   * pets. */
+  public Interior(boolean monthly, String address, int previousServices, int pets,
+      PropertySize size) throws IllegalArgumentException {
+<span class="fc" id="L27">    super(monthly, address, previousServices);</span>
+<span class="fc" id="L28">    setPets(pets);</span>
+<span class="fc" id="L29">    this.pets = pets;</span>
+<span class="fc" id="L30">    this.hours = setHours(size);</span>
+<span class="fc" id="L31">  }</span>
+  /**
+   * Returns the number of pets on the property.
+   * @return Returns the number of pets on the property. */
+  public int getPets() {
+<span class="fc" id="L36">    return this.pets;</span>
+  }
+  /**
+   * Sets the number of pets on the property and catches if someone tries to enter a negative
+   * number.
+   * @param pets The number of pets in the property.
+   * @throws IllegalArgumentException Catches if someone tries to enter a negative number for
+   * pets. */
+  public void setPets(int pets) throws IllegalArgumentException {
+<span class="fc bfc" id="L45" title="All 2 branches covered.">    if (pets &gt;= 0) {</span>
+<span class="fc" id="L46">      this.pets = pets;</span>
+    }
+    else {
+<span class="fc" id="L49">      throw new IllegalArgumentException();</span>
+    }
+<span class="fc" id="L51">  }</span>
+  /**
+   * Returns the number of hours needed to finished the project.
+   * @return Returns the number of hours needed to finished the project. */
+  public int getHours() {
+<span class="fc" id="L56">    return this.hours;</span>
+  }
+  /**
+   * Sets the amount of hours needed to complete the service based on the size of the property.
+   * @param size The size of the property.
+   * @return The parameter with the correct amount of hours needed. */
+  public int setHours(PropertySize size) {
+<span class="fc" id="L63">    int one = 1;</span>
+<span class="fc" id="L64">    int two = 2;</span>
+<span class="fc" id="L65">    int four = 4;</span>
+<span class="pc bpc" id="L66" title="1 of 4 branches missed.">    switch (size) {</span>
+      case SMALL:
+<span class="fc" id="L68">        return this.hours = one;</span>
+      case MEDIUM:
+<span class="fc" id="L70">        return this.hours = two;</span>
+      case LARGE:
+<span class="fc" id="L72">        return this.hours = four;</span>
+      default:
+<span class="nc" id="L74">        return this.hours = 0;</span>
+    }
+  }
+  /**
+   * Returns the base hourly rate for interior services.
+   * @return Returns the base hourly rate for interior services. */
+  @Override
+  public int rate() {
+<span class="fc" id="L82">    int baseRate = 80;</span>
+<span class="fc" id="L83">    return baseRate;</span>
+  }
+  /**
+   * Returns the fee for having any pets on the property.
+   * @return Returns the fee for having any pets on the property. */
+  @Override
+  public double fee() {
+<span class="fc" id="L90">    int one = 1;</span>
+<span class="fc" id="L91">    int two = 2;</span>
+<span class="fc" id="L92">    int three = 3;</span>
+<span class="fc" id="L93">    double fivePercent = .05;</span>
+<span class="fc" id="L94">    double sevenPercent = .07;</span>
+<span class="fc bfc" id="L95" title="All 4 branches covered.">    if ((pets == one) ||</span>
+        (pets == two)) {
+<span class="fc" id="L97">      return (float)(rate() * fivePercent);</span>
+    }
+<span class="fc bfc" id="L99" title="All 2 branches covered.">    else if (pets &gt;= three) {</span>
+<span class="fc" id="L100">      return (float)(rate() * sevenPercent);</span>
+    }
+<span class="fc" id="L102">    return 0;</span>
+  }
+  /**
+   * Returns the discount rate for the interior service based on if they had the correct amount of
+   * previous services or if it is a monthly service.
+   * @return Return the discount rate for the interior service. */
+  @Override
+  public double discount() {
+<span class="fc" id="L110">    int ten = 10;</span>
+<span class="fc" id="L111">    int remainder = 9;</span>
+<span class="fc" id="L112">    double fiftyPercent = .50;</span>
+<span class="fc" id="L113">    double tenPercent = .10;</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">    if (getPreviousServices() % ten == remainder) {</span>
+<span class="fc" id="L115">      return (float)((rate() + fee()) * fiftyPercent);</span>
+    }
+<span class="fc bfc" id="L117" title="All 2 branches covered.">    else if (isMonthly()) {</span>
+<span class="fc" id="L118">      return (float)((rate() + fee()) * tenPercent);</span>
+    }
+    else {
+<span class="fc" id="L121">      return 0;</span>
+    }
+  }
+  /**
+   * Return the price of the cleaning and painting service.
+   * @return Return the price of the cleaning and painting service. */
+  public double calculatePrice() {
+<span class="fc" id="L128">    return (((rate() + fee()) * getHours()) - (discount() * getHours()));</span>
+  }
+  /**
+   * Returns true or false based on if the current object is the same as the one being compared.
+   * @param o The object being compared.
+   * @return Returns true or false. */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L136" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L137">      return true;</span>
+    }
+<span class="pc bpc" id="L139" title="1 of 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L140">      return false;</span>
+    }
+<span class="fc bfc" id="L142" title="All 2 branches covered.">    if (!super.equals(o)) {</span>
+<span class="fc" id="L143">      return false;</span>
+    }
+<span class="fc" id="L145">    Interior interior = (Interior) o;</span>
+<span class="pc bpc" id="L146" title="1 of 2 branches missed.">    return pets == interior.pets;</span>
+  }
+  /**
+   * Returns true or false based on if the location of the object are the same.
+   * @return Returns true or false. */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L153">    return Objects.hash(super.hashCode(), pets);</span>
+  }
+  /**
+   * Returns a string of the exterior service including how many hours it will take to complete.
+   * @return Returns a string of the exterior service. */
+  @Override
+  public String toString() {
+<span class="fc" id="L160">    return super.toString() + &quot;. It will require &quot; + hours + &quot; hours to complete the project. &quot;</span>
+        + &quot;ADD ON: The property also has &quot; + pets + &quot; pets to include for the cost of services.&quot;;
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

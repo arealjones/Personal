@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CSV.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment8</a> &gt; <a href="index.source.html" class="el_package">assignment8</a> &gt; <span class="el_source">CSV.java</span></div><h1>CSV.java</h1><pre class="source lang-java linenums">package assignment8;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
+
+/**
+ * Immutable class that takes a row of a CSV file and returns a list of the individual headers or
+ * fields to be processed during parsing time in combination with templates.
+ */
+public class CSV {
+    private String headerRow;
+
+    /**
+     * Constructor for the CSV class
+     * @param headerRow The row of data being passed into the class to be processed.
+     */
+<span class="fc" id="L18">    public CSV(String headerRow) {</span>
+<span class="fc" id="L19">        this.headerRow = headerRow;</span>
+<span class="fc" id="L20">    }</span>
+    
+    /**
+     * Takes the input row and breaks it into an ArrayList of different fields.
+     * @return An ArrayList of the different headers
+     */
+    public ArrayList&lt;String&gt; getLineAsList() {
+<span class="fc" id="L27">        String[] elements = this.headerRow.split(&quot;\&quot;,\&quot;&quot;);</span>
+<span class="fc" id="L28">        return new ArrayList&lt;&gt;(Arrays.asList(elements));</span>
+    }
+
+    /**
+     * Returns true if the current object is the same as the one being compared.
+     * @param o The object being compared.
+     * @return True if they are the same, false otherwise. */
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        if (this == o) {</span>
+<span class="fc" id="L38">            return true;</span>
+        }
+<span class="pc bpc" id="L40" title="1 of 4 branches missed.">        if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L41">            return false;</span>
+        }
+<span class="fc" id="L43">        CSV csv = (CSV) o;</span>
+<span class="fc" id="L44">        return Objects.equals(headerRow, csv.headerRow);</span>
+    }
+
+    /**
+     * Returns the hashcode of the object.
+     * @return Returns the hashcode of the object. */
+    @Override
+    public int hashCode() {
+<span class="fc" id="L52">        return Objects.hash(headerRow);</span>
+    }
+
+    /**
+     * Returns a string explaining what is in the current line.
+     * @return Returns a string explaining what is in the current line. */
+    @Override
+    public String toString() {
+<span class="nc" id="L60">        return &quot;The current line being parsed is: &quot; + headerRow + '.';</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

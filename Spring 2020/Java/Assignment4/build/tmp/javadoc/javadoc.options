@@ -1,0 +1,10 @@
+-classpath '/Users/arealjones/Desktop/cs5004/Student_repo_Areal_Jones/Assignments/Assignment4/build/classes/java/main:/Users/arealjones/Desktop/cs5004/Student_repo_Areal_Jones/Assignments/Assignment4/build/resources/main'
+-d '/Users/arealjones/Desktop/cs5004/Student_repo_Areal_Jones/Assignments/Assignment4/build/docs/javadoc'
+-doctitle 'Assignment4 1.0-SNAPSHOT API'
+-quiet 
+-windowtitle 'Assignment4 1.0-SNAPSHOT API'
+'/Users/arealjones/Desktop/cs5004/Student_repo_Areal_Jones/Assignments/Assignment4/src/main/java/problem1/IQueue.java'
+'/Users/arealjones/Desktop/cs5004/Student_repo_Areal_Jones/Assignments/Assignment4/src/main/java/problem1/EmptyQueueException.java'
+'/Users/arealjones/Desktop/cs5004/Student_repo_Areal_Jones/Assignments/Assignment4/src/main/java/problem1/IStack.java'
+'/Users/arealjones/Desktop/cs5004/Student_repo_Areal_Jones/Assignments/Assignment4/src/main/java/problem2/ISet.java'
+'/Users/arealjones/Desktop/cs5004/Student_repo_Areal_Jones/Assignments/Assignment4/src/main/java/problem2/Set.java'

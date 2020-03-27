@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EmptyQueue.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment6</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">EmptyQueue.java</span></div><h1>EmptyQueue.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.util.NoSuchElementException;
+
+/**
+ * EmptyQueue is a class for when the priority queue is empty. */
+public class EmptyQueue implements IPriorityQueue {
+
+  /**
+   * Creates an empty priority queue. */
+<span class="fc" id="L11">  public EmptyQueue() {</span>
+<span class="fc" id="L12">  }</span>
+
+  /**
+   * Returns the priority for the value.
+   * @return Returns the priority for the value. */
+  @Override
+  public Integer getPriority() {
+<span class="fc" id="L19">    return null;</span>
+  }
+
+  /**
+   * Returns the value.
+   * @return Returns the value. */
+  @Override
+  public String getValue() {
+<span class="fc" id="L27">    return null;</span>
+  }
+
+  /**
+   * Returns the rest of the priority list.
+   * @return Returns the rest of the priority list. */
+  @Override
+  public IPriorityQueue getRest() {
+<span class="fc" id="L35">    return null;</span>
+  }
+
+  /**
+   * Returns an empty priority queue.
+   * @return Returns an empty priority queue. */
+  @Override
+  public IPriorityQueue createEmpty() {
+<span class="fc" id="L43">    return new EmptyQueue();</span>
+  }
+
+  /**
+   * Returns true if the PQ is empty, false otherwise.
+   * @return Returns true if the PQ is empty, false otherwise. */
+  @Override
+  public Boolean isEmpty() {
+<span class="fc" id="L51">    return true;</span>
+  }
+
+  /**
+   * Returns the PQ with the value and priority added.
+   * @param priority The priority of the value.
+   * @param value The value to be added.
+   * @return Returns the PQ with the value and priority added. */
+  @Override
+  public IPriorityQueue add(Integer priority, String value) {
+<span class="fc" id="L61">    return new PriorityQueue(priority, value, this);</span>
+  }
+
+  /**
+   * Returns value with the highest priority.
+   * @return Returns value with the highest priority.
+   * @throws IllegalArgumentException Throws if the PQ is empty. */
+  @Override
+  public String peek() throws NoSuchElementException {
+<span class="fc" id="L70">    throw new NoSuchElementException();</span>
+  }
+
+  /**
+   * Returns a copy of the PQ without the element that has the highest priority.
+   * @return Returns a copy of the PQ without the element that has the highest priority.
+   * @throws IllegalArgumentException Throws if the PQ is empty. */
+  @Override
+  public PriorityQueue pop() throws NoSuchElementException {
+<span class="fc" id="L79">    throw new NoSuchElementException();</span>
+  }
+
+  /**
+   * Returns the hashcode for the empty queue. I picked a random number.
+   * @return Returns the hashcode for the empty queue. */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L87">    return 12;</span>
+  }
+
+  /**
+   * Checks if two queues are equal to one another. Returns false if they are not.
+   * @param obj The object being compared.
+   * @return True or false. */
+  @Override
+  public boolean equals(Object obj) {
+<span class="fc bfc" id="L96" title="All 2 branches covered.">    if (this == obj) return true;</span>
+    else {
+<span class="pc bpc" id="L98" title="2 of 4 branches missed.">      return obj != null &amp;&amp; getClass() == obj.getClass();</span>
+    }
+  }
+
+  /**
+   * Returns a string indicating what is in the empty queue. It should always be null.
+   * @return Returns a string indicating what is in the empty queue. */
+  @Override
+  public String toString() {
+<span class="fc" id="L107">    return &quot;Empty Queue: null.&quot;;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

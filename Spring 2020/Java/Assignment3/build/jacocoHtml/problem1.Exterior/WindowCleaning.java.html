@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WindowCleaning.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment3</a> &gt; <a href="index.source.html" class="el_package">problem1.Exterior</a> &gt; <span class="el_source">WindowCleaning.java</span></div><h1>WindowCleaning.java</h1><pre class="source lang-java linenums">package problem1.Exterior;
+
+import java.util.Objects;
+import problem1.FloorsException;
+import problem1.Interfaces.Fees;
+import problem1.PropertySize;
+
+/**
+ * Window Cleaning is an object of an exterior service. It contains the allowed amount of floors,
+ * fees, and price. */
+public class WindowCleaning extends Exterior implements Fees {
+  private int floors;
+  /**
+   * Constructor that creates a new window cleaning service with information about the property.
+   * @param monthly If the service happens monthly.
+   * @param address The address of the property.
+   * @param previousServices How many times has the property been serviced before.
+   * @param size The size of the property.
+   * @param floors The amount of floors the property has.
+   * @throws FloorsException An exception to catch that the property does not have more than four
+   * floors. */
+  public WindowCleaning(boolean monthly, String address, int previousServices, PropertySize size,
+      int floors)
+      throws FloorsException {
+<span class="fc" id="L25">    super(monthly, address, previousServices, size);</span>
+<span class="fc" id="L26">    setFloors(floors);</span>
+<span class="fc" id="L27">    this.floors = floors;</span>
+<span class="fc" id="L28">  }</span>
+  /**
+   * Sets the amount of floors in the property and catches any properties that have more than four
+   * floors.
+   * @param floors The amount of floors the property has.
+   * @throws FloorsException An exception to catch that the property does not have more than four
+   * floors. */
+  public void setFloors(int floors) throws FloorsException {
+<span class="fc" id="L36">    int maximumFloors = 3;</span>
+<span class="fc bfc" id="L37" title="All 4 branches covered.">    if ((floors &lt;= maximumFloors) &amp;&amp;</span>
+        (floors &gt; 0)) {
+<span class="fc" id="L39">      this.floors = floors;</span>
+    }
+    else {
+<span class="fc" id="L42">      throw new FloorsException();</span>
+    }
+<span class="fc" id="L44">  }</span>
+  /**
+   * Returns the amount of floors in the property.
+   * @return Returns the amount of floors in the property. */
+  public int getFloors() {
+<span class="fc" id="L49">    return this.floors;</span>
+  }
+  /**
+   * Returns the fee for the service based on the number of floors the property has.
+   * @return Returns the fee for the service based on the number of floors the property has. */
+  @Override
+  public double fee() {
+<span class="fc" id="L56">    double floorFee = .05;</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">    if (floors &gt; 1) {</span>
+<span class="fc" id="L58">      return (rate() * floorFee);</span>
+    }
+<span class="fc" id="L60">    return 0;</span>
+  }
+  /**
+   * Returns the price of the service based on the rate, fees, discounts, and number of hours it
+   * took to finish.
+   * @return Returns the price of the service. */
+  public double calculatePrice() {
+<span class="fc" id="L67">    return (((rate() + fee()) * getHours()) - (((rate() + fee()) * discount()) * getHours()));</span>
+  }
+  /**
+   * Returns true or false based on if the current object is the same as the one being compared.
+   * @param o The object being compared.
+   * @return Returns true or false. */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L75" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L76">      return true;</span>
+    }
+<span class="pc bpc" id="L78" title="1 of 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L79">      return false;</span>
+    }
+<span class="fc bfc" id="L81" title="All 2 branches covered.">    if (!super.equals(o)) {</span>
+<span class="fc" id="L82">      return false;</span>
+    }
+<span class="fc" id="L84">    WindowCleaning that = (WindowCleaning) o;</span>
+<span class="pc bpc" id="L85" title="1 of 2 branches missed.">    return floors == that.floors;</span>
+  }
+  /**
+   * Returns true or false based on if the location of the object are the same.
+   * @return Returns true or false. */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L92">    return Objects.hash(super.hashCode(), floors);</span>
+  }
+  /**
+   * Returns a string of the window cleaning service including the amount of floors in the
+   * property.
+   * @return Returns a string of the window cleaning service. */
+  @Override
+  public String toString() {
+<span class="fc" id="L100">    return super.toString() + &quot; ADD ON: This property also has &quot; + floors +</span>
+        &quot; floors to include for the cost of services. &quot;;
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

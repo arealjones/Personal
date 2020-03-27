@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2fed1b6b-f78e-4a61-a2e6-17ad3e2ab529" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="assignment8" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="assignment8" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="assignment8" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="documentation" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="assignment8" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit4 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1ZJNqQ1JhTT2JO92wFnWTIeLXAc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="assignment8" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.assignment8 [check]">
+    <configuration name="CommandLineParserTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;assignment8.CommandLineParserTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="CommandLineParserTest.testHashCode" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;assignment8.CommandLineParserTest.testHashCode&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="CommandLineParserTest.testToString" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;assignment8.CommandLineParserTest.testToString&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="assignment8 [check]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="check" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="assignment8 [javadoc]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="javadoc" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.CommandLineParserTest" />
+        <item itemvalue="Gradle.assignment8 [javadoc]" />
+        <item itemvalue="Gradle.assignment8 [check]" />
+        <item itemvalue="Gradle.CommandLineParserTest.testToString" />
+        <item itemvalue="Gradle.CommandLineParserTest.testHashCode" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2fed1b6b-f78e-4a61-a2e6-17ad3e2ab529" name="Default Changelist" comment="" />
+      <created>1584553426130</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584553426130</updated>
+      <workItem from="1584553427768" duration="548000" />
+      <workItem from="1584815938182" duration="11652000" />
+      <workItem from="1584897181207" duration="24264000" />
+      <workItem from="1584982134012" duration="26959000" />
+      <workItem from="1585021487574" duration="1571000" />
+      <workItem from="1585065650544" duration="7916000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1864" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584822601413">
+      <screen x="1440" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1864" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584822601413" />
+    <state x="1740" y="-800" key="#com.intellij.ide.util.MemberChooser" timestamp="1585074688650">
+      <screen x="967" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="2213" y="263" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584818071862" />
+    <state x="1740" y="-800" key="#com.intellij.ide.util.MemberChooser/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.917@967.-1057.1920.1057" timestamp="1585065795816" />
+    <state x="1740" y="-800" key="#com.intellij.ide.util.MemberChooser/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.937@967.-1057.1920.1057" timestamp="1585011452431" />
+    <state x="1740" y="-800" key="#com.intellij.ide.util.MemberChooser/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.947@967.-1057.1920.1057" timestamp="1585074688650" />
+    <state width="1780" height="211" key="GridCell.Tab.0.bottom" timestamp="1585077575875">
+      <screen x="967" y="-1057" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="350" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584988429063" />
+    <state width="1878" height="304" key="GridCell.Tab.0.bottom/0.23.1440.779/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584922393441" />
+    <state width="1878" height="268" key="GridCell.Tab.0.bottom/0.23.1440.783/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584934654332" />
+    <state width="1878" height="268" key="GridCell.Tab.0.bottom/0.23.1440.788/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584934255085" />
+    <state width="1878" height="268" key="GridCell.Tab.0.bottom/0.23.1440.792/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584936491113" />
+    <state width="1878" height="268" key="GridCell.Tab.0.bottom/0.23.1440.795/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584931954420" />
+    <state width="1878" height="304" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584902660864" />
+    <state width="1732" height="183" key="GridCell.Tab.0.bottom/1440.23.1920.1057/0.23.1440.788@1440.23.1920.1057" timestamp="1584998117462" />
+    <state width="1732" height="183" key="GridCell.Tab.0.bottom/1440.23.1920.1057/0.23.1440.792@1440.23.1920.1057" timestamp="1584996946259" />
+    <state width="1673" height="136" key="GridCell.Tab.0.bottom/1440.23.1920.1057/0.23.1440.795@1440.23.1920.1057" timestamp="1584992410357" />
+    <state width="1732" height="183" key="GridCell.Tab.0.bottom/1440.23.1920.952/0.23.1440.877@1440.23.1920.952" timestamp="1584996219263" />
+    <state width="1732" height="134" key="GridCell.Tab.0.bottom/1440.23.1920.956/0.23.1440.877@1440.23.1920.956" timestamp="1584995776767" />
+    <state width="1861" height="198" key="GridCell.Tab.0.bottom/967.-1057.1920.1057/0.23.1440.783/-958.-1057.1920.1057@967.-1057.1920.1057" timestamp="1585014161034" />
+    <state width="1861" height="59" key="GridCell.Tab.0.bottom/967.-1057.1920.1057/0.23.1440.788/-958.-1057.1920.1057@967.-1057.1920.1057" timestamp="1585005094314" />
+    <state width="1709" height="181" key="GridCell.Tab.0.bottom/967.-1057.1920.1057/0.23.1440.792/-958.-1057.1920.1057@967.-1057.1920.1057" timestamp="1585073698216" />
+    <state width="1709" height="181" key="GridCell.Tab.0.bottom/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.923@967.-1057.1920.1057" timestamp="1585066947867" />
+    <state width="1709" height="181" key="GridCell.Tab.0.bottom/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.930@967.-1057.1920.1057" timestamp="1585022582689" />
+    <state width="1780" height="211" key="GridCell.Tab.0.bottom/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.937@967.-1057.1920.1057" timestamp="1585077575875" />
+    <state width="1780" height="212" key="GridCell.Tab.0.bottom/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.942@967.-1057.1920.1057" timestamp="1585076750003" />
+    <state width="1780" height="211" key="GridCell.Tab.0.bottom/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.947@967.-1057.1920.1057" timestamp="1585077047719" />
+    <state width="1780" height="428" key="GridCell.Tab.0.bottom/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.952@967.-1057.1920.1057" timestamp="1585076027444" />
+    <state width="1780" height="211" key="GridCell.Tab.0.center" timestamp="1585077575873">
+      <screen x="967" y="-1057" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="350" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584988429060" />
+    <state width="1878" height="304" key="GridCell.Tab.0.center/0.23.1440.779/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584922393439" />
+    <state width="1878" height="268" key="GridCell.Tab.0.center/0.23.1440.783/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584934654331" />
+    <state width="1878" height="268" key="GridCell.Tab.0.center/0.23.1440.788/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584934255084" />
+    <state width="1878" height="268" key="GridCell.Tab.0.center/0.23.1440.792/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584936491112" />
+    <state width="1878" height="268" key="GridCell.Tab.0.center/0.23.1440.795/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584931954419" />
+    <state width="1878" height="304" key="GridCell.Tab.0.center/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584902660863" />
+    <state width="1732" height="183" key="GridCell.Tab.0.center/1440.23.1920.1057/0.23.1440.788@1440.23.1920.1057" timestamp="1584998117461" />
+    <state width="1732" height="183" key="GridCell.Tab.0.center/1440.23.1920.1057/0.23.1440.792@1440.23.1920.1057" timestamp="1584996946258" />
+    <state width="1673" height="136" key="GridCell.Tab.0.center/1440.23.1920.1057/0.23.1440.795@1440.23.1920.1057" timestamp="1584992410356" />
+    <state width="1732" height="183" key="GridCell.Tab.0.center/1440.23.1920.952/0.23.1440.877@1440.23.1920.952" timestamp="1584996219262" />
+    <state width="1732" height="134" key="GridCell.Tab.0.center/1440.23.1920.956/0.23.1440.877@1440.23.1920.956" timestamp="1584995776765" />
+    <state width="1861" height="198" key="GridCell.Tab.0.center/967.-1057.1920.1057/0.23.1440.783/-958.-1057.1920.1057@967.-1057.1920.1057" timestamp="1585014161033" />
+    <state width="1861" height="59" key="GridCell.Tab.0.center/967.-1057.1920.1057/0.23.1440.788/-958.-1057.1920.1057@967.-1057.1920.1057" timestamp="1585005094313" />
+    <state width="1709" height="181" key="GridCell.Tab.0.center/967.-1057.1920.1057/0.23.1440.792/-958.-1057.1920.1057@967.-1057.1920.1057" timestamp="1585073698214" />
+    <state width="1709" height="181" key="GridCell.Tab.0.center/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.923@967.-1057.1920.1057" timestamp="1585066947866" />
+    <state width="1709" height="181" key="GridCell.Tab.0.center/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.930@967.-1057.1920.1057" timestamp="1585022582688" />
+    <state width="1780" height="211" key="GridCell.Tab.0.center/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.937@967.-1057.1920.1057" timestamp="1585077575873" />
+    <state width="1780" height="212" key="GridCell.Tab.0.center/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.942@967.-1057.1920.1057" timestamp="1585076750001" />
+    <state width="1780" height="211" key="GridCell.Tab.0.center/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.947@967.-1057.1920.1057" timestamp="1585077047714" />
+    <state width="1780" height="428" key="GridCell.Tab.0.center/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.952@967.-1057.1920.1057" timestamp="1585076027417" />
+    <state width="1780" height="211" key="GridCell.Tab.0.left" timestamp="1585077575873">
+      <screen x="967" y="-1057" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="350" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584988429058" />
+    <state width="1878" height="304" key="GridCell.Tab.0.left/0.23.1440.779/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584922393439" />
+    <state width="1878" height="268" key="GridCell.Tab.0.left/0.23.1440.783/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584934654330" />
+    <state width="1878" height="268" key="GridCell.Tab.0.left/0.23.1440.788/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584934255083" />
+    <state width="1878" height="268" key="GridCell.Tab.0.left/0.23.1440.792/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584936491111" />
+    <state width="1878" height="268" key="GridCell.Tab.0.left/0.23.1440.795/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584931954418" />
+    <state width="1878" height="304" key="GridCell.Tab.0.left/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584902660862" />
+    <state width="1732" height="183" key="GridCell.Tab.0.left/1440.23.1920.1057/0.23.1440.788@1440.23.1920.1057" timestamp="1584998117460" />
+    <state width="1732" height="183" key="GridCell.Tab.0.left/1440.23.1920.1057/0.23.1440.792@1440.23.1920.1057" timestamp="1584996946258" />
+    <state width="1673" height="136" key="GridCell.Tab.0.left/1440.23.1920.1057/0.23.1440.795@1440.23.1920.1057" timestamp="1584992410355" />
+    <state width="1732" height="183" key="GridCell.Tab.0.left/1440.23.1920.952/0.23.1440.877@1440.23.1920.952" timestamp="1584996219261" />
+    <state width="1732" height="134" key="GridCell.Tab.0.left/1440.23.1920.956/0.23.1440.877@1440.23.1920.956" timestamp="1584995776765" />
+    <state width="1861" height="198" key="GridCell.Tab.0.left/967.-1057.1920.1057/0.23.1440.783/-958.-1057.1920.1057@967.-1057.1920.1057" timestamp="1585014161032" />
+    <state width="1861" height="59" key="GridCell.Tab.0.left/967.-1057.1920.1057/0.23.1440.788/-958.-1057.1920.1057@967.-1057.1920.1057" timestamp="1585005094312" />
+    <state width="1709" height="181" key="GridCell.Tab.0.left/967.-1057.1920.1057/0.23.1440.792/-958.-1057.1920.1057@967.-1057.1920.1057" timestamp="1585073698212" />
+    <state width="1709" height="181" key="GridCell.Tab.0.left/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.923@967.-1057.1920.1057" timestamp="1585066947866" />
+    <state width="1709" height="181" key="GridCell.Tab.0.left/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.930@967.-1057.1920.1057" timestamp="1585022582688" />
+    <state width="1780" height="211" key="GridCell.Tab.0.left/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.937@967.-1057.1920.1057" timestamp="1585077575873" />
+    <state width="1780" height="212" key="GridCell.Tab.0.left/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.942@967.-1057.1920.1057" timestamp="1585076750000" />
+    <state width="1780" height="211" key="GridCell.Tab.0.left/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.947@967.-1057.1920.1057" timestamp="1585077047713" />
+    <state width="1780" height="428" key="GridCell.Tab.0.left/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.952@967.-1057.1920.1057" timestamp="1585076027255" />
+    <state width="1780" height="211" key="GridCell.Tab.0.right" timestamp="1585077575874">
+      <screen x="967" y="-1057" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="350" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584988429061" />
+    <state width="1878" height="304" key="GridCell.Tab.0.right/0.23.1440.779/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584922393440" />
+    <state width="1878" height="268" key="GridCell.Tab.0.right/0.23.1440.783/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584934654332" />
+    <state width="1878" height="268" key="GridCell.Tab.0.right/0.23.1440.788/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584934255084" />
+    <state width="1878" height="268" key="GridCell.Tab.0.right/0.23.1440.792/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584936491113" />
+    <state width="1878" height="268" key="GridCell.Tab.0.right/0.23.1440.795/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584931954419" />
+    <state width="1878" height="304" key="GridCell.Tab.0.right/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584902660863" />
+    <state width="1732" height="183" key="GridCell.Tab.0.right/1440.23.1920.1057/0.23.1440.788@1440.23.1920.1057" timestamp="1584998117461" />
+    <state width="1732" height="183" key="GridCell.Tab.0.right/1440.23.1920.1057/0.23.1440.792@1440.23.1920.1057" timestamp="1584996946259" />
+    <state width="1673" height="136" key="GridCell.Tab.0.right/1440.23.1920.1057/0.23.1440.795@1440.23.1920.1057" timestamp="1584992410356" />
+    <state width="1732" height="183" key="GridCell.Tab.0.right/1440.23.1920.952/0.23.1440.877@1440.23.1920.952" timestamp="1584996219262" />
+    <state width="1732" height="134" key="GridCell.Tab.0.right/1440.23.1920.956/0.23.1440.877@1440.23.1920.956" timestamp="1584995776766" />
+    <state width="1861" height="198" key="GridCell.Tab.0.right/967.-1057.1920.1057/0.23.1440.783/-958.-1057.1920.1057@967.-1057.1920.1057" timestamp="1585014161033" />
+    <state width="1861" height="59" key="GridCell.Tab.0.right/967.-1057.1920.1057/0.23.1440.788/-958.-1057.1920.1057@967.-1057.1920.1057" timestamp="1585005094313" />
+    <state width="1709" height="181" key="GridCell.Tab.0.right/967.-1057.1920.1057/0.23.1440.792/-958.-1057.1920.1057@967.-1057.1920.1057" timestamp="1585073698215" />
+    <state width="1709" height="181" key="GridCell.Tab.0.right/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.923@967.-1057.1920.1057" timestamp="1585066947867" />
+    <state width="1709" height="181" key="GridCell.Tab.0.right/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.930@967.-1057.1920.1057" timestamp="1585022582689" />
+    <state width="1780" height="211" key="GridCell.Tab.0.right/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.937@967.-1057.1920.1057" timestamp="1585077575874" />
+    <state width="1780" height="212" key="GridCell.Tab.0.right/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.942@967.-1057.1920.1057" timestamp="1585076750001" />
+    <state width="1780" height="211" key="GridCell.Tab.0.right/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.947@967.-1057.1920.1057" timestamp="1585077047718" />
+    <state width="1780" height="428" key="GridCell.Tab.0.right/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.952@967.-1057.1920.1057" timestamp="1585076027443" />
+    <state width="1861" height="347" key="GridCell.Tab.1.bottom" timestamp="1585021473857">
+      <screen x="967" y="-1057" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="375" key="GridCell.Tab.1.bottom/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584829781048" />
+    <state width="1878" height="375" key="GridCell.Tab.1.bottom/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584841722176" />
+    <state width="1861" height="347" key="GridCell.Tab.1.bottom/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.930@967.-1057.1920.1057" timestamp="1585021473857" />
+    <state width="1861" height="347" key="GridCell.Tab.1.bottom/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.937@967.-1057.1920.1057" timestamp="1585016889925" />
+    <state width="1861" height="347" key="GridCell.Tab.1.center" timestamp="1585021473856">
+      <screen x="967" y="-1057" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="375" key="GridCell.Tab.1.center/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584829781047" />
+    <state width="1878" height="375" key="GridCell.Tab.1.center/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584841722175" />
+    <state width="1861" height="347" key="GridCell.Tab.1.center/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.930@967.-1057.1920.1057" timestamp="1585021473856" />
+    <state width="1861" height="347" key="GridCell.Tab.1.center/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.937@967.-1057.1920.1057" timestamp="1585016889923" />
+    <state width="1861" height="347" key="GridCell.Tab.1.left" timestamp="1585021473855">
+      <screen x="967" y="-1057" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="375" key="GridCell.Tab.1.left/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584829781046" />
+    <state width="1878" height="375" key="GridCell.Tab.1.left/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584841722175" />
+    <state width="1861" height="347" key="GridCell.Tab.1.left/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.930@967.-1057.1920.1057" timestamp="1585021473855" />
+    <state width="1861" height="347" key="GridCell.Tab.1.left/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.937@967.-1057.1920.1057" timestamp="1585016889921" />
+    <state width="1861" height="347" key="GridCell.Tab.1.right" timestamp="1585021473856">
+      <screen x="967" y="-1057" width="1920" height="1057" />
+    </state>
+    <state width="1878" height="375" key="GridCell.Tab.1.right/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584829781047" />
+    <state width="1878" height="375" key="GridCell.Tab.1.right/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584841722176" />
+    <state width="1861" height="347" key="GridCell.Tab.1.right/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.930@967.-1057.1920.1057" timestamp="1585021473856" />
+    <state width="1861" height="347" key="GridCell.Tab.1.right/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.937@967.-1057.1920.1057" timestamp="1585016889923" />
+    <state x="1262" y="-1012" key="SettingsEditor" timestamp="1585005573822">
+      <screen x="967" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="221" y="57" key="SettingsEditor/0.23.1440.790@0.23.1440.790" timestamp="1584553907028" />
+    <state x="1262" y="-1012" key="SettingsEditor/967.-1057.1920.1057/0.23.1440.788/-958.-1057.1920.1057@967.-1057.1920.1057" timestamp="1585005573822" />
+    <state x="1706" y="-795" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1585075260483">
+      <screen x="967" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="2179" y="268" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1584983577306" />
+    <state x="2179" y="285" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.23.1440.792/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584936068121" />
+    <state x="1706" y="-795" key="com.intellij.testIntegration.createTest.CreateTestDialog/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.947@967.-1057.1920.1057" timestamp="1585075260483" />
+    <state x="1584" y="-828" width="670" height="676" key="search.everywhere.popup" timestamp="1585016829818">
+      <screen x="967" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="1584" y="-828" width="670" height="676" key="search.everywhere.popup/967.-1057.1920.1057/0.23.1440.877/-958.-1057.1920.937@967.-1057.1920.1057" timestamp="1585016829818" />
+  </component>
+</project>

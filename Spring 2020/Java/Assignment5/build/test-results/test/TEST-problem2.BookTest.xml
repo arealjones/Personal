@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem2.BookTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-02-10T19:05:20" hostname="Areals-MacBook-Pro.local" time="0.001">
+  <properties/>
+  <testcase name="testToString" classname="problem2.BookTest" time="0.0"/>
+  <testcase name="getReleaseOrPublishedYear" classname="problem2.BookTest" time="0.0"/>
+  <testcase name="testHashCode" classname="problem2.BookTest" time="0.0"/>
+  <testcase name="setWrongYear" classname="problem2.BookTest" time="0.001"/>
+  <testcase name="testEquals" classname="problem2.BookTest" time="0.0"/>
+  <testcase name="getTitle" classname="problem2.BookTest" time="0.0"/>
+  <testcase name="getCreator" classname="problem2.BookTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

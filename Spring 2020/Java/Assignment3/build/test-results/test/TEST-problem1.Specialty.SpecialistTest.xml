@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="problem1.Specialty.SpecialistTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-01-28T22:07:17" hostname="Areals-MacBook-Pro.local" time="0.004">
+  <properties/>
+  <testcase name="getMonthly" classname="problem1.Specialty.SpecialistTest" time="0.0"/>
+  <testcase name="getPreviousServices" classname="problem1.Specialty.SpecialistTest" time="0.0"/>
+  <testcase name="testToString" classname="problem1.Specialty.SpecialistTest" time="0.001"/>
+  <testcase name="setComplex" classname="problem1.Specialty.SpecialistTest" time="0.0"/>
+  <testcase name="getAddress" classname="problem1.Specialty.SpecialistTest" time="0.0"/>
+  <testcase name="setMonthly" classname="problem1.Specialty.SpecialistTest" time="0.0"/>
+  <testcase name="rate" classname="problem1.Specialty.SpecialistTest" time="0.0"/>
+  <testcase name="isComplex" classname="problem1.Specialty.SpecialistTest" time="0.0"/>
+  <testcase name="testHashCode" classname="problem1.Specialty.SpecialistTest" time="0.0"/>
+  <testcase name="setNegativePrevious" classname="problem1.Specialty.SpecialistTest" time="0.0"/>
+  <testcase name="testEquals" classname="problem1.Specialty.SpecialistTest" time="0.0"/>
+  <testcase name="setAddress" classname="problem1.Specialty.SpecialistTest" time="0.0"/>
+  <testcase name="setMinimumEmployees" classname="problem1.Specialty.SpecialistTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CheckBox.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment7</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">CheckBox.java</span></div><h1>CheckBox.java</h1><pre class="source lang-java linenums">import java.util.Objects;
+
+/**
+ * Class representing a validator that handles a checkbox.
+ * @param &lt;T&gt; The Boolean object passed into the validator.
+ */
+public class CheckBox&lt;T extends Boolean&gt; extends AbstractValidator&lt;T&gt; {
+
+    /**
+     * Constructor for a CheckBox object.
+     */
+<span class="fc" id="L12">    public CheckBox() {</span>
+<span class="fc" id="L13">    }</span>
+
+    /**
+     * Checks if the user input is valid for a the field.
+     * @param input the user input
+     * @return True if the input is valid for the field, false otherwise.
+     */
+    @Override
+    public boolean isValid(T input) {
+<span class="fc" id="L22">        return true;</span>
+    }
+
+    /**
+     * Generates a String representation of a Checkbox object.
+     * @return A Checkbox object represented in String format.
+     */
+    @Override
+    public String toString() {
+<span class="fc" id="L31">        return super.toString() + &quot; Checkbox.&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

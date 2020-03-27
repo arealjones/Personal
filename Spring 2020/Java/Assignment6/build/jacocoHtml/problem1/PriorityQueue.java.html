@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PriorityQueue.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment6</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">PriorityQueue.java</span></div><h1>PriorityQueue.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.util.NoSuchElementException;
+import java.util.Objects;
+
+/**
+ * PriorityQueue is an object that contains values and their priorities. */
+public class PriorityQueue implements IPriorityQueue {
+  private Integer priority;
+  private String value;
+  private IPriorityQueue rest;
+
+  /**
+   * Constructor that creates a new priority queue if there is only one value.
+   * @param priority The priority of the value.
+   * @param value The first value in the queue. */
+<span class="fc" id="L17">  public PriorityQueue(Integer priority, String value) {</span>
+<span class="fc" id="L18">    this.priority = priority;</span>
+<span class="fc" id="L19">    this.value = value;</span>
+<span class="fc" id="L20">    this.rest = new EmptyQueue();</span>
+<span class="fc" id="L21">  }</span>
+  /**
+   * Constructor that creates a new priority queue with the priority of the first value, the value,
+   * and the rest of the queue.
+   * @param priority The priority of the first value.
+   * @param value The first value in the queue.
+   * @param rest The rest of the queue. */
+<span class="fc" id="L28">  public PriorityQueue(Integer priority, String value, IPriorityQueue rest) {</span>
+<span class="fc" id="L29">    this.priority = priority;</span>
+<span class="fc" id="L30">    this.value = value;</span>
+<span class="fc" id="L31">    this.rest = rest;</span>
+<span class="fc" id="L32">  }</span>
+
+  /**
+   * Returns the priority for the value.
+   * @return Returns the priority for the value. */
+  public Integer getPriority() {
+<span class="fc" id="L38">    return this.priority;</span>
+  }
+
+  /**
+   * Returns the value.
+   * @return Returns the value. */
+  public String getValue() {
+<span class="fc" id="L45">    return this.value;</span>
+  }
+
+  /**
+   * Returns the rest of the priority list.
+   * @return Returns the rest of the priority list. */
+  public IPriorityQueue getRest() {
+<span class="fc" id="L52">    return this.rest;</span>
+  }
+
+  /**
+   * Returns an empty priority queue.
+   * @return Returns an empty priority queue. */
+  @Override
+  public IPriorityQueue createEmpty() {
+<span class="fc" id="L60">    return new EmptyQueue();</span>
+  }
+
+  /**
+   * Returns true if the PQ is empty, false otherwise.
+   * @return Returns true if the PQ is empty, false otherwise. */
+  @Override
+  public Boolean isEmpty() {
+<span class="fc" id="L68">    return false;</span>
+  }
+
+  /**
+   * Returns the PQ with the value and priority added.
+   * @param priority The priority of the value.
+   * @param value The value to be added.
+   * @return Returns the PQ with the value and priority added. */
+  @Override
+  public PriorityQueue add(Integer priority, String value) {
+<span class="fc bfc" id="L78" title="All 2 branches covered.">    if (priority &gt;= this.priority) {</span>
+<span class="fc" id="L79">      return new PriorityQueue(priority, value,</span>
+          new PriorityQueue(this.priority, this.value, this.rest));
+    } else {
+<span class="fc" id="L82">      return new PriorityQueue(this.priority, this.value, this.rest.add(priority, value));</span>
+    }
+  }
+
+  /**
+   * Returns value with the highest priority. If there are multiple values with the same priority,
+   * it will return the first one.
+   * @return Returns value with the highest priority.
+   * @throws IllegalArgumentException Throws if the PQ is empty. */
+  @Override
+  public String peek() throws NoSuchElementException {
+<span class="fc" id="L93">    return this.value;</span>
+  }
+
+  /**
+   * Returns a copy of the PQ without the element that has the highest priority.
+   * @return Returns a copy of the PQ without the element that has the highest priority.
+   * @throws IllegalArgumentException Throws if the PQ is empty. */
+  @Override
+  public PriorityQueue pop() throws NoSuchElementException {
+<span class="fc" id="L102">    this.rest = this.rest.getRest();</span>
+<span class="fc" id="L103">    return new PriorityQueue(this.rest.getPriority(), this.rest.getValue(), this.rest.getRest());</span>
+  }
+
+  /**
+   * Returns true if the current object is equal to the one being compared.
+   * @param o The object being compared.
+   * @return True or false. */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L112" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L113">      return true;</span>
+    }
+<span class="pc bpc" id="L115" title="1 of 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L116">      return false;</span>
+    }
+<span class="fc" id="L118">    PriorityQueue that = (PriorityQueue) o;</span>
+<span class="pc bpc" id="L119" title="1 of 2 branches missed.">    return Objects.equals(priority, that.priority) &amp;&amp;</span>
+<span class="pc bpc" id="L120" title="1 of 2 branches missed.">        Objects.equals(value, that.value) &amp;&amp;</span>
+<span class="pc bpc" id="L121" title="1 of 2 branches missed.">        Objects.equals(rest, that.rest);</span>
+  }
+
+  /**
+   * Returns true or false based on if the location of the object are the same.
+   * @return Returns true or false. */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L129">    return Objects.hash(priority, value, rest);</span>
+  }
+
+  /**
+   * Returns a string explaining the value and their priority that are in the priority queue.
+   * @return Returns a string explaining the value and their priority that are in the
+   * priority queue. */
+  @Override
+  public String toString() {
+<span class="fc" id="L138">    return &quot;PriorityQueue: Priority is &quot; + priority + &quot;, Value is: &quot; + value + &quot;, and Rest is: &quot; +</span>
+        rest + '.';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Time.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment1</a> &gt; <a href="index.source.html" class="el_package">problem2</a> &gt; <span class="el_source">Time.java</span></div><h1>Time.java</h1><pre class="source lang-java linenums">package problem2;
+/**
+ * Time is an object that contains the hours, minutes, and seconds of a run. */
+public class Time {
+    private int hour;
+    private int minutes;
+    private int seconds;
+    /**
+     * Constructor that creates the hours, minutes, and seconds of a run.
+     * @param hour Hours of the run.
+     * @param minutes Minutes of the run.
+     * @param seconds Seconds of the run. */
+<span class="fc" id="L13">    public Time(int hour, int minutes, int seconds) {</span>
+<span class="fc" id="L14">        this.hour = hour;</span>
+<span class="fc" id="L15">        this.minutes = minutes;</span>
+<span class="fc" id="L16">        this.seconds = seconds;</span>
+<span class="fc" id="L17">    }</span>
+    /**
+     * Sets the hours of a run.
+     * @param hour Sets the hours of a run. */
+    public void setHour(int hour) {
+<span class="fc" id="L22">        this.hour = hour;</span>
+<span class="fc" id="L23">    }</span>
+    /**
+     * Sets the minutes of a run.
+     * @param minutes Sets the minutes of a run. */
+    public void setMinutes(int minutes) {
+<span class="fc" id="L28">        this.minutes = minutes;</span>
+<span class="fc" id="L29">    }</span>
+    /**
+     * Sets the seconds of a run.
+     * @param seconds Sets the seconds of a run. */
+    public void setSeconds(int seconds) {
+<span class="fc" id="L34">        this.seconds = seconds;</span>
+<span class="fc" id="L35">    }</span>
+    /**
+     * Returns the hours of a run.
+     * @return Returns the hours of a run. */
+    public int getHour() {
+<span class="fc" id="L40">        int minHour = 0;</span>
+<span class="fc" id="L41">        int maxHour = 23;</span>
+<span class="fc" id="L42">        int none = -1;</span>
+<span class="fc bfc" id="L43" title="All 4 branches covered.">        if ((minHour &lt;= hour) &amp;&amp; (hour &lt;= maxHour)) {</span>
+<span class="fc" id="L44">            return hour;</span>
+        }
+        else {
+<span class="fc" id="L47">            return none;</span>
+        }
+    }
+    /**
+     * Returns the minutes of a run.
+     * @return Returns the minutes of a run. */
+    public int getMinutes() {
+<span class="fc" id="L54">        int minMinute = 0;</span>
+<span class="fc" id="L55">        int maxMinute = 59;</span>
+<span class="fc" id="L56">        int none = -1;</span>
+<span class="fc bfc" id="L57" title="All 4 branches covered.">        if ((minMinute &lt;= minutes) &amp;&amp; (minutes &lt;= maxMinute)) {</span>
+<span class="fc" id="L58">            return minutes;</span>
+        }
+        else {
+<span class="fc" id="L61">            return none;</span>
+        }
+    }
+    /**
+     * Returns the seconds of a run.
+     * @return Returns the seconds of a run. */
+    public int getSeconds() {
+<span class="fc" id="L68">        int minSeconds = 0;</span>
+<span class="fc" id="L69">        int maxSeconds = 59;</span>
+<span class="fc" id="L70">        int none = -1;</span>
+<span class="fc bfc" id="L71" title="All 4 branches covered.">        if ((minSeconds &lt;= seconds) &amp;&amp; (seconds &lt;= maxSeconds)) {</span>
+<span class="fc" id="L72">            return seconds;</span>
+        }
+        else {
+<span class="fc" id="L75">            return none;</span>
+        }
+    }
+    /**
+     * Returns the total number of seconds for the run. It breaks down the hours and minutes.
+     * @return Returns the total number of seconds for the run. It breaks down the hours and minutes. */
+    public int getFullSeconds() {
+<span class="fc" id="L82">        int newMinutes = ((hour * 60) + minutes);</span>
+<span class="fc" id="L83">        int newSeconds = ((newMinutes * 60) + seconds);</span>
+<span class="fc" id="L84">        return newSeconds;</span>
+    }
+    /**
+     * Returns a string of the full time it takes to run.
+     * @return Returns a string of the full time it takes to run. */
+    public String getFullTime() {
+<span class="fc" id="L90">        int none = -1;</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">        if (getHour() != none) {</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">            if (getMinutes() != none) {</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">                if (getSeconds() != none) {</span>
+<span class="fc" id="L94">                    return (hour + &quot; hours, &quot; + minutes + &quot; minutes, and &quot; + seconds + &quot; seconds.&quot;);</span>
+                }
+            }
+        }
+<span class="fc" id="L98">        return &quot;The time is out of range.&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

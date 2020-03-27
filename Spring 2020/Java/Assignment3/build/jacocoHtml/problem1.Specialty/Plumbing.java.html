@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Plumbing.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment3</a> &gt; <a href="index.source.html" class="el_package">problem1.Specialty</a> &gt; <span class="el_source">Plumbing.java</span></div><h1>Plumbing.java</h1><pre class="source lang-java linenums">package problem1.Specialty;
+
+import problem1.Interfaces.Fees;
+import problem1.PropertySize;
+/**
+ * Plumbing is an object that contains the fees and price of the service. */
+public class Plumbing extends Specialist implements Fees {
+  /**
+   *Constructor that creates a new plumbing service with the information about the property,
+   * rates, and complexity for the plumbing services.
+   * @param monthly If the service happens monthly.
+   * @param address The address of the property.
+   * @param previousServices How many times has the property been serviced before.
+   * @param size The size of the property.
+   * @param complex If the service is complex. */
+  public Plumbing(boolean monthly, String address, int previousServices, PropertySize size,
+      boolean complex, int employees) {
+<span class="fc" id="L18">    super(monthly, address, previousServices, size, complex, employees);</span>
+<span class="fc" id="L19">  }</span>
+  /**
+   * Returns the permit fee for service.
+   * @return Returns the permit fee for service. */
+  @Override
+  public double fee() {
+<span class="fc" id="L25">    int permitFee = 20;</span>
+<span class="fc" id="L26">    return permitFee;</span>
+  }
+  /**
+   * Returns the price of service based on the rate, number of employees and fee.
+   * @return Returns the price of service based on the rate, number of employees and fee. */
+  public double calculatePrice() {
+<span class="fc" id="L32">    return ((rate() * super.getEmployees()) + fee());</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

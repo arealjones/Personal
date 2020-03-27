@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Dinner.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment2</a> &gt; <a href="index.source.html" class="el_package">catering</a> &gt; <span class="el_source">Dinner.java</span></div><h1>Dinner.java</h1><pre class="source lang-java linenums">package catering;
+/**
+ * Dinner is an object that contains the name of the event, number of people attending,
+ * number of non-vegetarian dishes needed, and number of vegetarian dishes needed. */
+public class Dinner extends Events {
+  private int numberNonVegetarian;
+  private int numberVegetarian;
+  /**
+   * Constructor that creates a new dinner object with the event name, number of people, number
+   * of non-vegetarian and vegetarian dishes needed.
+   * @param name The name of the event.
+   * @param numberOfPeople The number of people attending.
+   * @param numberNonVegetarian The number of non-vegetarian dishes needed.
+   * @param numberVegetarian The number of vegetarian dishes needed. */
+  public Dinner(String name, int numberOfPeople, int numberNonVegetarian, int numberVegetarian) {
+<span class="fc" id="L16">    super(name, numberOfPeople);</span>
+<span class="fc" id="L17">    this.numberNonVegetarian = numberNonVegetarian;</span>
+<span class="fc" id="L18">    this.numberVegetarian = numberVegetarian;</span>
+<span class="fc" id="L19">  }</span>
+  /**
+   * Returns true if the amount of people attending is within the constraints of this type of
+   * event and false otherwise.
+   * @return Returns true if between 10 and 50 people. */
+  private boolean correctAmountOfPeople() {
+<span class="fc" id="L25">    int minAmount = 10;</span>
+<span class="fc" id="L26">    int maxAmount = 50;</span>
+<span class="fc bfc" id="L27" title="All 4 branches covered.">    if ((super.getNumberOfPeople() &gt;= minAmount) &amp;&amp; (super.getNumberOfPeople() &lt;= maxAmount)) {</span>
+<span class="fc" id="L28">      return true;</span>
+    }
+    else {
+<span class="fc" id="L31">      return false;</span>
+    }
+  }
+  /**
+   * Assigns the number of non-vegetarian and vegetarian required if there is the correct amount
+   * of people attending. It will throw an exception otherwise.
+   * @throws InvalidAmountOfPeopleException Will throw a string stating that there is not enough
+   * or too many people attending for this event. */
+  public void setNumberPlates() throws InvalidAmountOfPeopleException {
+<span class="fc" id="L40">    double percentNonVegetarian = .80;</span>
+<span class="fc" id="L41">    double percentVegetarian = .20;</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">    if (correctAmountOfPeople()) {</span>
+<span class="fc" id="L43">      int nonVegetarian = (int) Math.round(super.getNumberOfPeople() * percentNonVegetarian);</span>
+<span class="fc" id="L44">      int vegetarian = (int) Math.round(super.getNumberOfPeople() * percentVegetarian);</span>
+<span class="fc" id="L45">      this.numberNonVegetarian = nonVegetarian;</span>
+<span class="fc" id="L46">      this.numberVegetarian = vegetarian;</span>
+<span class="fc" id="L47">    }</span>
+    else {
+<span class="fc" id="L49">      throw new InvalidAmountOfPeopleException();</span>
+    }
+<span class="fc" id="L51">  }</span>
+  /**
+   * Returns the number of non-vegetarian dishes required for the event.
+   * @return Returns the number of non-vegetarian dishes required for the event. */
+  public int getNumberNonVegetarian() {
+<span class="fc" id="L56">    return numberNonVegetarian;</span>
+  }
+  /**
+   * Returns the number of vegetarian dishes required for the event.
+   * @return Returns the number of vegetarian dishes required for the event. */
+  public int getNumberVegetarian() {
+<span class="fc" id="L62">    return numberVegetarian;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,11 @@
+-classpath '/Users/arealjones/Desktop/Python/Student_repo_Areal_Jones/Assignments/Assignment 1/build/classes/java/main:/Users/arealjones/Desktop/Python/Student_repo_Areal_Jones/Assignments/Assignment 1/build/resources/main'
+-d '/Users/arealjones/Desktop/Python/Student_repo_Areal_Jones/Assignments/Assignment 1/build/docs/javadoc'
+-doctitle 'Assignment1 1.0-SNAPSHOT API'
+-quiet 
+-windowtitle 'Assignment1 1.0-SNAPSHOT API'
+'/Users/arealjones/Desktop/Python/Student_repo_Areal_Jones/Assignments/Assignment 1/src/main/java/problem1/Owner.java'
+'/Users/arealjones/Desktop/Python/Student_repo_Areal_Jones/Assignments/Assignment 1/src/main/java/problem1/Vehicle.java'
+'/Users/arealjones/Desktop/Python/Student_repo_Areal_Jones/Assignments/Assignment 1/src/main/java/problem2/Time.java'
+'/Users/arealjones/Desktop/Python/Student_repo_Areal_Jones/Assignments/Assignment 1/src/main/java/problem2/Runner.java'
+'/Users/arealjones/Desktop/Python/Student_repo_Areal_Jones/Assignments/Assignment 1/src/main/java/problem3/Amount.java'
+'/Users/arealjones/Desktop/Python/Student_repo_Areal_Jones/Assignments/Assignment 1/src/main/java/problem3/Account.java'

@@ -1,0 +1,212 @@
+Final Project:
+	Flow of Control:
+		Start of Game:
+			-Draw board and four tiles.
+			-I want a timer to appear on the screen for each player.
+			-I want the totals for each player to appear on the screen and stay there while they play so they can see how they are doing during the game? Hopefully.
+			-The person is the black tile, the computer is the white tile. 
+			-The black tile will always go first in each game and they will alternate.
+			-I would like to print instructions to the screen explaining how to play the game. I am not sure if this is possible yet... The instructions would say:
+				"Flip your opponents pieces by trapping them between two of your own. Your aim is to own more pieces than your opponent when the game is over.”
+
+		"While Game Not Over": is technically in the board class and I think I will be keeping it there for assignment 7 as well. It contains the following:
+			if remaining tiles > zero:
+				if turn is Black:
+					if it is a valid move:
+						-draw circle with black filling
+						-subtract one from the total remaining tiles
+						-add one to the total amount that black has
+						-change the turn to white
+					else:
+						-inform the player that they made an invalid move.
+				if turn is White:
+					if it is a valid move:
+						-draw circle with white filling
+						-subtract one from the total remaining tiles
+						-add one to the total amount that white has
+						-change the turn to black
+			if remaining tiles is zero:
+				call the winner helper function to print who won and their amount of tiles.
+
+		Users Turn:
+			-When the user tries to make an illegal move: 
+				-I currently have a valid move helper function that returns a boolean. I am calling it into my "while game not over" function. 
+				-It won't flip over any tiles if the player clicked a tile that is technically "out of bounds" of their choices.
+			-When the user makes a legal move: 
+				-I currently have it drawing a circle, filling it with the proper color and then alternating to the other player.
+				-I will call the moves class to determine the options that they have to choose from and will flip the correct amount of tiles.
+				-Based on the moves class, if the user does not have any more legal moves, it will print to the screen informing them and switches to the computer.
+
+		Computers Turn:
+			-It will always make a legal move. It will call the AI class.
+			-If it runs out of legal moves due to the choices of the user, the turn will skip the computer and return to the user. 
+
+		End of Game:
+			-I currently have the following statements being printed to the terminal:
+				-Saying "congrats, you won!" if they got more tiles than the other player.
+				-The game asking the winner what their name is. 
+				-Printing their name, the amount of tiles each player has, and the timer for each player.
+			-I would like to actually print everything to the screen instead of the terminal for a better experience. 
+			-I want to print the leadership board to the screen as well if possible.
+
+
+	Main Function: My main function currently includes the following.
+		from board import Board
+		
+		def main():
+			b = Board(4)
+			b.draw_board()
+
+		main()
+
+		I will more than likely only have this within the main function since most of my stuff needs to run based on the board. 
+		I will be calling the remaining classes into the Board class for assignment 7.
+
+
+	Classes:
+		-Board: These are my additions for assignment 7.
+			-Adding a timer to the board for each player.
+			-Adding the count of tiles to the board for each player.
+			-Calling the moves class to determine which spots would be flipped based on where the user clicks.
+			-Calling the scores class to load the leadership board to the screen once the game is over. I will be sorting the list each time if that player has the new high score.
+			
+		-Moves:
+			-Will monitor the choices that each player has after the other made a move.
+			-Will flip the correct amount of tiles.
+
+		-AI: I'm not quite sure how this works so my ideas are probably really wrong.
+
+		-Scores:
+			-This class will maintain the scores and will print the leadership board to the screen at the end of the game.
+			-It will also generate a scores file that will pop up outside of the game screen that contains all of names of people who have played and their scores.
+			-The format is one score per line with a space between the users name (String) and their scores (Integers). 
+			-The highest score is always the first entry in the file. 
+			-Repeated usernames are okay, they would just appear twice in the file.
+
+
+
+	Properties and Methods:
+	These are the classes I have in mind and my ideas for the functions within the key method of each.
+		-Board:
+			draw_board(self):
+				NUM_SIDES = 4
+				RIGHT_ANGLE = 90
+				turtle.setup(self.size * SQUARE + SQUARE, self.size * SQUARE + SQUARE)
+        			turtle.screensize(self.size * SQUARE, self.size * SQUARE)
+        			turtle.bgcolor("white")
+
+        			# Create the turtle to draw the board
+        			self.othello = turtle.Turtle()
+        			self.othello.penup()
+        			self.othello.speed(0)
+        			self.othello.hideturtle()
+
+        			# Line color is black, fill color is green
+        			self.othello.color("black", "forest green")
+        
+        			# Move the turtle to the upper left corner
+        			corner = -self.size * SQUARE / 2
+        			self.othello.setposition(corner, corner)
+    
+        			# Draw the green background
+        			self.othello.begin_fill()
+        			for i in range(NUM_SIDES):
+            				self.othello.pendown()
+            				self.othello.forward(SQUARE * self.size)
+            				self.othello.left(RIGHT_ANGLE)
+        			self.othello.end_fill()
+
+        			# Draw the horizontal lines
+        			for i in range(self.size + 1):
+            				self.othello.setposition(corner, SQUARE * i + corner)
+            				self.draw_lines(self.othello, self.size)
+
+        			# Draw the vertical lines
+        			self.othello.left(RIGHT_ANGLE)
+        			for i in range(self.size + 1):
+            				self.othello.setposition(SQUARE * i + corner, corner)
+            				self.draw_lines(self.othello, self.size)
+
+       				# Sets the first turn for black.
+        			self.turn = "black"
+        			# These are the remaining tiles on the board after the initial four are set.
+        			self.remaining_tiles = 12
+        			# Tracking the amount of tiles black wins.
+        			self.black_tile = 0
+        			# Tracking the amount of tiles white wins.
+        			self.white_tile = 0
+        			# Nested list of the empty and filled positions on the board.
+        			self.tiles_on_board = [
+            				[0, 0, 0, 0],
+            				[0, 1, 1, 0],
+            				[0, 1, 1, 0],
+            				[0, 0, 0, 0],
+        			]
+        
+        			# Draw the 4 start pieces
+        			self.start_pieces()
+
+        			# Get the reference to the screen
+        			screen = turtle.Screen()
+
+        			#This is the tile of the screen to welcome the player.
+        			screen.title("Welcome to Othello!")
+
+        			# Listens for click events and alternates between the players.
+        			screen.onclick(self.whose_turn)
+
+        			# Stops the window from closing
+        			turtle.done()
+
+
+		-Moves:
+			monitor_moves(self):
+				# Nested list of the tiles on the board. This nested list is different than the boards current one because all tiles are options.
+				self.tiles_on_board = [
+            				[0, 0, 0, 0],
+            				[0, 0, 0, 0],
+            				[0, 0, 0, 0],
+            				[0, 0, 0, 0],
+        			]
+				# A function to determine the amount of options there are for each tile in the board before the game starts.
+				Should this be a dictionary or tuple instead?
+				def options(self):
+					if tiles_on_board[0][0] == 0:
+						tile1: tiles_on_board[0][1], tiles_on_board[1][0], tiles_on_board[1][1]
+						return tile1
+					elif tiles_on_board[0][1] == 0:
+						tile2: tiles_on_board[0][0], tiles_on_board[1][0], tiles_on_board[1][2], tiles_on_board[1][1], tiles_on_board[0][2]
+						return tile2
+					elif tiles_on_board[0][2] == 0:
+						tile3: tiles_on_board[0][1], tiles_on_board[1][3], tiles_on_board[1][2], tiles_on_board[1][1], tiles_on_board[0][3]
+						return tile3
+					and so forth for each tile in the board.
+	
+					
+				def flip(self):
+					if turn == "Black":
+						if options == tile1:
+							draw(x, y, "black")
+						if options == tile2:
+							draw(x, y, "black")
+						and so forth for each tile in the board.
+
+		-AI: 
+			smart_ai_you_are(self):
+				I don't have a good idea for how to do the AI side of this game. I will be creating an AI class though. 
+				-Determining a clever move.
+				-Pick next move.
+
+
+		-Scores:
+			# I was thinking about creating a nested list to contain the names and scores of each game.
+			leadership(self):
+				self.scores = [
+				["name", "score"]
+				["name", "score"]
+				["name", "score"]
+				["name", "score"]
+				["name", "score"]
+			]
+
+	Functions I'll Need Outside a Class: I don't think I will need any functions outside each of my class functions. I don't plan on putting much in the main function.

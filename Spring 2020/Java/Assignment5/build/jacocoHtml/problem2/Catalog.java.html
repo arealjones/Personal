@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Catalog.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment5</a> &gt; <a href="index.source.html" class="el_package">problem2</a> &gt; <span class="el_source">Catalog.java</span></div><h1>Catalog.java</h1><pre class="source lang-java linenums">package problem2;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * Catalog is an object that contains a collection of items made by authors, recording artists,
+ * or bands. */
+public class Catalog {
+  private List&lt;AbstractItems&gt; items;
+
+  /**
+   * Constructor that creates an empty catalog. */
+<span class="fc" id="L15">  public Catalog() {</span>
+<span class="fc" id="L16">    this.items = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L17">  }</span>
+
+  /**
+   * Constructor that creates a catalog with already determined items.
+   * @param items The items in the collection. */
+<span class="fc" id="L22">  public Catalog(List&lt;AbstractItems&gt; items) {</span>
+<span class="fc" id="L23">    this.items = items;</span>
+<span class="fc" id="L24">  }</span>
+
+  /**
+   * Searches the catalog for the keyword and returns a new array with the items containing the
+   * keyword.
+   * @param keyword The word to be searched.
+   * @return A new array with the items that contained the keyword. */
+  public List&lt;AbstractItems&gt; search(String keyword) {
+<span class="fc" id="L32">    List&lt;AbstractItems&gt; newlist = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">    for (int i=0; i&lt;items.size(); i++) {</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">      if (items.get(i).getTitle().toLowerCase().contains(keyword.toLowerCase())) {</span>
+<span class="fc" id="L35">        newlist.add(items.get(i));</span>
+      }
+    }
+<span class="fc" id="L38">    return newlist;</span>
+  }
+
+  /**
+   * Searches the catalog for the author and returns a new array with the items that the author
+   * wrote.
+   * @param author The author to be searched for.
+   * @return A new array with the items that contained the keyword. */
+  public List&lt;AbstractItems&gt; search(Author author) {
+<span class="fc" id="L47">    List&lt;AbstractItems&gt; newlist = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">    for (int i=0; i&lt;items.size(); i++) {</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">      if ((items.get(i).getCreator() instanceof Author) &amp;&amp;</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">          (items.get(i). getCreator() == author)) {</span>
+<span class="fc" id="L51">        newlist.add(items.get(i));</span>
+      }
+    }
+<span class="fc" id="L54">    return newlist;</span>
+  }
+
+  /**
+   * Searches the catalog for the artist and returns a new array with the items that the artist
+   * created.
+   * @param artist The artist to be searched for.
+   * @return A new array with the items that contained the keyword. */
+  public List&lt;AbstractItems&gt; search(RecordingArtist artist) {
+<span class="fc" id="L63">    List&lt;AbstractItems&gt; newlist = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">    for (int i=0; i&lt;items.size(); i++) {</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">      if (items.get(i).getCreator() instanceof RecordingArtist) {</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">        if (items.get(i).getCreator() == artist) {</span>
+<span class="fc" id="L67">          newlist.add(items.get(i));</span>
+        }
+      }
+<span class="fc bfc" id="L70" title="All 2 branches covered.">      else if (items.get(i).getCreator() instanceof Band) {</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">        if (items.get(i).getCreator().bandContainsArtist(artist)) {</span>
+<span class="fc" id="L72">          newlist.add(items.get(i));</span>
+        }
+      }
+    }
+<span class="fc" id="L76">    return newlist;</span>
+  }
+
+  /**
+   * Adds a new item to the collection.
+   * @param item A item such as a book or piece of music. */
+  public void addItem(AbstractItems item) {
+<span class="fc" id="L83">    items.add(item);</span>
+<span class="fc" id="L84">  }</span>
+
+  /**
+   * Checks if the item exists in the collection. If it does, it will remove it, otherwise it will
+   * throw an exception.
+   * @param item An item to be removed.
+   * @throws IllegalArgumentException Thrown if the item doesnt exists in the collection. */
+  public void removeItem(AbstractItems item) throws IllegalArgumentException {
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">    if (items.contains(item)) {</span>
+<span class="nc" id="L93">      items.remove(item);</span>
+    } else {
+<span class="fc" id="L95">      throw new IllegalArgumentException();</span>
+    }
+<span class="nc" id="L97">  }</span>
+
+  /**
+   * Returns true or false based on if the current object is the same as the one being compared.
+   * @param o The object being compared.
+   * @return Returns true or false. */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L105" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L106">      return true;</span>
+    }
+<span class="pc bpc" id="L108" title="1 of 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L109">      return false;</span>
+    }
+<span class="fc" id="L111">    Catalog catalog = (Catalog) o;</span>
+<span class="fc" id="L112">    return Objects.equals(items, catalog.items);</span>
+  }
+
+  /**
+   * Returns true or false based on if the location of the object are the same.
+   * @return Returns true or false. */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L120">    return Objects.hash(items);</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L125">    return &quot;Collection Contains: &quot; + items.size() + &quot; items.&quot;;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="assignment8.TemplateProcessorTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-03-24T19:09:06" hostname="Areals-MacBook-Pro.local" time="0.069">
+  <properties/>
+  <testcase name="invalidReadFile" classname="assignment8.TemplateProcessorTest" time="0.004"/>
+  <testcase name="invalidCreateFiles" classname="assignment8.TemplateProcessorTest" time="0.04"/>
+  <testcase name="testToString" classname="assignment8.TemplateProcessorTest" time="0.009"/>
+  <testcase name="getOutputLocation" classname="assignment8.TemplateProcessorTest" time="0.0"/>
+  <testcase name="createFiles" classname="assignment8.TemplateProcessorTest" time="0.005"/>
+  <testcase name="getTemplate" classname="assignment8.TemplateProcessorTest" time="0.001"/>
+  <testcase name="testHashCode" classname="assignment8.TemplateProcessorTest" time="0.001"/>
+  <testcase name="testEquals" classname="assignment8.TemplateProcessorTest" time="0.001"/>
+  <testcase name="getCsvHeaders" classname="assignment8.TemplateProcessorTest" time="0.001"/>
+  <testcase name="getCsvLine" classname="assignment8.TemplateProcessorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractDonations.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment5</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">AbstractDonations.java</span></div><h1>AbstractDonations.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.time.LocalDate;
+import java.util.Objects;
+
+/**
+ * AbstractDonations is an object that contains the information about the donation. */
+public abstract class AbstractDonations {
+  private double amount;
+  protected LocalDate creationDate;
+  protected LocalDate donationDate;
+  protected LocalDate cancellationDate;
+
+  /**
+   * Constructor that creates a donation with the amount and todays date. This is for onetime
+   * payments or if they do not provide a donation date.
+   * @param amount The amount donated. */
+<span class="fc" id="L18">  public AbstractDonations(double amount) {</span>
+<span class="fc" id="L19">    this.amount = setAmount(amount);</span>
+<span class="fc" id="L20">    this.creationDate = creationDate.now();</span>
+<span class="fc" id="L21">  }</span>
+
+  /**
+   * Constructor that creates a donation with the amount and creation date that they provided.
+   * @param amount The amount donated.
+   * @param creationDate The creation date that they provided. */
+<span class="fc" id="L27">  public AbstractDonations(double amount, LocalDate creationDate) {</span>
+<span class="fc" id="L28">    this.amount = setAmount(amount);</span>
+<span class="fc" id="L29">    this.creationDate = setCreationDate(creationDate);</span>
+<span class="fc" id="L30">    this.cancellationDate = null;</span>
+<span class="fc" id="L31">  }</span>
+
+  /**
+   * Constructor that creates a donation with the amount, creation date, and donation date that
+   * they provided.
+   * @param amount The amount donated.
+   * @param creationDate The creation date that they provided.
+   * @param donationDate The donation date that they provided. */
+<span class="fc" id="L39">  public AbstractDonations(double amount, LocalDate creationDate, LocalDate donationDate) {</span>
+<span class="fc" id="L40">    this.amount = setAmount(amount);</span>
+<span class="fc" id="L41">    this.creationDate = setCreationDate(creationDate);</span>
+<span class="fc" id="L42">    this.donationDate = setDonationDate(donationDate);</span>
+<span class="fc" id="L43">    this.cancellationDate = null;</span>
+<span class="fc" id="L44">  }</span>
+
+  /**
+   * Returns the donation date.
+   * @return Returns the donation date. */
+  public LocalDate getDonationDate() {
+<span class="fc" id="L50">    return this.donationDate;</span>
+  }
+
+  /**
+   * Sets the initial donation date.
+   * @param donationDate The donation date.
+   * @return The field with the date as a Local Date. */
+  private LocalDate setDonationDate(LocalDate donationDate) {
+<span class="fc" id="L58">    return this.donationDate = donationDate;</span>
+  }
+
+  /**
+   * Returns the cancellation date.
+   * @return Returns the cancellation date. */
+  public LocalDate getCancellationDate() {
+<span class="fc" id="L65">    return this.cancellationDate;</span>
+  }
+
+  /**
+   * Allows the user to set the cancellation date.
+   * @param cancellationDate The cancellation date.
+   * @throws IllegalArgumentException Throws if the cancellation date is in the past. */
+  public void setCancellationDate(LocalDate cancellationDate) throws IllegalArgumentException {
+<span class="fc bfc" id="L73" title="All 2 branches covered.">    if (!checkInPast(cancellationDate)) {</span>
+<span class="fc" id="L74">      this.cancellationDate = cancellationDate;</span>
+    } else {
+<span class="fc" id="L76">      throw new IllegalArgumentException();</span>
+    }
+<span class="fc" id="L78">  }</span>
+
+  /**
+   * Returns the amount donated.
+   * @return Returns the amount donated. */
+  public double getAmount() {
+<span class="fc" id="L84">    return this.amount;</span>
+  }
+
+  /**
+   * Checks if the amount is a negative number and then sets it.
+   * @param amount The amount donated.
+   * @return The field with the amount.
+   * @throws IllegalArgumentException Throws if the amount is negative. */
+  private double setAmount(double amount) throws IllegalArgumentException {
+<span class="fc bfc" id="L93" title="All 2 branches covered.">    if (amount &lt; 0) {</span>
+<span class="fc" id="L94">      throw new IllegalArgumentException();</span>
+    }
+<span class="fc" id="L96">    return this.amount = amount;</span>
+  }
+
+  /**
+   * Returns the creation date.
+   * @return Returns the creation date. */
+  public LocalDate getCreationDate() {
+<span class="fc" id="L103">    return this.creationDate;</span>
+  }
+
+  /**
+   * Allows the user to set a future creation date when they first set the donation.
+   * @param creationDate The creation date.
+   * @return The field with the date as a Local Date. */
+  private LocalDate setCreationDate(LocalDate creationDate) {
+<span class="fc bfc" id="L111" title="All 2 branches covered.">    if (creationDate.isBefore(LocalDate.now())) {</span>
+<span class="fc" id="L112">      return this.creationDate = creationDate.now();</span>
+    } else {
+<span class="fc" id="L114">      return this.creationDate = creationDate;</span>
+    }
+  }
+
+  /**
+   * Checks if the date provided is before the creation date or before today.
+   * @param date The date being checked.
+   * @return True or false. */
+  public boolean checkInPast(LocalDate date) {
+<span class="pc bpc" id="L123" title="1 of 4 branches missed.">    if (date.isBefore(getCreationDate()) || date.isBefore(LocalDate.now())) {</span>
+<span class="fc" id="L124">      return true;</span>
+    } else {
+<span class="fc" id="L126">      return false;</span>
+    }
+  }
+
+  /**
+   * Allows the user to change the donation date.
+   * @param newDate The new date.
+   * @return The field with the date as a Local Date. */
+  public LocalDate changeDonationDate(LocalDate newDate) {
+<span class="nc" id="L135">    return this.donationDate = newDate;</span>
+  }
+
+  /**
+   * Returns true or false based on if the current object is the same as the one being compared.
+   * @param o The object being compared.
+   * @return Returns true or false. */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L144" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L145">      return true;</span>
+    }
+<span class="pc bpc" id="L147" title="1 of 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L148">      return false;</span>
+    }
+<span class="fc" id="L150">    AbstractDonations that = (AbstractDonations) o;</span>
+<span class="fc bfc" id="L151" title="All 2 branches covered.">    return Double.compare(that.amount, amount) == 0 &amp;&amp;</span>
+<span class="pc bpc" id="L152" title="1 of 2 branches missed.">        Objects.equals(creationDate, that.creationDate) &amp;&amp;</span>
+<span class="pc bpc" id="L153" title="1 of 2 branches missed.">        Objects.equals(donationDate, that.donationDate) &amp;&amp;</span>
+<span class="pc bpc" id="L154" title="1 of 2 branches missed.">        Objects.equals(cancellationDate, that.cancellationDate);</span>
+  }
+
+  /**
+   * Returns true or false based on if the location of the object are the same.
+   * @return Returns true or false. */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L162">    return Objects.hash(amount, creationDate, donationDate, cancellationDate);</span>
+  }
+
+  /**
+   * Returns a string of the donation amount.
+   * @return Returns a string of the donation amount. */
+  @Override
+  public String toString() {
+<span class="fc" id="L170">    return &quot;Donation Amount: $&quot; +  amount + '.';</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
