@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PrioritySort.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment9</a> &gt; <a href="index.source.html" class="el_package">assignment9.controller</a> &gt; <span class="el_source">PrioritySort.java</span></div><h1>PrioritySort.java</h1><pre class="source lang-java linenums">package assignment9.controller;
+
+import assignment9.model.ToDo;
+
+import java.util.*;
+
+/**
+ * Utility class that sorts a list of to-dos by the value priority.
+ */
+public class PrioritySort implements Comparator&lt;ToDo&gt; {
+
+    /**
+     * Constructor for a PrioritySort object.
+     */
+<span class="fc" id="L15">    public PrioritySort() {</span>
+<span class="fc" id="L16">    }</span>
+
+    /**
+     * Compares two To-Do entries and sorts by the priority. Note that if a priority isn't set,
+     * it would be 0, which is being considered &quot;greater&quot; than all other priorities so that the
+     * order will be 0, 3, 2, 1. When returning a sorted list, this order will be reversed.
+     * @param left The To-Do entry being compared to the right.
+     * @param right The To-Do entry being compared to the left.
+     * @return A neg. number if left&lt;right; 0 if left=right; and positive number if left&gt;right
+     */
+    public int compare(ToDo left, ToDo right) {
+<span class="fc" id="L27">        Integer leftValue = left.getPriority();</span>
+<span class="fc" id="L28">        Integer rightValue = right.getPriority();</span>
+<span class="fc bfc" id="L29" title="All 4 branches covered.">        if (leftValue == null &amp;&amp; rightValue == null) {</span>
+<span class="fc" id="L30">            return 0;</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        } else if (leftValue == null) {</span>
+<span class="fc" id="L32">            return 1;</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        } else if (rightValue == null) {</span>
+<span class="fc" id="L34">            return -1;</span>
+        }
+<span class="fc" id="L36">        return Integer.compare(leftValue, rightValue);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

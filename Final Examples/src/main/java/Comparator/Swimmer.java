@@ -102,6 +102,7 @@ public class Swimmer implements Comparable<Swimmer> {
     swimmerThreeFree.add(2.6);
     Swimmer swimmerThree = new Swimmer("Janis", swimmerThreeButter, swimmerThreeBack,
         swimmerThreeBreast, swimmerThreeFree);
+
     int compareSwimmerOneAndTwo = swimmerOne.compareTo(swimmerTwo);
     System.out.println(compareSwimmerOneAndTwo);
     int compareSwimmerTwoAndThree = swimmerTwo.compareTo(swimmerThree);

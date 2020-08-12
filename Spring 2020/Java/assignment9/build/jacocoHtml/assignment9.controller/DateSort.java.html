@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DateSort.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment9</a> &gt; <a href="index.source.html" class="el_package">assignment9.controller</a> &gt; <span class="el_source">DateSort.java</span></div><h1>DateSort.java</h1><pre class="source lang-java linenums">package assignment9.controller;
+
+import assignment9.model.ToDo;
+
+import java.time.LocalDate;
+import java.util.*;
+
+/**
+ * Utility class that sorts a list of to-dos by the value date.
+ */
+public class DateSort implements Comparator&lt;ToDo&gt; {
+
+    /**
+     * Constructor for a DateSort object.
+     */
+<span class="fc" id="L16">    public DateSort() {</span>
+<span class="fc" id="L17">    }</span>
+
+    /**
+     * Compares two To-do entries and sorts by the due date. Note that if the due date is not set
+     * it will default to null so these dates will be considered the &quot;largest&quot; so that they can be
+     * sorted at the end.
+     * @param left The To-Do entry being compared to the right.
+     * @param right The To-Do entry being compared to the left.
+     * @return A neg. number if left&lt;right; 0 if left=right; and positive number if left&gt;right
+     */
+    public int compare(ToDo left, ToDo right) {
+<span class="fc" id="L28">        LocalDate leftDate = left.getDueDate();</span>
+<span class="fc" id="L29">        LocalDate rightDate = right.getDueDate();</span>
+<span class="fc bfc" id="L30" title="All 4 branches covered.">        if (leftDate == null &amp;&amp; rightDate == null) {</span>
+<span class="fc" id="L31">            return 0;</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        } else if (leftDate == null) {</span>
+<span class="fc" id="L33">            return 1;</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        } else if (rightDate == null) {</span>
+<span class="fc" id="L35">            return -1;</span>
+        }
+<span class="fc" id="L37">        return leftDate.compareTo(rightDate);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Write.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment9</a> &gt; <a href="index.source.html" class="el_package">assignment9.controller</a> &gt; <span class="el_source">Write.java</span></div><h1>Write.java</h1><pre class="source lang-java linenums">package assignment9.controller;
+
+import assignment9.model.ToDo;
+import assignment9.view.InvalidArgumentException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+
+/**
+ * Static write class to update the CSV file whenever a new to do has been created or completed. */
+public class Write {
+
+  /**
+   * Blank constructor to make it easier to access the static method. */
+<span class="nc" id="L17">  public Write() {</span>
+<span class="nc" id="L18">  }</span>
+
+  /**
+   * Updates the csv file based on what is in the full list of to dos.
+   * @param allToDos The updated to dos to use to rewrite the file.
+   * @param csvFile The csv file to update.
+   * @throws InvalidArgumentException Throws if there is an IO exception. */
+  public static void updateCsvFile(List&lt;ToDo&gt; allToDos, String csvFile) throws
+      InvalidArgumentException {
+<span class="fc" id="L27">    try (BufferedWriter writer = new BufferedWriter(new FileWriter(csvFile))) {</span>
+<span class="fc" id="L28">      writer.write(&quot;\&quot;id\&quot;,\&quot;text\&quot;,\&quot;completed\&quot;,\&quot;due\&quot;,\&quot;priority\&quot;,\&quot;category\&quot;&quot;);</span>
+<span class="fc" id="L29">      writer.newLine();</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">      for (int i = 0; i &lt; allToDos.size(); i ++) {</span>
+<span class="fc" id="L31">        writer.write(&quot;\&quot;&quot; + allToDos.get(i).getID() + &quot;\&quot;,&quot;);</span>
+<span class="fc" id="L32">        writer.write(&quot;\&quot;&quot; + allToDos.get(i).getDescription() + &quot;\&quot;,&quot;);</span>
+<span class="fc" id="L33">        writer.write(&quot;\&quot;&quot; + allToDos.get(i).isCompleted() + &quot;\&quot;,&quot;);</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (allToDos.get(i).getDueDate() == null) {</span>
+<span class="fc" id="L35">          writer.write(&quot;\&quot;?\&quot;,&quot;);</span>
+        } else {
+<span class="fc" id="L37">        writer.write(&quot;\&quot;&quot; +</span>
+<span class="fc" id="L38">            allToDos.get(i).getDueDate().format(DateTimeFormatter.ofPattern(&quot;MM/dd/uuuu&quot;)) + &quot;\&quot;,&quot;);</span>
+        }
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (allToDos.get(i).getPriority() == null) {</span>
+<span class="fc" id="L41">          writer.write(&quot;\&quot;?\&quot;,&quot;);</span>
+        } else {
+<span class="fc" id="L43">          writer.write(&quot;\&quot;&quot; + allToDos.get(i).getPriority() + &quot;\&quot;,&quot;);</span>
+        }
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (allToDos.get(i).getCategory() == null) {</span>
+<span class="fc" id="L46">          writer.write(&quot;\&quot;?\&quot;&quot;);</span>
+        } else {
+<span class="fc" id="L48">          writer.write(&quot;\&quot;&quot; + allToDos.get(i).getCategory() + &quot;\&quot;&quot;);</span>
+        }
+<span class="fc" id="L50">        writer.newLine();</span>
+      }
+<span class="nc" id="L52">    } catch (IOException e) {</span>
+<span class="nc" id="L53">      throw new InvalidArgumentException(&quot;IO exception.&quot;);</span>
+<span class="fc" id="L54">    }</span>
+<span class="fc" id="L55">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

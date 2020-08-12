@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="assignment9.controller.ControllerTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-04-07T21:23:37" hostname="Areals-MacBook-Pro.local" time="0.304">
+  <properties/>
+  <testcase name="testDisplayFiltered" classname="assignment9.controller.ControllerTest" time="0.082"/>
+  <testcase name="testGetToDos" classname="assignment9.controller.ControllerTest" time="0.028"/>
+  <testcase name="testDisplayIncompleteFilter" classname="assignment9.controller.ControllerTest" time="0.011"/>
+  <testcase name="testToString" classname="assignment9.controller.ControllerTest" time="0.016"/>
+  <testcase name="testDisplaySorted" classname="assignment9.controller.ControllerTest" time="0.009"/>
+  <testcase name="testAddToDoAndUpdate" classname="assignment9.controller.ControllerTest" time="0.078"/>
+  <testcase name="testDisplayCategoryFilter" classname="assignment9.controller.ControllerTest" time="0.012"/>
+  <testcase name="testDisplaySortPriority" classname="assignment9.controller.ControllerTest" time="0.048"/>
+  <system-out><![CDATA[ToDo ID = 3, description = Study for finals, completed = false, priority = 2, dueDate = null, category = school
+ToDo ID = 3, description = Study for finals, completed = false, priority = 2, dueDate = null, category = school
+ToDo ID = 3, description = Study for finals, completed = false, priority = 2, dueDate = null, category = school
+ToDo ID = 4, description = Clean the house, completed = false, priority = 3, dueDate = 2020-03-21, category = home
+ToDo ID = 2, description = Mail Passport, completed = true, priority = null, dueDate = 2020-02-28, category = null
+ToDo ID = 4, description = Clean the house, completed = false, priority = 3, dueDate = 2020-03-21, category = home
+ToDo ID = 1, description = Finish HW9, completed = true, priority = 1, dueDate = 2020-03-22, category = school
+ToDo ID = 3, description = Study for finals, completed = false, priority = 2, dueDate = null, category = school
+ToDo ID = 1, description = Finish HW9, completed = true, priority = 1, dueDate = 2020-03-22, category = school
+ToDo ID = 3, description = Study for finals, completed = false, priority = 2, dueDate = null, category = school
+ToDo ID = 1, description = Finish HW9, completed = true, priority = 1, dueDate = 2020-03-22, category = school
+ToDo ID = 3, description = Study for finals, completed = false, priority = 2, dueDate = null, category = school
+ToDo ID = 4, description = Clean the house, completed = false, priority = 3, dueDate = 2020-03-21, category = home
+ToDo ID = 2, description = Mail Passport, completed = true, priority = null, dueDate = 2020-02-28, category = null
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

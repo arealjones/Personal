@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Read.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment9</a> &gt; <a href="index.source.html" class="el_package">assignment9.controller</a> &gt; <span class="el_source">Read.java</span></div><h1>Read.java</h1><pre class="source lang-java linenums">package assignment9.controller;
+
+import assignment9.model.ToDo;
+import assignment9.model.ToDo.Builder;
+import assignment9.view.InvalidArgumentException;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
+/**
+ * The Read class will read the csv file provided and add each to do to a list. */
+public class Read implements IRead {
+  private ArrayList&lt;ToDo&gt; getAllToDos;
+
+  /**
+   * Constructor for the read class. */
+<span class="fc" id="L21">  public Read() {</span>
+<span class="fc" id="L22">    this.getAllToDos = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L23">  }</span>
+
+  /**
+   * Returns all of the to dos that are currently in the csvFile.
+   * @return Returns all of the to dos that are currently in the csvFile. */
+  public ArrayList&lt;ToDo&gt; getAllToDos() {
+<span class="fc" id="L29">    return this.getAllToDos;</span>
+  }
+
+  /**
+   * Helper method to check if the to do has a field or not.
+   * @param field Each field for the to do.
+   * @return False if it contains a &quot;?&quot;, true otherwise. */
+  private boolean hasField(String field) {
+<span class="fc bfc" id="L37" title="All 2 branches covered.">    if (field.contains(&quot;?&quot;)) {</span>
+<span class="fc" id="L38">      return false;</span>
+    }
+<span class="fc" id="L40">    return true;</span>
+  }
+
+  /**
+   * Reads the csv file provided and adds each to do to a list.
+   * @param csvFile the csv file to be read.
+   * @throws InvalidArgumentException Throws if it cannot find the file or there is an IO
+   * exception. */
+  public void readFile(String csvFile) throws InvalidArgumentException {
+<span class="fc" id="L49">    try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {</span>
+      String line;
+<span class="fc bfc" id="L51" title="All 2 branches covered.">      while ((line = reader.readLine()) != null) {</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        if ((line.contains(&quot;id&quot;))) {</span>
+<span class="fc" id="L53">          continue;</span>
+        }
+<span class="fc" id="L55">        String[] fullLine = line.split(&quot;\&quot;,\&quot;&quot;);</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        for (int i = 0; i &lt; fullLine.length; i++) {</span>
+<span class="fc" id="L57">          fullLine[i] = fullLine[i].replace(&quot;\&quot;&quot;, &quot;&quot;);</span>
+        }
+<span class="fc" id="L59">        Builder builder = new ToDo.Builder(Integer.parseInt(fullLine[0]), fullLine[1]);</span>
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">        if (hasField(fullLine[2])) {</span>
+<span class="fc" id="L61">          builder.complete(Boolean.parseBoolean(fullLine[2]));</span>
+        }
+<span class="fc bfc" id="L63" title="All 2 branches covered.">        if (hasField(fullLine[3])) {</span>
+<span class="fc" id="L64">          builder.addDueDate(LocalDate.parse(fullLine[3],</span>
+<span class="fc" id="L65">              DateTimeFormatter.ofPattern(&quot;MM/dd/uuuu&quot;)));</span>
+        }
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        if (hasField(fullLine[4])) {</span>
+<span class="fc" id="L68">          builder.addPriority(Integer.parseInt(fullLine[4]));</span>
+        }
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        if (hasField(fullLine[5])) {</span>
+<span class="fc" id="L71">          builder.addCategory(fullLine[5]);</span>
+        }
+<span class="fc" id="L73">        ToDo toDo = builder.build();</span>
+<span class="fc" id="L74">        this.getAllToDos.add(toDo);</span>
+<span class="fc" id="L75">      }</span>
+<span class="fc" id="L76">    } catch (FileNotFoundException e) {</span>
+<span class="fc" id="L77">      throw new InvalidArgumentException(&quot;File was not found.&quot;);</span>
+<span class="nc" id="L78">    } catch (IOException e) {</span>
+<span class="nc" id="L79">      throw new InvalidArgumentException(&quot;IO exception.&quot;);</span>
+<span class="fc" id="L80">    }</span>
+<span class="fc" id="L81">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

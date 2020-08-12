@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Controller.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment9</a> &gt; <a href="index.source.html" class="el_package">assignment9.controller</a> &gt; <span class="el_source">Controller.java</span></div><h1>Controller.java</h1><pre class="source lang-java linenums">package assignment9.controller;
+
+import assignment9.model.ToDo;
+import assignment9.model.ToDo.Builder;
+import assignment9.view.Display;
+import assignment9.view.InvalidArgumentException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Controller class that runs the commands in the program provided by the user. */
+public class Controller {
+  private List&lt;String&gt; commands;
+  private List&lt;ToDo&gt; currentToDos;
+  private String file;
+
+  /**
+   * Constructor to allow the main class to pass in the validated list of commands.
+   * @param commands The validated list of commands. */
+<span class="fc" id="L22">  public Controller(List&lt;String&gt; commands) {</span>
+<span class="fc" id="L23">    this.commands = commands;</span>
+<span class="fc" id="L24">    this.currentToDos = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L25">  }</span>
+
+  /**
+   * Returns the current to dos in the csv file.
+   * @return Returns the current to dos in the csv file. */
+  public List&lt;ToDo&gt; getCurrentToDos() {
+<span class="fc" id="L31">    return this.currentToDos;</span>
+  }
+
+  /**
+   * Helper method to allow the runCommands method to read the csv file.
+   * @param csvFile The csv file.
+   * @throws InvalidArgumentException Throws if it cannot find the file or there is an IO
+   * exception. */
+  private void readFile(String csvFile) throws InvalidArgumentException {
+<span class="fc" id="L40">    file = csvFile;</span>
+<span class="fc" id="L41">    Read file = new Read();</span>
+<span class="fc" id="L42">    file.readFile(csvFile);</span>
+<span class="fc" id="L43">    this.currentToDos = file.getAllToDos();</span>
+<span class="fc" id="L44">  }</span>
+
+  /**
+   * Helper method to find the csv file in the list of commands to read the file.
+   * @throws InvalidArgumentException Throws if it cannot find the file or there is an IO
+   * exception. */
+  private void findCsvFile() throws InvalidArgumentException {
+<span class="fc bfc" id="L51" title="All 2 branches covered.">    for (int i = 0; i &lt; this.commands.size(); i++) {</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">      if (this.commands.get(i).contains(&quot;csv-file&quot;)) {</span>
+<span class="fc" id="L53">        String[] fileLine = this.commands.get(i).split(&quot; &quot;);</span>
+<span class="fc" id="L54">        readFile(fileLine[1]);</span>
+      }
+    }
+<span class="fc" id="L57">  }</span>
+
+  /**
+   * Creates a new to do based on the fields found in the command line.
+   * @throws InvalidArgumentException Throws if it cannot find the file to update the list or there
+   * is an IO exception. */
+  private void createNewToDo() throws InvalidArgumentException {
+<span class="fc" id="L64">    int iD = (this.currentToDos.size() + 1);</span>
+<span class="fc" id="L65">    String text = findToDoText();</span>
+<span class="fc" id="L66">    Builder builder = new ToDo.Builder(iD, text);</span>
+<span class="fc" id="L67">    builder.complete(findCompleted());</span>
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">    if (findDueDate() != null)  {</span>
+<span class="fc" id="L69">      builder.addDueDate(LocalDate.parse(findDueDate(), DateTimeFormatter.ofPattern(&quot;MM/dd/uuuu&quot;)));</span>
+    }
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">    if (findPriority() &gt; 0) {</span>
+<span class="fc" id="L72">      builder.addPriority(findPriority());</span>
+    }
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">    if (findCategory() != null) {</span>
+<span class="fc" id="L75">      builder.addCategory(findCategory());</span>
+    }
+<span class="fc" id="L77">    ToDo toDo = builder.build();</span>
+<span class="fc" id="L78">    this.currentToDos.add(toDo);</span>
+<span class="fc" id="L79">    Write.updateCsvFile(this.currentToDos, file);</span>
+<span class="fc" id="L80">    readFile(file);</span>
+<span class="fc" id="L81">  }</span>
+
+  /**
+   * Returns a string of the to do text.
+   * @return Returns a string of the to do text. */
+  private String findToDoText() {
+<span class="fc" id="L87">    int textLimit = 2;</span>
+<span class="fc" id="L88">    String[] text = new String[0];</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">    for (int i = 0; i &lt; this.commands.size(); i++) {</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">      if (this.commands.get(i).contains(&quot;todo-text&quot;)) {</span>
+<span class="fc" id="L91">        text = this.commands.get(i).split(&quot; &quot;, textLimit);</span>
+      }
+    }
+<span class="fc" id="L94">    return text[1];</span>
+  }
+
+  /**
+   * Returns the boolean if the to do is completed.
+   * @return Returns the boolean if the to do is completed. */
+  private boolean findCompleted() {
+<span class="fc" id="L101">    boolean flag = false;</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">    for (int i = 0; i &lt; this.commands.size(); i++) {</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">      if (this.commands.get(i).contains(&quot;completed&quot;)) {</span>
+<span class="fc" id="L104">        flag = true;</span>
+      }
+    }
+<span class="fc" id="L107">    return flag;</span>
+  }
+
+  /**
+   * Returns a string of the due date.
+   * @return Returns a string of the due date. */
+  private String findDueDate() {
+<span class="fc" id="L114">    String[] dueLine = new String[0];</span>
+<span class="fc bfc" id="L115" title="All 2 branches covered.">    for (int i = 0; i &lt; this.commands.size(); i++) {</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">      if (this.commands.get(i).contains(&quot;due&quot;)) {</span>
+<span class="fc" id="L117">        dueLine = this.commands.get(i).split(&quot; &quot;);</span>
+      }
+    }
+<span class="fc" id="L120">    return dueLine[1];</span>
+  }
+
+  /**
+   * Returns the priority as an integer.
+   * @return Returns the priority as an integer. */
+  private int findPriority() {
+<span class="fc" id="L127">    String[] priorityLine = new String[0];</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">    for (int i = 0; i &lt; this.commands.size(); i++) {</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">      if (this.commands.get(i).contains(&quot;priority&quot;)) {</span>
+<span class="fc" id="L130">        priorityLine = this.commands.get(i).split(&quot; &quot;);</span>
+      }
+    }
+<span class="fc" id="L133">    return (Integer.parseInt(priorityLine[1]));</span>
+  }
+
+  /**
+   * Returns a string of the category.
+   * @return Returns a string of the category. */
+  private String findCategory() {
+<span class="fc" id="L140">    String[] categoryLine = new String[0];</span>
+<span class="fc bfc" id="L141" title="All 2 branches covered.">    for (int i = 0; i &lt; this.commands.size(); i++) {</span>
+<span class="fc bfc" id="L142" title="All 2 branches covered.">      if (this.commands.get(i).contains(&quot;category&quot;)) {</span>
+<span class="fc" id="L143">        categoryLine = this.commands.get(i).split(&quot; &quot;);</span>
+      }
+    }
+<span class="fc" id="L146">    return categoryLine[1];</span>
+  }
+
+  /**
+   * Returns a list of the ids to change to complete.
+   * @return Returns a list of the ids to change to complete. */
+  private ArrayList&lt;Integer&gt; findCompleteId() {
+    String[] completeLine;
+<span class="fc" id="L154">    ArrayList&lt;Integer&gt; idsToComplete = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L155" title="All 2 branches covered.">    for (int i = 0; i &lt; this.commands.size(); i++) {</span>
+<span class="fc bfc" id="L156" title="All 2 branches covered.">      if (this.commands.get(i).contains(&quot;complete-todo&quot;)) {</span>
+<span class="fc" id="L157">        completeLine = this.commands.get(i).split(&quot; &quot;);</span>
+<span class="fc" id="L158">        idsToComplete.add(Integer.parseInt(completeLine[1]));</span>
+      }
+    }
+<span class="fc" id="L161">    return idsToComplete;</span>
+  }
+
+  /**
+   * Completes the to dos listed in the findCompleteId array and updates the CSV file.
+   * @throws InvalidArgumentException Throws if there is an IO exception. */
+  private void completeToDo() throws InvalidArgumentException {
+<span class="fc" id="L168">    ArrayList&lt;Integer&gt; idsToComplete = findCompleteId();</span>
+<span class="fc bfc" id="L169" title="All 2 branches covered.">    for (int i = 0; i &lt; idsToComplete.size(); i++) {</span>
+<span class="fc bfc" id="L170" title="All 2 branches covered.">      for (int j = 0; j &lt; this.currentToDos.size(); j++) {</span>
+<span class="fc bfc" id="L171" title="All 2 branches covered.">        if (this.currentToDos.get(j).getID() == idsToComplete.get(i)) {</span>
+<span class="fc" id="L172">          this.currentToDos.get(j).setCompleted(true);</span>
+        }
+      }
+<span class="fc" id="L175">      Write.updateCsvFile(this.currentToDos, file);</span>
+<span class="fc" id="L176">      readFile(file);</span>
+    }
+<span class="fc" id="L178">  }</span>
+
+  /**
+   * Filters the to dos based on the incomplete or category command.
+   * @param incomplete Boolean on if incomplete was given in the list of commands.
+   * @param category Boolean on if category was given in the list of commands. */
+  private void filters(boolean incomplete, boolean category) {
+<span class="fc bfc" id="L185" title="All 4 branches covered.">    if (incomplete &amp;&amp; category) {</span>
+<span class="fc" id="L186">      this.currentToDos = Filters.filterByIncomplete(this.currentToDos);</span>
+<span class="pc bpc" id="L187" title="1 of 2 branches missed.">      if (findCategory() != null) {</span>
+<span class="fc" id="L188">        this.currentToDos = Filters.filterByCategory(this.currentToDos, findCategory());</span>
+      }
+<span class="fc bfc" id="L190" title="All 2 branches covered.">    } else if (incomplete) {</span>
+<span class="fc" id="L191">      this.currentToDos = Filters.filterByIncomplete(this.currentToDos);</span>
+<span class="pc bpc" id="L192" title="1 of 4 branches missed.">    } else if ((category) &amp;&amp; (findCategory() != null)) {</span>
+<span class="fc" id="L193">      this.currentToDos = Filters.filterByCategory(this.currentToDos, findCategory());</span>
+    }
+<span class="fc" id="L195">  }</span>
+
+  /**
+   * Sorts the list based on what commands are given. */
+  private void sorts() {
+<span class="fc bfc" id="L200" title="All 2 branches covered.">    if (this.commands.contains(&quot;sort-by-date&quot;)) {</span>
+<span class="fc" id="L201">      this.currentToDos.sort(new DateSort());</span>
+<span class="fc bfc" id="L202" title="All 2 branches covered.">    } else if (this.commands.contains(&quot;sort-by-priority&quot;)) {</span>
+<span class="fc" id="L203">      this.currentToDos.sort(new PrioritySort());</span>
+    }
+<span class="fc" id="L205">  }</span>
+
+  /**
+   * Returns true if it finds show-incomplete, false otherwise.
+   * @return Returns true if it finds show-incomplete, false otherwise. */
+  private boolean displayHasIncomplete() {
+<span class="fc bfc" id="L211" title="All 2 branches covered.">    for (int i = 0; i &lt; this.commands.size(); i++) {</span>
+<span class="fc bfc" id="L212" title="All 2 branches covered.">      if (this.commands.get(i).contains(&quot;show-incomplete&quot;)) {</span>
+<span class="fc" id="L213">        return true;</span>
+      }
+    }
+<span class="fc" id="L216">    return false;</span>
+  }
+
+  /**
+   * Returns true if it finds show-category, false otherwise.
+   * @return Returns true if it finds show-category, false otherwise. */
+  private boolean displayHasCategory() {
+<span class="fc bfc" id="L223" title="All 2 branches covered.">    for (int i = 0; i &lt; this.commands.size(); i++) {</span>
+<span class="fc bfc" id="L224" title="All 2 branches covered.">      if (this.commands.get(i).contains(&quot;show-category&quot;)) {</span>
+<span class="fc" id="L225">        return true;</span>
+      }
+    }
+<span class="fc" id="L228">    return false;</span>
+  }
+
+  /**
+   * Runs all of the commands found in the list provided by the main class.
+   * @throws InvalidArgumentException Throws if it cannot find the file to read or there is an
+   * IO exception. */
+  public void runCommands() throws InvalidArgumentException {
+<span class="fc" id="L236">    findCsvFile();</span>
+<span class="fc bfc" id="L237" title="All 2 branches covered.">    for (int i = 0; i &lt; this.commands.size(); i++) {</span>
+<span class="fc bfc" id="L238" title="All 2 branches covered.">      if (this.commands.get(i).contains(&quot;add-todo&quot;)) {</span>
+<span class="fc" id="L239">        createNewToDo();</span>
+      }
+<span class="fc bfc" id="L241" title="All 2 branches covered.">      if (this.commands.get(i).contains(&quot;complete-todo&quot;)) {</span>
+<span class="fc" id="L242">        completeToDo();</span>
+      }
+<span class="fc bfc" id="L244" title="All 2 branches covered.">      if (this.commands.get(i).contains(&quot;display&quot;)) {</span>
+<span class="fc" id="L245">        boolean incomplete = displayHasIncomplete();</span>
+<span class="fc" id="L246">        boolean category = displayHasCategory();</span>
+<span class="fc" id="L247">        filters(incomplete, category);</span>
+<span class="fc" id="L248">        sorts();</span>
+<span class="fc" id="L249">        Display show = new Display(this.currentToDos);</span>
+<span class="fc" id="L250">        show.displayToDos();</span>
+      }
+    }
+<span class="fc" id="L253">  }</span>
+
+  /**
+   * Converts the commands given by the main to a string.
+   * @return A string of the commands. */
+  @Override
+  public String toString() {
+<span class="fc" id="L260">    return &quot;Controller{&quot; +</span>
+        &quot;commands=&quot; + this.commands +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

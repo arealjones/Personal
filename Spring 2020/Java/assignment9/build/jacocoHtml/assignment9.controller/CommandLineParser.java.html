@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CommandLineParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment9</a> &gt; <a href="index.source.html" class="el_package">assignment9.controller</a> &gt; <span class="el_source">CommandLineParser.java</span></div><h1>CommandLineParser.java</h1><pre class="source lang-java linenums">package assignment9.controller;
+
+import assignment9.view.InvalidArgumentException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * Parses and validates the command line arguments passed in from Main
+ */
+public class CommandLineParser {
+
+  // Just parsing the arguments into a list.
+
+  private static final String REGEX_COMMAND = &quot;--&quot;;
+  private List&lt;String&gt; commands;
+
+  /**
+   * Constructor for the CommandLineParser class
+   * @param args The command line arguments provided by the user.
+   * @throws InvalidArgumentException If the arguments are invalid.
+   */
+<span class="fc" id="L25">  public CommandLineParser(String[] args) throws InvalidArgumentException {</span>
+<span class="fc" id="L26">    this.commands = parseCommands(args);</span>
+<span class="fc" id="L27">  }</span>
+
+  /**
+   * Gets the commands as a list of strings
+   */
+  public List&lt;String&gt; getCommands() {
+<span class="fc" id="L33">    return this.commands;</span>
+  }
+
+  /**
+   * Converts a string array into a single string delimited by &quot; &quot;
+   * @param args a string array
+   * @return a string
+   */
+  private static String convertToString(String[] args) {
+<span class="fc" id="L42">    return String.join(&quot; &quot;, args);</span>
+  }
+
+  /**
+   * Converts a string into a list of strings per the Regex Command
+   * @param args a string
+   * @return a list of strings
+   */
+  private static List&lt;String&gt; convertToList(String args) {
+<span class="fc" id="L51">    String[] temp = args.split(REGEX_COMMAND);</span>
+    //Because we're splitting by &quot;--&quot; the first arg[0] will be empty
+<span class="fc" id="L53">    ArrayList&lt;String&gt; argList = new ArrayList&lt;&gt;(Arrays.asList(temp).subList(1, temp.length));</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">    for (int i = 0; i&lt;argList.size(); i++) {</span>
+<span class="fc" id="L55">      argList.set(i, argList.get(i).trim());</span>
+    }
+<span class="fc" id="L57">    return argList;</span>
+  }
+
+  /**
+   * Parses the string array of arguments, and calls the validate command.
+   * @param args a string array of commands
+   * @return a list of parsed and validated commands
+   * @throws InvalidArgumentException if the commands are invalid
+   */
+  private List&lt;String&gt; parseCommands(String[] args)
+      throws InvalidArgumentException {
+<span class="fc" id="L68">    String argsAsString = convertToString(args);</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">    if (!ValidateCommand.containsRequired(argsAsString)) {</span>
+<span class="fc" id="L70">      throw new InvalidArgumentException(&quot;Input must contain required commands: &quot; + Arrays</span>
+<span class="fc" id="L71">          .toString(ValidateCommand.REQUIRED_COMMANDS));</span>
+    }
+<span class="fc" id="L73">    List&lt;String&gt; commandList = convertToList(argsAsString);</span>
+<span class="fc" id="L74">    ValidateCommand.validateCommands(commandList);</span>
+<span class="fc" id="L75">  return commandList;</span>
+  }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ValidateCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment9</a> &gt; <a href="index.source.html" class="el_package">assignment9.controller</a> &gt; <span class="el_source">ValidateCommand.java</span></div><h1>ValidateCommand.java</h1><pre class="source lang-java linenums">package assignment9.controller;
+
+import assignment9.view.InvalidArgumentException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
+public class ValidateCommand {
+
+<span class="fc" id="L15">  private static final String[] VALID_COMMANDS = {&quot;csv-file&quot;, &quot;add-todo&quot;, &quot;todo-text&quot;, &quot;completed&quot;,</span>
+  &quot;due&quot;, &quot;priority&quot;, &quot;category&quot;, &quot;complete-todo&quot;, &quot;display&quot;, &quot;show-incomplete&quot;, &quot;show-category&quot;,
+  &quot;sort-by-date&quot;, &quot;sort-by-priority&quot;};
+<span class="fc" id="L18">  protected static final String[] REQUIRED_COMMANDS = {&quot;--csv-file&quot;};</span>
+<span class="fc" id="L19">  private static final String[] DUPLICATE_ALLOWED = {&quot;complete-todo&quot;};</span>
+  private static final String FILE_REGEX = &quot;[\\w\\d-_]+\\.csv&quot;;
+  private static final int COMMAND_ARG_SIZE = 2;
+
+  /**
+   * The Validate command class validates the commands.
+   */
+  private ValidateCommand() {
+  }
+
+  /**
+   * Validates the commands
+   * @param argsList a list of string arguments
+   * @throws InvalidArgumentException if the commands are invalid
+   */
+  public static void validateCommands(List&lt;String&gt; argsList)
+      throws InvalidArgumentException {
+<span class="fc" id="L36">    HashMap&lt;String, String&gt; commandHashMap = createCommandHashMap(argsList);</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">    for (String s : argsList) {</span>
+<span class="fc" id="L38">      String[] tempList = s.split(&quot; &quot;);</span>
+<span class="fc bfc" id="L39" title="All 5 branches covered.">      switch (tempList[0]) {</span>
+        case &quot;add-todo&quot;:
+<span class="fc" id="L41">          validateAddToDo(commandHashMap);</span>
+<span class="fc" id="L42">          break;</span>
+        case &quot;complete-todo&quot;:
+<span class="fc" id="L44">          validateCompleteToDo(tempList);</span>
+<span class="fc" id="L45">          break;</span>
+        case &quot;display&quot;:
+<span class="fc" id="L47">          validateDisplay(commandHashMap);</span>
+<span class="fc" id="L48">          break;</span>
+        case &quot;csv-file&quot;:
+<span class="fc" id="L50">          validateCSV(tempList);</span>
+          break;
+      }
+<span class="fc" id="L53">    }</span>
+<span class="fc" id="L54">  }</span>
+
+  /**
+   * Parses the command list into a Hash Map, and validates the keys as valid commands.
+   * If there are multiple Keys, only stores the first Key/Value pair.
+   * @param argsList a list of commands
+   * @return a hashmap of commands
+   * @throws InvalidArgumentException if the command is invalid
+   */
+  private static HashMap&lt;String, String&gt; createCommandHashMap(List&lt;String&gt; argsList)
+      throws InvalidArgumentException {
+    //Create a HashMap. Key is the Command, Value is any argument(s)
+    //If there are multiple Keys, only stores the first Key/Value pair.
+<span class="fc" id="L67">    HashMap&lt;String, String&gt; tempCommands = new HashMap&lt;&gt;();</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">    for (String s : argsList) {</span>
+      //Split strings. First arg is the command.
+<span class="fc" id="L70">      String[] tempList = s.split(&quot; &quot;, COMMAND_ARG_SIZE);</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">      if (!validateACommand(tempList[0])) {</span>
+<span class="fc" id="L72">        throw new InvalidArgumentException(&quot;An invalid command was given.&quot;);</span>
+      }
+      //If the current Command argument is Not already in the HashMap, add it to the HashMap
+      //as a Key, and a string argument (if any) for the value.
+<span class="fc bfc" id="L76" title="All 2 branches covered.">      if (!tempCommands.containsKey(tempList[0])) {</span>
+        String tempArg;
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        if (tempList.length == COMMAND_ARG_SIZE) {</span>
+<span class="fc" id="L79">          tempArg = tempList[1];</span>
+        } else {
+<span class="fc" id="L81">          tempArg = null;</span>
+        }
+<span class="fc" id="L83">        tempCommands.put(tempList[0], tempArg);</span>
+<span class="fc" id="L84">      } else { //If the current Command argument is already in the HashMap</span>
+        //Validate that duplicate commands are allowed
+<span class="fc bfc" id="L86" title="All 2 branches covered.">        if (!validateDuplicatesAllowed(tempList[0])) {</span>
+<span class="fc" id="L87">          throw new InvalidArgumentException(&quot;Duplicate commands are only allowed for&quot; + Arrays</span>
+<span class="fc" id="L88">              .toString(DUPLICATE_ALLOWED));</span>
+        }
+      }
+<span class="fc" id="L91">    }</span>
+<span class="fc" id="L92">    return tempCommands;</span>
+  }
+
+  /**
+   * Checks the string contains a valid command
+   * @param arg a string of commands
+   * @return true if the string contains a valid command, false otherwise.
+   */
+  protected static boolean validateACommand(String arg) {
+<span class="fc" id="L101">    return Arrays.asList(VALID_COMMANDS).contains(arg);</span>
+  }
+
+  /**
+   * Checks the string contains any required commands
+   * @param arg a string of commands
+   * @return true if the string contains the required commands, false otherwise.
+   */
+  protected static boolean containsRequired(String arg) {
+<span class="fc bfc" id="L110" title="All 2 branches covered.">    for (String reqArg : REQUIRED_COMMANDS) {</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">      if (!arg.contains(reqArg)) {</span>
+<span class="fc" id="L112">        return false;</span>
+      }
+    }
+<span class="fc" id="L115">    return true;</span>
+  }
+
+  /**
+   * Validates that duplicate commands are allowed.
+   * @param arg a string command
+   * @return true if duplicate commands are allowed, false otherwise.
+   */
+  private static boolean validateDuplicatesAllowed(String arg) {
+<span class="fc" id="L124">    return Arrays.asList(DUPLICATE_ALLOWED).contains(arg);</span>
+  }
+
+  /**
+   * Validates the &quot;add-todo&quot; command.
+   * @param commandHashMap a hashmap of commands
+   * @throws InvalidArgumentException if the command is invalid.
+   */
+  private static void validateAddToDo(HashMap&lt;String, String&gt; commandHashMap)
+      throws InvalidArgumentException {
+<span class="fc" id="L134">    String addToDo = &quot;add-todo&quot;;</span>
+<span class="fc bfc" id="L135" title="All 2 branches covered.">    if (commandHashMap.get(addToDo) != null) {</span>
+<span class="fc" id="L136">      throw new InvalidArgumentException(&quot;--add-todo does not take an argument, and must be &quot;</span>
+          + &quot;provided with --todo-text.&quot;);
+    }
+<span class="fc" id="L139">    validateToDoText(commandHashMap);</span>
+<span class="fc" id="L140">    validateCompleted(commandHashMap);</span>
+<span class="fc" id="L141">    validateDueDate(commandHashMap);</span>
+<span class="fc" id="L142">    validatePriority(commandHashMap);</span>
+<span class="fc" id="L143">  }</span>
+
+  /**
+   * Validates the &quot;todo-text&quot; command.
+   * @param commandHashMap a hashmap of commands
+   * @throws InvalidArgumentException if the command is invalid.
+   */
+  private static void validateToDoText (HashMap&lt;String, String&gt; commandHashMap)
+      throws InvalidArgumentException {
+<span class="fc" id="L152">    String todoText = &quot;todo-text&quot;;</span>
+<span class="fc bfc" id="L153" title="All 2 branches covered.">    if (!commandHashMap.containsKey(todoText)) {</span>
+<span class="fc" id="L154">      throw new InvalidArgumentException (&quot;--add-todo must also have --todo-text&quot;</span>
+          + &quot;&lt;description of todo&gt;&quot;);
+    }
+<span class="fc bfc" id="L157" title="All 2 branches covered.">    if (commandHashMap.get(todoText) == null) {</span>
+<span class="fc" id="L158">      throw new InvalidArgumentException (&quot;--add-todo must also have --todo-text&quot;</span>
+          + &quot;&lt;description of todo&gt;&quot;);
+    }
+<span class="fc" id="L161">  }</span>
+
+  /**
+   * Validates the &quot;completed&quot; command.
+   * @param commandHashMap a hashmap of commands.
+   * @throws InvalidArgumentException if the command is invalid.
+   */
+  private static void validateCompleted (HashMap&lt;String, String&gt; commandHashMap)
+      throws InvalidArgumentException {
+<span class="fc" id="L170">    String completed = &quot;completed&quot;;</span>
+<span class="fc bfc" id="L171" title="All 2 branches covered.">    if (commandHashMap.containsKey(completed)) {</span>
+<span class="fc bfc" id="L172" title="All 2 branches covered.">      if (commandHashMap.get(completed) != null) {</span>
+<span class="fc" id="L173">        throw new InvalidArgumentException(&quot;--completed does not take an argument.&quot;);</span>
+      }
+    }
+<span class="fc" id="L176">  }</span>
+
+  /**
+   * Validates the &quot;due&quot; command.
+   * @param commandHashMap a hashmap of commands.
+   * @throws InvalidArgumentException if the command is invalid.
+   */
+  private static void validateDueDate(HashMap&lt;String, String&gt; commandHashMap)
+      throws InvalidArgumentException {
+<span class="fc" id="L185">    String dueDate = &quot;due&quot;;</span>
+<span class="fc bfc" id="L186" title="All 2 branches covered.">    if (commandHashMap.containsKey(dueDate)) {</span>
+<span class="fc bfc" id="L187" title="All 2 branches covered.">      if (commandHashMap.get(dueDate) == null) {</span>
+<span class="fc" id="L188">        throw new InvalidArgumentException(&quot;--due must also have &lt;due date&gt; in the format&quot;</span>
+            + &quot;YYYY-MM-DD&quot;);
+      }
+      try {
+<span class="fc" id="L192">        LocalDate.parse(commandHashMap.get(dueDate), DateTimeFormatter.ofPattern(&quot;MM/dd/yyyy&quot;));</span>
+      }
+<span class="fc" id="L194">      catch (DateTimeParseException e) {</span>
+<span class="fc" id="L195">        throw new InvalidArgumentException(&quot;&lt;due date&gt; must be in the format MM/dd/yyyy&quot;);</span>
+<span class="fc" id="L196">      }</span>
+    }
+<span class="fc" id="L198">  }</span>
+
+  /**
+   * Validates the &quot;priority&quot; command.
+   * @param commandHashMap a hashmap of commands.
+   * @throws InvalidArgumentException if the command is invalid.
+   */
+  private static void validatePriority(HashMap&lt;String, String&gt; commandHashMap)
+      throws InvalidArgumentException {
+<span class="fc" id="L207">    String priority = &quot;priority&quot;;</span>
+<span class="fc" id="L208">    int[] priorityNum = {1, 2, 3};</span>
+<span class="pc bpc" id="L209" title="1 of 2 branches missed.">    if (commandHashMap.containsKey(priority)) {</span>
+<span class="fc bfc" id="L210" title="All 2 branches covered.">      if (commandHashMap.get(priority) == null) {</span>
+<span class="fc" id="L211">        throw new InvalidArgumentException(&quot;--priority must also have a priority of &lt;1, 2, or 3&gt;.&quot;);</span>
+      }
+      try {
+<span class="fc" id="L214">        int priorityInt = Integer.parseInt(commandHashMap.get(priority));</span>
+<span class="pc bpc" id="L215" title="2 of 6 branches missed.">        if (priorityInt != priorityNum[0] &amp;&amp; priorityInt != priorityNum[1] &amp;&amp;</span>
+            priorityInt != priorityNum[2]) {
+<span class="fc" id="L217">          throw new InvalidArgumentException(&quot;Priority must be &lt;1, 2, or 3&gt;.&quot;);</span>
+        }
+      }
+<span class="fc" id="L220">      catch (NumberFormatException e) {</span>
+<span class="fc" id="L221">        throw new InvalidArgumentException(&quot;Priority must be &lt;1, 2, or 3&gt;.&quot;);</span>
+<span class="fc" id="L222">      }</span>
+    }
+<span class="fc" id="L224">  }</span>
+
+  /**
+   * Validates the &quot;complete-todo&quot; command.
+   * @param tempList a string array of commands.
+   * @throws InvalidArgumentException if the command is invalid.
+   */
+  private static void validateCompleteToDo(String[] tempList)
+      throws InvalidArgumentException {
+<span class="fc bfc" id="L233" title="All 2 branches covered.">    if (tempList.length != COMMAND_ARG_SIZE) {</span>
+<span class="fc" id="L234">      throw new InvalidArgumentException(&quot;Enter only one &lt;ID&gt; per --complete-todo.&quot;);</span>
+    }
+    try {
+<span class="fc" id="L237">      Integer.parseInt(tempList[1]);</span>
+    }
+<span class="fc" id="L239">    catch (NumberFormatException e)</span>
+    {
+<span class="fc" id="L241">      throw new InvalidArgumentException(&quot;The &lt;ID&gt; must be numbers only.&quot;);</span>
+<span class="fc" id="L242">    }</span>
+<span class="fc" id="L243">  }</span>
+
+  /**
+   * Validates the &quot;display&quot; command.
+   * @param commandHashMap a hashmap of commands.
+   * @throws InvalidArgumentException if the command is invalid.
+   */
+  private static void validateDisplay(HashMap&lt;String, String&gt; commandHashMap)
+      throws InvalidArgumentException {
+<span class="fc" id="L252">    String display = &quot;display&quot;;</span>
+<span class="fc bfc" id="L253" title="All 2 branches covered.">    if (commandHashMap.get(display) != null) {</span>
+<span class="fc" id="L254">      throw new InvalidArgumentException(&quot;--display does not take an argument, and may be &quot;</span>
+          + &quot;provided with --show-incomplete or --show-category &lt;category&gt;, or --sort-by-date &quot;
+          + &quot;or --sort-by-priority.&quot;);
+    }
+<span class="fc" id="L258">    validateShow(commandHashMap);</span>
+<span class="fc" id="L259">    validateSort(commandHashMap);</span>
+<span class="fc" id="L260">  }</span>
+
+  /**
+   * Validates the &quot;show-incomplete&quot; and &quot;show-category&quot; commands.
+   * @param commandHashMap a hashmap of commands.
+   * @throws InvalidArgumentException if the command is invalid.
+   */
+  private static void validateShow(HashMap&lt;String, String&gt; commandHashMap)
+    throws InvalidArgumentException {
+<span class="fc" id="L269">    String showIncomplete = &quot;show-incomplete&quot;;</span>
+<span class="fc" id="L270">    String showCategory = &quot;show-category&quot;;</span>
+<span class="fc bfc" id="L271" title="All 2 branches covered.">    if (commandHashMap.containsKey(showIncomplete)) {</span>
+<span class="fc bfc" id="L272" title="All 2 branches covered.">      if (commandHashMap.get(showIncomplete) != null) {</span>
+<span class="fc" id="L273">        throw new InvalidArgumentException(&quot;--show-incomplete does not take an argument.&quot;);</span>
+      }
+    }
+<span class="fc bfc" id="L276" title="All 2 branches covered.">    if (commandHashMap.containsKey(showCategory)) {</span>
+<span class="pc bpc" id="L277" title="1 of 2 branches missed.">      if (commandHashMap.get(showCategory) == null) {</span>
+<span class="fc" id="L278">        throw new InvalidArgumentException(&quot;--show-category must also provide a &lt;category&gt;.&quot;);</span>
+      }
+    }
+<span class="fc" id="L281">  }</span>
+
+  /**
+   * Validates the &quot;sort-by-date&quot; and &quot;sort-by-priority&quot; commands.
+   * @param commandHashMap a hashmap of commands.
+   * @throws InvalidArgumentException if the command is invalid.
+   */
+  private static void validateSort(HashMap&lt;String, String&gt; commandHashMap)
+      throws InvalidArgumentException {
+<span class="fc" id="L290">    String sortDate = &quot;sort-by-date&quot;;</span>
+<span class="fc" id="L291">    String sortPriority = &quot;sort-by-priority&quot;;</span>
+<span class="fc bfc" id="L292" title="All 4 branches covered.">    if (commandHashMap.containsKey(sortDate) &amp;&amp; commandHashMap.containsKey(sortPriority)) {</span>
+<span class="fc" id="L293">      throw new InvalidArgumentException(&quot;--sort-by-date cannot be combined with &quot;</span>
+          + &quot;--sort-by-priority.&quot;);
+    }
+<span class="fc bfc" id="L296" title="All 2 branches covered.">    if (commandHashMap.containsKey(sortDate)) {</span>
+<span class="fc bfc" id="L297" title="All 2 branches covered.">      if (commandHashMap.get(sortDate) != null) {</span>
+<span class="fc" id="L298">        throw new InvalidArgumentException(&quot;--sort-by-date does not take an argument.&quot;);</span>
+      }
+    }
+<span class="fc bfc" id="L301" title="All 2 branches covered.">    if (commandHashMap.containsKey(sortPriority)) {</span>
+<span class="pc bpc" id="L302" title="1 of 2 branches missed.">      if (commandHashMap.get(sortPriority) != null) {</span>
+<span class="fc" id="L303">        throw new InvalidArgumentException(&quot;--sort-by-priority does not take an argument.&quot;);</span>
+      }
+    }
+<span class="fc" id="L306">  }</span>
+
+  /**
+   * Validates the &quot;csv-file&quot; command.
+   * @param tempList a string array of commands
+   * @throws InvalidArgumentException if the command is invalid.
+   */
+  private static void validateCSV(String[] tempList)  throws InvalidArgumentException {
+<span class="fc bfc" id="L314" title="All 2 branches covered.">    if (tempList.length != COMMAND_ARG_SIZE) {</span>
+<span class="fc" id="L315">      throw new InvalidArgumentException(&quot;Enter only one &lt;path/to/file.csv&gt; for --csv-file.&quot;);</span>
+    }
+<span class="fc bfc" id="L317" title="All 2 branches covered.">    if (!tempList[1].matches(FILE_REGEX)) {</span>
+<span class="fc" id="L318">      throw new InvalidArgumentException(&quot;File path must be in the format path/to/file.csv.&quot;);</span>
+    }
+<span class="fc" id="L320">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

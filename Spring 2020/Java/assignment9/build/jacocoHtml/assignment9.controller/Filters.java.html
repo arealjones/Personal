@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Filters.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment9</a> &gt; <a href="index.source.html" class="el_package">assignment9.controller</a> &gt; <span class="el_source">Filters.java</span></div><h1>Filters.java</h1><pre class="source lang-java linenums">package assignment9.controller;
+
+import assignment9.model.ToDo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Utility class which houses any potential filters needed by the program. All methods are static
+ * so they can be accessed without instantiating this class.
+ */
+public class Filters {
+
+    /**
+     * Constructor for the Filters class. It is private so that the class can't be instantiated.
+     */
+    private Filters() {
+    }
+
+    /**
+     * Method which takes the list of ToDos and only includes the entries that are incomplete.
+     * @param listToFilter The list of ToDos being filtered.
+     * @return The list containing only entries that have incomplete to-dos.
+     */
+    public static List&lt;ToDo&gt; filterByIncomplete(List&lt;ToDo&gt; listToFilter) {
+<span class="fc" id="L26">        List&lt;ToDo&gt; filteredList = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        for (ToDo entry : listToFilter) {</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            if (!(entry.isCompleted())) {</span>
+<span class="fc" id="L29">                filteredList.add(entry);</span>
+            }
+<span class="fc" id="L31">        }</span>
+<span class="fc" id="L32">        return filteredList;</span>
+    }
+
+    /**
+     * Method which takes the list of ToDos and only keeps those that match the given category.
+     * @param listToFilter The list of ToDos being filtered.
+     * @param category The category in question that the user wants to filter by.
+     * @return The list containing only entries that match the given category.
+     */
+    public static List&lt;ToDo&gt; filterByCategory(List&lt;ToDo&gt; listToFilter, String category) {
+<span class="fc" id="L42">        List&lt;ToDo&gt; filteredList = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        for (ToDo entry : listToFilter) {</span>
+<span class="fc bfc" id="L44" title="All 4 branches covered.">            if (entry.getCategory() != null &amp;&amp; entry.getCategory().equals(category)) {</span>
+<span class="fc" id="L45">                filteredList.add(entry);</span>
+            }
+<span class="fc" id="L47">        }</span>
+<span class="fc" id="L48">        return filteredList;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

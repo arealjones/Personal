@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Display.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">assignment9</a> &gt; <a href="index.source.html" class="el_package">assignment9.view</a> &gt; <span class="el_source">Display.java</span></div><h1>Display.java</h1><pre class="source lang-java linenums">package assignment9.view;
+
+import assignment9.model.ToDo;
+
+import java.util.List;
+
+/**
+ * Helper class which takes the sorted, filtered list of ToDos passed in from the controller and
+ * prints them for the user.
+ */
+public class Display {
+    List&lt;ToDo&gt; toDos;
+
+    /**
+     * Constructor for the Display class.
+     * @param toDos A list of the ToDos to be printed.
+     */
+<span class="fc" id="L18">    public Display(List&lt;ToDo&gt; toDos) {</span>
+<span class="fc" id="L19">        this.toDos = toDos;</span>
+<span class="fc" id="L20">    }</span>
+
+    /**
+     * Helper method which displays the ToDos present in the Display object.
+     * Helpful for troubleshooting and testing.
+     * @return The list of ToDos that will be printed to the user.
+     */
+    public List&lt;ToDo&gt; getToDosInDisplay() {
+<span class="fc" id="L28">        return this.toDos;</span>
+    }
+
+    /**
+     * Iterates through the list of ToDos and prints them for the user to see.
+     */
+    public void displayToDos() {
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        for (ToDo entry : this.toDos) {</span>
+<span class="fc" id="L36">            System.out.println(entry);</span>
+<span class="fc" id="L37">        }</span>
+<span class="fc" id="L38">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="assignment9.model.ToDoTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-04-07T21:23:37" hostname="Areals-MacBook-Pro.local" time="0.019">
+  <properties/>
+  <testcase name="getDueDate" classname="assignment9.model.ToDoTest" time="0.006"/>
+  <testcase name="testToString" classname="assignment9.model.ToDoTest" time="0.0"/>
+  <testcase name="isCompleted" classname="assignment9.model.ToDoTest" time="0.0"/>
+  <testcase name="getID" classname="assignment9.model.ToDoTest" time="0.0"/>
+  <testcase name="setCompleted" classname="assignment9.model.ToDoTest" time="0.001"/>
+  <testcase name="testHashCode" classname="assignment9.model.ToDoTest" time="0.001"/>
+  <testcase name="getPriority" classname="assignment9.model.ToDoTest" time="0.0"/>
+  <testcase name="testEquals" classname="assignment9.model.ToDoTest" time="0.0"/>
+  <testcase name="getDescription" classname="assignment9.model.ToDoTest" time="0.0"/>
+  <testcase name="getCategory" classname="assignment9.model.ToDoTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

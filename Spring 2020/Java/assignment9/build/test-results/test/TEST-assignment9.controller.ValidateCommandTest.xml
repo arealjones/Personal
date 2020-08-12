@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="assignment9.controller.ValidateCommandTest" tests="24" skipped="0" failures="0" errors="0" timestamp="2020-04-07T21:23:36" hostname="Areals-MacBook-Pro.local" time="0.145">
+  <properties/>
+  <testcase name="priorityWithFloat" classname="assignment9.controller.ValidateCommandTest" time="0.0"/>
+  <testcase name="dateMissing" classname="assignment9.controller.ValidateCommandTest" time="0.001"/>
+  <testcase name="validateCommands" classname="assignment9.controller.ValidateCommandTest" time="0.019"/>
+  <testcase name="incompleteWithArg" classname="assignment9.controller.ValidateCommandTest" time="0.004"/>
+  <testcase name="displayWithArg" classname="assignment9.controller.ValidateCommandTest" time="0.007"/>
+  <testcase name="addWithArgument" classname="assignment9.controller.ValidateCommandTest" time="0.002"/>
+  <testcase name="validateACommand" classname="assignment9.controller.ValidateCommandTest" time="0.006"/>
+  <testcase name="missingCategoryName" classname="assignment9.controller.ValidateCommandTest" time="0.0"/>
+  <testcase name="containsDashes" classname="assignment9.controller.ValidateCommandTest" time="0.013"/>
+  <testcase name="missingTextDescription" classname="assignment9.controller.ValidateCommandTest" time="0.003"/>
+  <testcase name="containsRequired" classname="assignment9.controller.ValidateCommandTest" time="0.008"/>
+  <testcase name="priorityWithWord" classname="assignment9.controller.ValidateCommandTest" time="0.006"/>
+  <testcase name="inputOfTwoCSV" classname="assignment9.controller.ValidateCommandTest" time="0.001"/>
+  <testcase name="completeWithMultNum" classname="assignment9.controller.ValidateCommandTest" time="0.002"/>
+  <testcase name="priorityMissingNumber" classname="assignment9.controller.ValidateCommandTest" time="0.001"/>
+  <testcase name="sortDateWithArg" classname="assignment9.controller.ValidateCommandTest" time="0.005"/>
+  <testcase name="sortPriorityWithArg" classname="assignment9.controller.ValidateCommandTest" time="0.004"/>
+  <testcase name="invalidDuplicates" classname="assignment9.controller.ValidateCommandTest" time="0.002"/>
+  <testcase name="missingTextArg" classname="assignment9.controller.ValidateCommandTest" time="0.001"/>
+  <testcase name="containsBothSorts" classname="assignment9.controller.ValidateCommandTest" time="0.001"/>
+  <testcase name="completedWithArg" classname="assignment9.controller.ValidateCommandTest" time="0.003"/>
+  <testcase name="completeWithAWord" classname="assignment9.controller.ValidateCommandTest" time="0.002"/>
+  <testcase name="textInsteadOfCSV" classname="assignment9.controller.ValidateCommandTest" time="0.0"/>
+  <testcase name="incorrectDateFormat" classname="assignment9.controller.ValidateCommandTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

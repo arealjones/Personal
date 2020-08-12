@@ -72,6 +72,8 @@ public class StringOccurrences {
     private HashMap<String, StringInfo> freqMap = new HashMap<>();
     private static final Integer STARTING_VALUE = 1;
 
+
+
     public Map<String, StringInfo> computeStringInfo(List<String> startingList) {
       Map<String, StringInfo> resultingMap = new HashMap<>();
       int listSize = startingList.size();

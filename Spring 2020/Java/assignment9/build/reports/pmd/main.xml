@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd"
+    version="6.8.0" timestamp="2020-04-07T14:23:40.890">
+<file name="/Users/arealjones/Desktop/Team_repo_Areal_Jones_Megan_Skrobacz_Ivy_Gooch/assignment9/src/main/java/assignment9/controller/Filters.java">
+<violation beginline="12" endline="50" begincolumn="8" endcolumn="1" rule="ClassNamingConventions" ruleset="Code Style" package="assignment9.controller" class="Filters" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#classnamingconventions" priority="1">
+The utility class name 'Filters' doesn't match '[A-Z][a-zA-Z0-9]+(Utils?|Helper)'
+</violation>
+</file>
+<file name="/Users/arealjones/Desktop/Team_repo_Areal_Jones_Megan_Skrobacz_Ivy_Gooch/assignment9/src/main/java/assignment9/controller/Write.java">
+<violation beginline="13" endline="56" begincolumn="8" endcolumn="1" rule="ClassNamingConventions" ruleset="Code Style" package="assignment9.controller" class="Write" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html#classnamingconventions" priority="1">
+The utility class name 'Write' doesn't match '[A-Z][a-zA-Z0-9]+(Utils?|Helper)'
+</violation>
+</file>
+<file name="/Users/arealjones/Desktop/Team_repo_Areal_Jones_Megan_Skrobacz_Ivy_Gooch/assignment9/src/main/java/assignment9/view/Display.java">
+<violation beginline="36" endline="36" begincolumn="13" endcolumn="30" rule="SystemPrintln" ruleset="Best Practices" package="assignment9.view" class="Display" method="displayToDos" externalInfoUrl="https://pmd.github.io/pmd-6.8.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+</file>
+</pmd>
